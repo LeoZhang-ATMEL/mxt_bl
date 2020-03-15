@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="Tianma">
+            <file>file:/mnt/DE58B1D858B1B01F/Workspace/AI/Customer/Tianma/TPBL/TPBL_2/firmware/src/config/sam_da1_xpro/bootloader/bootloader.c</file>
+            <file>file:/mnt/DE58B1D858B1B01F/Workspace/AI/Customer/Tianma/TPBL/TPBL_2/firmware/src/mxt_bootloader.c</file>
+            <file>file:/mnt/DE58B1D858B1B01F/Workspace/AI/Customer/Tianma/TPBL/TPBL_2/firmware/src/mxt_bl_config.h</file>
+            <file>file:/mnt/DE58B1D858B1B01F/Workspace/AI/Customer/Tianma/TPBL/TPBL_2/firmware/src/main.c</file>
+            <file>file:/mnt/DE58B1D858B1B01F/Workspace/AI/Customer/Tianma/TPBL/TPBL_2/firmware/src/config/sam_da1_xpro/peripheral/sercom/i2c_master/plib_sercom2_i2c_master.c</file>
+        </group>
+    </open-files>
+</project-private>
