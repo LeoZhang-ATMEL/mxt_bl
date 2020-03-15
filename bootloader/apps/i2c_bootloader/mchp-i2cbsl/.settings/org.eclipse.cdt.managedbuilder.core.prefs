@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+environment/buildEnvironmentInclude/org.yocto.cmake.managedbuilder.configuration.gnu.exe.debug.2086385326/CPATH/delimiter=\:
+environment/buildEnvironmentInclude/org.yocto.cmake.managedbuilder.configuration.gnu.exe.debug.2086385326/CPATH/operation=remove
+environment/buildEnvironmentInclude/org.yocto.cmake.managedbuilder.configuration.gnu.exe.debug.2086385326/C_INCLUDE_PATH/delimiter=\:
+environment/buildEnvironmentInclude/org.yocto.cmake.managedbuilder.configuration.gnu.exe.debug.2086385326/C_INCLUDE_PATH/operation=remove
+environment/buildEnvironmentInclude/org.yocto.cmake.managedbuilder.configuration.gnu.exe.debug.2086385326/append=true
+environment/buildEnvironmentInclude/org.yocto.cmake.managedbuilder.configuration.gnu.exe.debug.2086385326/appendContributed=true
+environment/buildEnvironmentLibrary/org.yocto.cmake.managedbuilder.configuration.gnu.exe.debug.2086385326/LIBRARY_PATH/delimiter=\:
+environment/buildEnvironmentLibrary/org.yocto.cmake.managedbuilder.configuration.gnu.exe.debug.2086385326/LIBRARY_PATH/operation=remove
+environment/buildEnvironmentLibrary/org.yocto.cmake.managedbuilder.configuration.gnu.exe.debug.2086385326/append=true
+environment/buildEnvironmentLibrary/org.yocto.cmake.managedbuilder.configuration.gnu.exe.debug.2086385326/appendContributed=true

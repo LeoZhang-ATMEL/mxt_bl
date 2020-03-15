@@ -1,0 +1,27 @@
+# Linux I2C bootloader host for Linux
+
+Linux I2C bootloader host was a I2C bootloader can download binary file to a I2C
+Bootloader project based on Microchip MPLAB bootloader.
+
+1 Host Setup
+================================================================================
+
+## 1.1 Linux Host Requirements
+
+Add custom or poky cross toolchain for compile.
+GDB client for remote debug, need install gdbserver on target Linux platform.
+
+## Usage
+root@sama5d27-som1-ek-sd:~# ./mchp-i2cbsl -t app -a 0x1800 0x2400 -i /dev/i2c-2 -f sam_da1_1s.bin
+
+---------------------------------------------------------------
+   Microchip I2C Linux BootLoader 01.00                        
+---------------------------------------------------------------
+INFO: I2C BUS /dev/i2c-2 specified
+INFO: Firmware file sam_da1_1s.bin specified
+Unlock target memory 0x00000800, length 9216
+Erase flash from 0x00000800, length 0x00002400
+Program flash success, length 9216 bytes
+INFO: CRC Check Success, CRC=0x335EAA11
+INFO: Reset Target Success
+root@sama5d27-som1-ek-sd:~#
