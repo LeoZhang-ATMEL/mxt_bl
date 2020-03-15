@@ -53,14 +53,8 @@ int main ( void )
 
     /* Indicate that bootloader code is running */
     bootloader_Start();
-  //  while ( true )
-    //{
-        /* Maintain state machines of all polled MPLAB Harmony modules. */
-      //  SYS_Tasks ( );
-    //}
 
     /* Execution should not come here during normal operation */
-
     return ( EXIT_FAILURE );
 }
 

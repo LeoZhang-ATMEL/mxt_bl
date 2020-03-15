@@ -2,3 +2,9 @@
 */debug
 */dist
 
+/bootloader/apps/i2c_bootloader/bootloader/firmware/sam_da1_xpro.X/build/
+/bootloader/apps/i2c_bootloader/bootloader/firmware/sam_da1_xpro.X/dist/
+/bootloader/apps/i2c_bootloader/test_app/firmware/sam_da1_xpro.X/build/
+/bootloader/apps/i2c_bootloader/test_app/firmware/sam_da1_xpro.X/dist/
+/bootloader/apps/i2c_bootloader/mxt_bootloader_app/tianma_tp_i2c_bootloader_sam_da1_xpro.X/build/
+/bootloader/apps/i2c_bootloader/mxt_bootloader_app/tianma_tp_i2c_bootloader_sam_da1_xpro.X/dist/

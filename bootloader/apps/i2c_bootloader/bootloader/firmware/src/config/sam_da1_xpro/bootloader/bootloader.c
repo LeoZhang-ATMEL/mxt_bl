@@ -65,7 +65,7 @@
 #define CLR_BIT(reg, bits)                      (reg &= ~(bits))
 #define IS_BIT_SET(reg, bit)                    ((reg & bit)? true:false)
 
-#define BL_APP_START_ADDRESS                    (0x800UL)
+#define BL_APP_START_ADDRESS                    (0x1800UL)
 #define BL_BUFFER_SIZE                          ERASE_BLOCK_SIZE
 
 #define BL_STATUS_BIT_BUSY                      (0x01 << 0)

@@ -34,6 +34,8 @@
 #define MXT_I2C_RXBUF_LEN           256
 #define MXT_I2C_TXBUF_LEN           256
 
+#define MXT_CMD_PASSWORD             0xD70AB35C /* Password used for unlock matouch, Reset MCU */
+
 /* Buffer length for hold a complete maxtouch upgrade frame, the append 2 bytes was enc file frame length header */
 #define BL_INBUF_LEN  (BL_MXT_DATA_SIZE + MXT_MAX_FRAME_LEN + 2)
 
