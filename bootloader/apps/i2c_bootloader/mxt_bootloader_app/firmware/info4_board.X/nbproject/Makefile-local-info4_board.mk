@@ -35,5 +35,5 @@ MP_AS_DIR="C:\Program Files (x86)\Microchip\xc32\v2.30\bin"
 MP_LD_DIR="C:\Program Files (x86)\Microchip\xc32\v2.30\bin"
 MP_AR_DIR="C:\Program Files (x86)\Microchip\xc32\v2.30\bin"
 # MP_BC_DIR is not defined
-DFP_DIR="C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/SAMDA1_DFP/2.2.52"
 CMSIS_DIR="C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/arm/CMSIS/5.4.0"
+DFP_DIR="C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/SAMDA1_DFP/2.2.52"

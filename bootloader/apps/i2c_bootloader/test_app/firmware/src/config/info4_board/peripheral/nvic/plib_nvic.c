@@ -1,24 +1,22 @@
 /*******************************************************************************
-  Main Source File
+  NVIC PLIB Implementation
 
   Company:
     Microchip Technology Inc.
 
   File Name:
-    main.c
+    plib_nvic.c
 
   Summary:
-    This file contains the "main" function for a project.
+    NVIC PLIB Source File
 
   Description:
-    This file contains the "main" function for a project.  The
-    "main" function calls the "SYS_Initialize" function to initialize the state
-    machines of all modules in the system
- *******************************************************************************/
+    None
 
-// DOM-IGNORE-BEGIN
+*******************************************************************************/
+
 /*******************************************************************************
-* Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -38,46 +36,29 @@
 * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- *******************************************************************************/
-// DOM-IGNORE-END
+*******************************************************************************/
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: Included Files
-// *****************************************************************************
-// *****************************************************************************
-
-#include <stddef.h>                     // Defines NULL
-#include <stdbool.h>                    // Defines true
-#include <stdlib.h>                     // Defines EXIT_FAILURE
-#include "definitions.h"                // SYS function prototypes
+#include "device.h"
+#include "plib_nvic.h"
 
 
 // *****************************************************************************
 // *****************************************************************************
-// Section: Main Entry Point
+// Section: NVIC Implementation
 // *****************************************************************************
 // *****************************************************************************
 
-int main ( void )
+void NVIC_Initialize( void )
 {
-    /* Initialize all modules */
-    SYS_Initialize ( NULL );
 
-    INT_MCU_Set();
-    while ( true )
-    {
-        /* Maintain state machines of all polled MPLAB Harmony modules. */
-        SYS_Tasks ( );
-    }
+    /* Enable NVIC Controller */
+    __DMB();
+    __enable_irq();
 
-    /* Execution should not come here during normal operation */
+    /* Enable the interrupt sources and configure the priorities as configured
+     * from within the "Interrupt Manager" of MHC. */
 
-    return ( EXIT_FAILURE );
+
+
+    return;
 }
-
-
-/*******************************************************************************
- End of File
-*/
-

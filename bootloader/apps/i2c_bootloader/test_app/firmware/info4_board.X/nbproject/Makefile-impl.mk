@@ -31,7 +31,7 @@ DEFAULTCONF=info4_board
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=info4_board info4_board_offset 
+ALLCONFS=info4_board 
 
 
 # build
@@ -46,14 +46,12 @@ ALLCONFS=info4_board info4_board_offset
 # clobber
 .clobber-impl: .clobber-pre .depcheck-impl
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=info4_board clean
-	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=info4_board_offset clean
 
 
 
 # all
 .all-impl: .all-pre .depcheck-impl
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=info4_board build
-	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=info4_board_offset build
 
 
 
