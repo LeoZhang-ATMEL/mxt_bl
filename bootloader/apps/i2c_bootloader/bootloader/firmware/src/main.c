@@ -80,16 +80,20 @@ bool bootloader_Trigger(void)
         BTL_TRIGGER_PATTERN == ramStart[2] && BTL_TRIGGER_PATTERN == ramStart[3])
     {
         ramStart[0] = 0;
+#ifdef BOARD_SAMDA1_XPRO
         LED_Clear();
+#endif
         return true;
     }
 
+#ifdef BOARD_SAMDA1_XPRO
     /* Check for Switch press to enter Bootloader */
     if (SWITCH_Get() == 0)
     {
         LED_Clear();
         return true;
     }
+#endif
 
     return false;
 }
@@ -100,8 +104,10 @@ int main ( void )
     /* Initialize all modules */
     SYS_Initialize ( NULL );
 
+#ifdef BOARD_SAMDA1_XPRO
     /* Indicate that bootloader code is running */
     LED_Clear();
+#endif
 
     bootloader_Start();
 
