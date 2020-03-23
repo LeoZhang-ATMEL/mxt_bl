@@ -9,7 +9,7 @@
           <logicalFolder name="f4" displayName="bsp" projectFiles="true">
             <itemPath>../src/config/sam_d21_xpro/bsp/bsp.h</itemPath>
           </logicalFolder>
-          <logicalFolder name="f2" displayName="driver" projectFiles="true">
+          <logicalFolder name="f3" displayName="driver" projectFiles="true">
             <logicalFolder name="f1" displayName="sdspi" projectFiles="true">
               <itemPath>../src/config/sam_d21_xpro/driver/sdspi/drv_sdspi.h</itemPath>
               <itemPath>../src/config/sam_d21_xpro/driver/sdspi/drv_sdspi_definitions.h</itemPath>
@@ -60,12 +60,18 @@
               <itemPath>../src/config/sam_d21_xpro/peripheral/tc/plib_tc3.h</itemPath>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder name="f3" displayName="system" projectFiles="true">
-            <logicalFolder name="f5" displayName="dma" projectFiles="true">
+          <logicalFolder name="f2" displayName="system" projectFiles="true">
+            <logicalFolder name="f1" displayName="command" projectFiles="true">
+              <itemPath>../src/config/sam_d21_xpro/system/command/sys_command.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f4" displayName="console" projectFiles="true">
+              <itemPath>../src/config/sam_d21_xpro/system/console/sys_console.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f7" displayName="dma" projectFiles="true">
               <itemPath>../src/config/sam_d21_xpro/system/dma/sys_dma.h</itemPath>
               <itemPath>../src/config/sam_d21_xpro/system/dma/sys_dma_mapping.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f2" displayName="fs" projectFiles="true">
+            <logicalFolder name="f3" displayName="fs" projectFiles="true">
               <logicalFolder name="f1" displayName="fat_fs" projectFiles="true">
                 <logicalFolder name="f1" displayName="file_system" projectFiles="true">
                   <itemPath>../src/config/sam_d21_xpro/system/fs/fat_fs/src/file_system/ff.h</itemPath>
@@ -80,15 +86,15 @@
               <itemPath>../src/config/sam_d21_xpro/system/fs/sys_fs_media_manager.h</itemPath>
               <itemPath>../src/config/sam_d21_xpro/system/fs/src/sys_fs_media_manager_local.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f3" displayName="int" projectFiles="true">
+            <logicalFolder name="f5" displayName="int" projectFiles="true">
               <itemPath>../src/config/sam_d21_xpro/system/int/sys_int.h</itemPath>
               <itemPath>../src/config/sam_d21_xpro/system/int/sys_int_mapping.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f4" displayName="ports" projectFiles="true">
+            <logicalFolder name="f6" displayName="ports" projectFiles="true">
               <itemPath>../src/config/sam_d21_xpro/system/ports/sys_ports.h</itemPath>
               <itemPath>../src/config/sam_d21_xpro/system/ports/sys_ports_mapping.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f1" displayName="time" projectFiles="true">
+            <logicalFolder name="f2" displayName="time" projectFiles="true">
               <itemPath>../src/config/sam_d21_xpro/system/time/sys_time.h</itemPath>
               <itemPath>../src/config/sam_d21_xpro/system/time/sys_time_definitions.h</itemPath>
               <itemPath>../src/config/sam_d21_xpro/system/time/src/sys_time_local.h</itemPath>
@@ -162,6 +168,8 @@
         </logicalFolder>
       </logicalFolder>
       <itemPath>../src/app.h</itemPath>
+      <itemPath>../src/app_mxt.h</itemPath>
+      <itemPath>../src/app_console.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -175,7 +183,7 @@
           <logicalFolder name="f5" displayName="bsp" projectFiles="true">
             <itemPath>../src/config/sam_d21_xpro/bsp/bsp.c</itemPath>
           </logicalFolder>
-          <logicalFolder name="f3" displayName="driver" projectFiles="true">
+          <logicalFolder name="f4" displayName="driver" projectFiles="true">
             <logicalFolder name="f1" displayName="sdspi" projectFiles="true">
               <itemPath>../src/config/sam_d21_xpro/driver/sdspi/src/drv_sdspi.c</itemPath>
               <itemPath>../src/config/sam_d21_xpro/driver/sdspi/src/drv_sdspi_plib_interface.c</itemPath>
@@ -219,14 +227,24 @@
               <itemPath>../src/config/sam_d21_xpro/peripheral/tc/plib_tc3.c</itemPath>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder name="f2" displayName="stdio" projectFiles="true">
+          <logicalFolder name="f3" displayName="stdio" projectFiles="true">
             <itemPath>../src/config/sam_d21_xpro/stdio/xc32_monitor.c</itemPath>
           </logicalFolder>
-          <logicalFolder name="f4" displayName="system" projectFiles="true">
-            <logicalFolder name="f4" displayName="dma" projectFiles="true">
+          <logicalFolder name="f2" displayName="system" projectFiles="true">
+            <logicalFolder name="f1" displayName="command" projectFiles="true">
+              <itemPath>../src/config/sam_d21_xpro/system/command/src/sys_command.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f4" displayName="console" projectFiles="true">
+              <itemPath>../src/config/sam_d21_xpro/system/console/src/sys_console_local.h</itemPath>
+              <itemPath>../src/config/sam_d21_xpro/system/console/src/sys_console.c</itemPath>
+              <itemPath>../src/config/sam_d21_xpro/system/console/src/sys_console_uart.h</itemPath>
+              <itemPath>../src/config/sam_d21_xpro/system/console/src/sys_console_uart_definitions.h</itemPath>
+              <itemPath>../src/config/sam_d21_xpro/system/console/src/sys_console_uart.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f6" displayName="dma" projectFiles="true">
               <itemPath>../src/config/sam_d21_xpro/system/dma/sys_dma.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f2" displayName="fs" projectFiles="true">
+            <logicalFolder name="f3" displayName="fs" projectFiles="true">
               <logicalFolder name="f1" displayName="fat_fs" projectFiles="true">
                 <itemPath>../src/config/sam_d21_xpro/system/fs/fat_fs/src/ff.c</itemPath>
                 <itemPath>../src/config/sam_d21_xpro/system/fs/fat_fs/src/diskio.c</itemPath>
@@ -234,10 +252,10 @@
               <itemPath>../src/config/sam_d21_xpro/system/fs/src/sys_fs.c</itemPath>
               <itemPath>../src/config/sam_d21_xpro/system/fs/src/sys_fs_media_manager.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f3" displayName="int" projectFiles="true">
+            <logicalFolder name="f5" displayName="int" projectFiles="true">
               <itemPath>../src/config/sam_d21_xpro/system/int/src/sys_int.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f1" displayName="time" projectFiles="true">
+            <logicalFolder name="f2" displayName="time" projectFiles="true">
               <itemPath>../src/config/sam_d21_xpro/system/time/src/sys_time.c</itemPath>
             </logicalFolder>
           </logicalFolder>
@@ -251,6 +269,8 @@
       </logicalFolder>
       <itemPath>../src/main.c</itemPath>
       <itemPath>../src/app.c</itemPath>
+      <itemPath>../src/app_mxt.c</itemPath>
+      <itemPath>../src/app_console.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -276,7 +296,7 @@
       </toolsSet>
       <packs>
         <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
-        <pack name="SAMD21_DFP" vendor="Microchip" version="3.0.23"/>
+        <pack name="SAMD21_DFP" vendor="Microchip" version="3.2.90"/>
       </packs>
       <compileType>
         <linkerTool>
@@ -340,7 +360,7 @@
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
         <property key="make-warnings-into-errors" value="true"/>
-        <property key="optimization-level" value="-O1"/>
+        <property key="optimization-level" value=""/>
         <property key="place-data-into-section" value="true"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
@@ -399,7 +419,7 @@
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-cross-reference-file" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="heap-size" value="512"/>
+        <property key="heap-size" value="1536"/>
         <property key="input-libraries" value=""/>
         <property key="kseg-length" value=""/>
         <property key="kseg-origin" value=""/>
@@ -455,6 +475,7 @@
         <property key="mdtcm" value=""/>
         <property key="mitcm" value=""/>
         <property key="mstacktcm" value="false"/>
+        <property key="omit-pack-options" value="1"/>
         <property key="relaxed-math" value="false"/>
         <property key="save-temps" value="false"/>
         <property key="wpo-lto" value="false"/>
@@ -467,6 +488,8 @@
         <property key="debugoptions.useswbreakpoints" value="true"/>
         <property key="firmware.path"
                   value="Press to browse for a specific firmware version"/>
+        <property key="firmware.toolpack"
+                  value="Press to select which tool pack to use"/>
         <property key="firmware.update.action" value="firmware.update.use.latest"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
@@ -482,6 +505,8 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-3ffff"/>
         <property key="poweroptions.powerenable" value="false"/>
+        <property key="programmerToGoFilePath"
+                  value="D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/bootloader_host_sdcard/firmware/sam_d21_xpro.X/debug/sam_d21_xpro/sam_d21_xpro_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"
@@ -492,6 +517,10 @@
         <property key="programoptions.preserveprogramrange" value="false"/>
         <property key="programoptions.preserveuserid" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
+        <property key="toolpack.updateoptions"
+                  value="toolpack.updateoptions.uselatestoolpack"/>
+        <property key="toolpack.updateoptions.packversion"
+                  value="Press to select which tool pack to use"/>
         <property key="voltagevalue" value=""/>
       </EdbgTool>
       <PICkit3PlatformTool>

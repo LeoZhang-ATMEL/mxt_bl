@@ -138,7 +138,6 @@ typedef struct
     uint32_t                programPageSize;
     uint32_t                appStartAddr;
     char*                   filename;
-
 }APP_FIRMWARE_UPDATE_INFO;
 
 // *****************************************************************************

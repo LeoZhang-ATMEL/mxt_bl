@@ -112,7 +112,7 @@ static BUFFER_ATTRIBUTES uint8_t        sdCardBuffer[APP_MAX_MEM_PAGE_SIZE];
     .appStartAddr       = 0x2000,
     .filename           = <firmware file name (.bin)>
  */
-const APP_FIRMWARE_UPDATE_INFO  firmwareUpdateInfo[APP_BL_NUM_I2C_SLAVES] =
+APP_FIRMWARE_UPDATE_INFO  firmwareUpdateInfo[APP_BL_NUM_I2C_SLAVES] =
 {
     {
         .i2cSlaveAddr       = 0x0054,
@@ -123,14 +123,22 @@ const APP_FIRMWARE_UPDATE_INFO  firmwareUpdateInfo[APP_BL_NUM_I2C_SLAVES] =
          * program data.
          */
         .programPageSize    = 256,
-        .appStartAddr       = 0x800,
-        .filename           = "sam_d21_xpro.X.production.bin"
+        .appStartAddr       = 0x1800
     },
 
     /* Add firmware update information for the additional I2C slaves on the bus
      * here */
 };
 
+static void CommandUpgradeApp1(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void CommandUpgradeApp2(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void CommandReadINT(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static const SYS_CMD_DESCRIPTOR    appCmdTbl[]=
+{
+    {"app1",   CommandUpgradeApp1,   ": Upgrade Application instance 1 (app1.bin)"},
+    {"app2",   CommandUpgradeApp2,   ": Upgrade Application Instance 2 (app2.bin)"},
+    {"readint", CommandReadINT,      ": Read INT PIN voltage"},
+};
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Callback Functions
@@ -347,6 +355,23 @@ static int32_t APP_ImageDataWrite(
     return nTxBytes;
 }
 
+// implementation
+static void CommandUpgradeApp1(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+{
+     SYS_CMD_PRINT(" *** Upgrade MCU firmware 1 ***\r\n" );
+    firmwareUpdateInfo[appData.i2cSlaveIndex].filename = APP_MCU_FIRMWARE_NAME_INSTANCE1;
+}
+
+static void CommandUpgradeApp2(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+{
+   SYS_CMD_PRINT(" *** Upgrade MCU firmware 2 ***\r\n" );
+   firmwareUpdateInfo[appData.i2cSlaveIndex].filename = APP_MCU_FIRMWARE_NAME_INSTANCE2;
+}
+
+static void CommandReadINT(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+{
+   SYS_CMD_PRINT(" *** Read INT_MCU Pin Value (%d) ***\r\n", INT_MCU_Get() );
+}
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Initialization and State Machine Functions
@@ -374,12 +399,15 @@ void APP_Initialize ( void )
     appData.fileSize         = 0;
     appData.i2cSlaveIndex    = 0;
     appData.percentageDone   = 0;
-
+    firmwareUpdateInfo[appData.i2cSlaveIndex].filename = NULL;
     /* Initial value of CRC */
     appData.crcVal           = 0xffffffff;
 
     /* Register the File System Event handler */
     SYS_FS_EventHandlerSet(APP_SysFSEventHandler, (uintptr_t)NULL);
+    
+    SYS_CMD_ADDGRP(appCmdTbl, sizeof(appCmdTbl)/sizeof(*appCmdTbl), "MCU App Bootloader", ": Upgrade MCU application through I2C");
+
 }
 
 
@@ -425,7 +453,7 @@ void APP_Tasks ( void )
             break;
 
         case APP_WAIT_SWITCH_PRESS:
-            if (SWITCH_GET() == SWITCH_STATUS_PRESSED)
+            if (firmwareUpdateInfo[appData.i2cSlaveIndex].filename != NULL)
             {
                 appData.state = APP_LOAD_I2C_SLAVE_DATA;
             }
@@ -441,12 +469,12 @@ void APP_Tasks ( void )
                 appData.erasePageSize = firmwareUpdateInfo[appData.i2cSlaveIndex].erasePageSize;
                 appData.programPageSize = firmwareUpdateInfo[appData.i2cSlaveIndex].programPageSize;
                 appData.appStartAddr = firmwareUpdateInfo[appData.i2cSlaveIndex].appStartAddr;
-                printf("%s 0x%x ", "I2C Slave Addr:", appData.i2cSlaveAddr);
+                SYS_CMD_PRINT("%s 0x%x ", "I2C Slave Addr:", appData.i2cSlaveAddr);
                 appData.state = APP_FILE_OPEN;
             }
             else
             {
-                printf ("---------------------------------------------------------\r\n");
+                SYS_CMD_PRINT ("---------------------------------------------------------\r\n");
                 appData.state = APP_IDLE;
             }
             break;
@@ -578,7 +606,7 @@ void APP_Tasks ( void )
                 while ((temp - appData.percentageDone) > 10)
                 {
                     appData.percentageDone += 10;
-                    printf ("%c%c", 178, 178);
+                    SYS_CMD_PRINT ("%c%c", 178, 178);
                 }
 
                 /* Command transfer complete. Wait for internal write to complete */
@@ -672,11 +700,11 @@ void APP_Tasks ( void )
 
             LED_ON();
             appData.percentageDone = 100;
-            printf ("%d%%   !!Success!!  \r\n", appData.percentageDone);
+            SYS_CMD_PRINT ("%d%%   !!Success!!  \r\n", appData.percentageDone);
 
             /* Load next I2C slave data */
-            appData.i2cSlaveIndex++;
-            appData.state = APP_LOAD_I2C_SLAVE_DATA;
+            appData.state = APP_WAIT_SWITCH_PRESS;
+            firmwareUpdateInfo[appData.i2cSlaveIndex].filename = NULL;
             break;
 
         case APP_ERROR:
@@ -686,11 +714,11 @@ void APP_Tasks ( void )
             {
                 SYS_FS_FileClose(appData.fileHandle);
             }
-            printf ("%d%%   !!Failure!!  \r\n", appData.percentageDone);
+            SYS_CMD_PRINT ("%d%%   !!Failure!!  \r\n", appData.percentageDone);
 
             /* Load next I2C slave data */
-            appData.i2cSlaveIndex++;
-            appData.state = APP_LOAD_I2C_SLAVE_DATA;
+            appData.state = APP_WAIT_SWITCH_PRESS;
+            firmwareUpdateInfo[appData.i2cSlaveIndex].filename = NULL;
             break;
 
         case APP_IDLE:

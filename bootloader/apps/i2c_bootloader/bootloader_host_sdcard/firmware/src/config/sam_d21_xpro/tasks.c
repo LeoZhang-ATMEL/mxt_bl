@@ -72,6 +72,10 @@ void SYS_Tasks ( void )
 {
     /* Maintain system services */
     
+SYS_CMD_Tasks();
+
+
+
 SYS_FS_Tasks();
 
 
@@ -87,6 +91,12 @@ SYS_FS_Tasks();
     /* Maintain the application's state machine. */
         /* Call Application task APP. */
     APP_Tasks();
+
+    /* Call Application task APP_MXT. */
+    APP_MXT_Tasks();
+
+    /* Call Application task APP_CONSOLE. */
+    APP_CONSOLE_Tasks();
 
 
 

@@ -90,6 +90,7 @@ void PORT_Initialize(void)
    /************************** GROUP 1 Initialization *************************/
    PORT_REGS->GROUP[1].PORT_DIR = 0x40000000;
    PORT_REGS->GROUP[1].PORT_OUT = 0x40000000;
+   PORT_REGS->GROUP[1].PORT_PINCFG[17] = 0x2;
 
 }
 

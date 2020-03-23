@@ -73,17 +73,19 @@ bool SERCOM3_USART_SerialSetup( USART_SERIAL_SETUP * serialSetup, uint32_t clkFr
 
 bool SERCOM3_USART_Write( void *buffer, const size_t size );
 
-bool SERCOM3_USART_TransmitterIsReady( void );
+bool SERCOM3_USART_WriteIsBusy( void );
 
-bool SERCOM3_USART_TransmitComplete( void );
+size_t SERCOM3_USART_WriteCountGet( void );
 
-void SERCOM3_USART_WriteByte( int data );
+void SERCOM3_USART_WriteCallbackRegister( SERCOM_USART_CALLBACK callback, uintptr_t context );
 
 bool SERCOM3_USART_Read( void *buffer, const size_t size );
 
-bool SERCOM3_USART_ReceiverIsReady( void );
+bool SERCOM3_USART_ReadIsBusy( void );
 
-int SERCOM3_USART_ReadByte( void );
+size_t SERCOM3_USART_ReadCountGet( void );
+
+void SERCOM3_USART_ReadCallbackRegister( SERCOM_USART_CALLBACK callback, uintptr_t context );
 
 USART_ERROR SERCOM3_USART_ErrorGet( void );
 

@@ -1,20 +1,20 @@
 /*******************************************************************************
-  NVIC PLIB Implementation
+  Console System Service Local Data Structures
 
   Company:
     Microchip Technology Inc.
 
   File Name:
-    plib_nvic.c
+    sys_console_local.h
 
   Summary:
-    NVIC PLIB Source File
+    Console System Service local declarations and definitions.
 
   Description:
-    None
-
+    This file contains the Console System Service local declarations and definitions.
 *******************************************************************************/
 
+//DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
@@ -37,36 +37,47 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
+//DOM-IGNORE-END
 
-#include "device.h"
-#include "plib_nvic.h"
+
+#ifndef SYS_CONSOLE_LOCAL_H
+#define SYS_CONSOLE_LOCAL_H
 
 
 // *****************************************************************************
 // *****************************************************************************
-// Section: NVIC Implementation
+// Section: File includes
 // *****************************************************************************
 // *****************************************************************************
 
-void NVIC_Initialize( void )
-{
+#include <stdint.h>
+#include <stdbool.h>
+#include <stddef.h>
 
-    /* Enable NVIC Controller */
-    __DMB();
-    __enable_irq();
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
 
-    /* Enable the interrupt sources and configure the priorities as configured
-     * from within the "Interrupt Manager" of MHC. */
-    NVIC_SetPriority(SERCOM0_IRQn, 3);
-    NVIC_EnableIRQ(SERCOM0_IRQn);
-    NVIC_SetPriority(SERCOM2_IRQn, 3);
-    NVIC_EnableIRQ(SERCOM2_IRQn);
-    NVIC_SetPriority(SERCOM3_IRQn, 3);
-    NVIC_EnableIRQ(SERCOM3_IRQn);
-    NVIC_SetPriority(TC3_IRQn, 3);
-    NVIC_EnableIRQ(TC3_IRQn);
+extern "C" {
 
+#endif
+// DOM-IGNORE-END
 
+// *****************************************************************************
+// *****************************************************************************
+// Section: Data Type Definitions
+// *****************************************************************************
+// *****************************************************************************
 
-    return;
+typedef uintptr_t CONSOLE_DEVICE_INDEX;
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
 }
+#endif
+//DOM-IGNORE-END
+
+#endif //#ifndef SYS_CONSOLE_LOCAL_H
+
+/*******************************************************************************
+ End of File
+*/
