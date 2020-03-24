@@ -9,6 +9,10 @@
           <logicalFolder name="bootloader" displayName="bootloader" projectFiles="true">
             <itemPath>../src/config/sam_da1_xpro/bootloader/bootloader.h</itemPath>
           </logicalFolder>
+          <logicalFolder name="f3" displayName="driver" projectFiles="true">
+            <itemPath>../src/config/sam_da1_xpro/driver/driver.h</itemPath>
+            <itemPath>../src/config/sam_da1_xpro/driver/driver_common.h</itemPath>
+          </logicalFolder>
           <logicalFolder name="f1" displayName="peripheral" projectFiles="true">
             <logicalFolder name="f5" displayName="clock" projectFiles="true">
               <itemPath>../src/config/sam_da1_xpro/peripheral/clock/plib_clock.h</itemPath>
@@ -26,7 +30,7 @@
               <itemPath>../src/config/sam_da1_xpro/peripheral/port/plib_port.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f2" displayName="sercom" projectFiles="true">
-              <logicalFolder name="f1" displayName="i2c_master" projectFiles="true">
+              <logicalFolder name="f2" displayName="i2c_master" projectFiles="true">
                 <itemPath>../src/config/sam_da1_xpro/peripheral/sercom/i2c_master/plib_sercom_i2c_master_common.h</itemPath>
                 <itemPath>../src/config/sam_da1_xpro/peripheral/sercom/i2c_master/plib_sercom2_i2c_master.h</itemPath>
               </logicalFolder>
@@ -34,15 +38,41 @@
                 <itemPath>../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom2_i2c_slave.h</itemPath>
                 <itemPath>../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom_i2c_slave_common.h</itemPath>
               </logicalFolder>
+              <logicalFolder name="f1" displayName="usart" projectFiles="true">
+                <itemPath>../src/config/sam_da1_xpro/peripheral/sercom/usart/plib_sercom3_usart.h</itemPath>
+                <itemPath>../src/config/sam_da1_xpro/peripheral/sercom/usart/plib_sercom_usart_common.h</itemPath>
+              </logicalFolder>
             </logicalFolder>
             <logicalFolder name="f7" displayName="systick" projectFiles="true">
               <itemPath>../src/config/sam_da1_xpro/peripheral/systick/plib_systick.h</itemPath>
             </logicalFolder>
           </logicalFolder>
+          <logicalFolder name="f2" displayName="system" projectFiles="true">
+            <logicalFolder name="f1" displayName="console" projectFiles="true">
+              <itemPath>../src/config/sam_da1_xpro/system/console/sys_console.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f3" displayName="debug" projectFiles="true">
+              <itemPath>../src/config/sam_da1_xpro/system/debug/sys_debug.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f2" displayName="int" projectFiles="true">
+              <itemPath>../src/config/sam_da1_xpro/system/int/sys_int.h</itemPath>
+              <itemPath>../src/config/sam_da1_xpro/system/int/sys_int_mapping.h</itemPath>
+            </logicalFolder>
+            <itemPath>../src/config/sam_da1_xpro/system/system.h</itemPath>
+            <itemPath>../src/config/sam_da1_xpro/system/system_common.h</itemPath>
+            <itemPath>../src/config/sam_da1_xpro/system/system_module.h</itemPath>
+          </logicalFolder>
           <itemPath>../src/config/sam_da1_xpro/device_cache.h</itemPath>
           <itemPath>../src/config/sam_da1_xpro/toolchain_specifics.h</itemPath>
           <itemPath>../src/config/sam_da1_xpro/definitions.h</itemPath>
+          <itemPath>../src/config/sam_da1_xpro/user.h</itemPath>
+          <itemPath>../src/config/sam_da1_xpro/configuration.h</itemPath>
         </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="f3" displayName="osal" projectFiles="true">
+        <itemPath>../src/config/sam_da1_xpro/osal/osal.h</itemPath>
+        <itemPath>../src/config/sam_da1_xpro/osal/osal_definitions.h</itemPath>
+        <itemPath>../src/config/sam_da1_xpro/osal/osal_impl_basic.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="packs" projectFiles="true">
         <logicalFolder name="f1" displayName="ATSAMDA1J16B_DFP" projectFiles="true">
@@ -95,6 +125,7 @@
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
+      <itemPath>../src/app.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -125,11 +156,14 @@
               <itemPath>../src/config/sam_da1_xpro/peripheral/port/plib_port.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f2" displayName="sercom" projectFiles="true">
-              <logicalFolder name="f1" displayName="i2c_master" projectFiles="true">
+              <logicalFolder name="f2" displayName="i2c_master" projectFiles="true">
                 <itemPath>../src/config/sam_da1_xpro/peripheral/sercom/i2c_master/plib_sercom2_i2c_master.c</itemPath>
               </logicalFolder>
               <logicalFolder name="i2c_slave" displayName="i2c_slave" projectFiles="true">
                 <itemPath>../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom2_i2c_slave.c</itemPath>
+              </logicalFolder>
+              <logicalFolder name="f1" displayName="usart" projectFiles="true">
+                <itemPath>../src/config/sam_da1_xpro/peripheral/sercom/usart/plib_sercom3_usart.c</itemPath>
               </logicalFolder>
             </logicalFolder>
             <logicalFolder name="f7" displayName="systick" projectFiles="true">
@@ -139,16 +173,34 @@
           <logicalFolder name="f2" displayName="stdio" projectFiles="true">
             <itemPath>../src/config/sam_da1_xpro/stdio/xc32_monitor.c</itemPath>
           </logicalFolder>
+          <logicalFolder name="f3" displayName="system" projectFiles="true">
+            <logicalFolder name="f1" displayName="console" projectFiles="true">
+              <itemPath>../src/config/sam_da1_xpro/system/console/src/sys_console_local.h</itemPath>
+              <itemPath>../src/config/sam_da1_xpro/system/console/src/sys_console.c</itemPath>
+              <itemPath>../src/config/sam_da1_xpro/system/console/src/sys_console_uart.h</itemPath>
+              <itemPath>../src/config/sam_da1_xpro/system/console/src/sys_console_uart_definitions.h</itemPath>
+              <itemPath>../src/config/sam_da1_xpro/system/console/src/sys_console_uart.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f3" displayName="debug" projectFiles="true">
+              <itemPath>../src/config/sam_da1_xpro/system/debug/src/sys_debug_local.h</itemPath>
+              <itemPath>../src/config/sam_da1_xpro/system/debug/src/sys_debug.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f2" displayName="int" projectFiles="true">
+              <itemPath>../src/config/sam_da1_xpro/system/int/src/sys_int.c</itemPath>
+            </logicalFolder>
+          </logicalFolder>
           <itemPath>../src/config/sam_da1_xpro/initialization.c</itemPath>
           <itemPath>../src/config/sam_da1_xpro/interrupts.c</itemPath>
           <itemPath>../src/config/sam_da1_xpro/exceptions.c</itemPath>
           <itemPath>../src/config/sam_da1_xpro/startup_xc32.c</itemPath>
           <itemPath>../src/config/sam_da1_xpro/libc_syscalls.c</itemPath>
+          <itemPath>../src/config/sam_da1_xpro/tasks.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <itemPath>../src/mxt_bootloader.c</itemPath>
       <itemPath>../src/mxt_bl_config.h</itemPath>
       <itemPath>../src/main.c</itemPath>
+      <itemPath>../src/app.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -167,7 +219,7 @@
         <targetDevice>ATSAMDA1J16B</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>EdbgTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>2.30</languageToolchainVersion>
         <platform>3</platform>
@@ -238,7 +290,7 @@
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
         <property key="make-warnings-into-errors" value="true"/>
-        <property key="optimization-level" value="-O1"/>
+        <property key="optimization-level" value=""/>
         <property key="place-data-into-section" value="true"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
@@ -931,6 +983,348 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="../src/app.c" ex="true" overriding="false">
+      </item>
+      <item path="../src/app.h" ex="true" overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/configuration.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/definitions.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/device_cache.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/driver/driver.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/driver/driver_common.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/exceptions.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/initialization.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/interrupts.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/libc_syscalls.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/osal/osal.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/osal/osal_definitions.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/osal/osal_impl_basic.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/clock/plib_clock.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/clock/plib_clock.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/evsys/plib_evsys.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/evsys/plib_evsys.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/nvic/plib_nvic.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/nvic/plib_nvic.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/nvmctrl/plib_nvmctrl.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/nvmctrl/plib_nvmctrl.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/port/plib_port.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/port/plib_port.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/sercom/i2c_master/plib_sercom2_i2c_master.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/sercom/i2c_master/plib_sercom2_i2c_master.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/sercom/i2c_master/plib_sercom_i2c_master_common.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/sercom/usart/plib_sercom3_usart.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/sercom/usart/plib_sercom3_usart.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/sercom/usart/plib_sercom_usart_common.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/systick/plib_systick.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/peripheral/systick/plib_systick.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/startup_xc32.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/stdio/xc32_monitor.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/console/src/sys_console.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/console/src/sys_console_local.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/console/src/sys_console_uart.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/console/src/sys_console_uart.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/console/src/sys_console_uart_definitions.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/console/sys_console.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/debug/src/sys_debug.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/debug/src/sys_debug_local.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/debug/sys_debug.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/int/src/sys_int.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/int/sys_int.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/int/sys_int_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/system.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/system_common.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/system/system_module.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/tasks.c" ex="true" overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/toolchain_specifics.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/user.h" ex="true" overriding="false">
+      </item>
+      <item path="../src/main.c" ex="true" overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/atsamda1j16b.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/ac.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/adc.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/dac.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/dmac.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/dsu.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/eic.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/evsys.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/gclk.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/hmatrixb.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/i2s.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/mtb.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/nvmctrl.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/pac.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/pm.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/port.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/ptc.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/rtc.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/sercom.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/sysctrl.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/tc.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/tcc.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/usb.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/component/wdt.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/device.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/ATSAMDA1J16B_DFP/pio/samda1j16b.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/CMSIS/CMSIS/Core/Include/cmsis_armcc.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/CMSIS/CMSIS/Core/Include/cmsis_armclang.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/CMSIS/CMSIS/Core/Include/cmsis_armclang_ltm.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/CMSIS/CMSIS/Core/Include/cmsis_iccarm.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/CMSIS/CMSIS/Core/Include/cmsis_version.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/CMSIS/CMSIS/Core/Include/core_cm0plus.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/packs/CMSIS/CMSIS/Core/Include/mpu_armv7.h"
+            ex="true"
+            overriding="false">
+      </item>
       <AtmelIceTool>
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="communication.interface" value="swd"/>

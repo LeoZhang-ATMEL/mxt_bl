@@ -57,8 +57,8 @@
 // *****************************************************************************
 
 
-/* SERCOM2 I2C baud value for 400 Khz baud rate */
-#define SERCOM2_I2CM_BAUD_VALUE			(13620U)
+/* SERCOM2 I2C baud value for 100 Khz baud rate */
+#define SERCOM2_I2CM_BAUD_VALUE			(59880U)
 
 #define RIGHT_ALIGNED (8U)
 

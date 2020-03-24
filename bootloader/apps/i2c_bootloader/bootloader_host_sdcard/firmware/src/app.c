@@ -91,9 +91,9 @@
     Application strings and buffers are be defined outside this structure.
 */
 
-static APP_DATA                         appData;
+APP_DATA                                appData;
 static uint32_t                         crc_tab[256];
-static BUFFER_ATTRIBUTES uint8_t        sdCardBuffer[APP_MAX_MEM_PAGE_SIZE];
+BUFFER_ATTRIBUTES uint8_t               sdCardBuffer[APP_MAX_MEM_PAGE_SIZE];
 
 /* For multiple I2C slaves on the same bus, set the APP_BL_NUM_I2C_SLAVES macro
  * to the number of slaves on the bus and populate this data structure with the

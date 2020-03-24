@@ -46,7 +46,6 @@
 
 #include "definitions.h"
 #include <device.h>
-#include "plib_sercom2_i2c_slave.h"
 #include "mxt_bl_config.h"
 // *****************************************************************************
 // *****************************************************************************
@@ -147,15 +146,15 @@ extern uint8_t mxt_read_buf[];
 extern void mxt_set_bootloader_len(uint32_t len);
 int mxt_enter_boatloader_mode(void);
 int mxt_upgrade_firmware(uint8_t *buf, uint8_t len);
-
+static void BL_I2C_EventsProcess(void);
 static void BL_Switch_I2C_Role(bool role)
 {
     if (role) { // Master
         INT_MCU_Clear();
-        while ((SERCOM2_I2CS_InterruptFlagsGet() & SERCOM_I2CS_INTFLAG_PREC(1)) == 0);
-        SERCOM2_I2C_Initialize();
+        while ((BL_I2CS_InterruptFlagsGet() & SERCOM_I2CS_INTFLAG_PREC(1)) == 0);
+        BL_I2C_Initialize();
     } else { // Slave
-        SERCOM2_I2CS_Initialize();
+        BL_I2CS_Initialize();
         INT_MCU_Set();
     }
 }
@@ -272,63 +271,63 @@ static void BL_I2C_EventsProcess(void)
 {
     static bool isFirstRxByte;
     static bool transferDir;
-    SERCOM_I2C_SLAVE_INTFLAG intFlags = SERCOM2_I2CS_InterruptFlagsGet();
+    SERCOM_I2C_SLAVE_INTFLAG intFlags = BL_I2CS_InterruptFlagsGet();
 
     if (intFlags & SERCOM_I2C_SLAVE_INTFLAG_AMATCH)
     {
         isFirstRxByte = true;
 
-        transferDir = SERCOM2_I2CS_TransferDirGet();
+        transferDir = BL_I2CS_TransferDirGet();
 
         /* Reset the I2C read state machine */
         blProtocol.rdState = BL_I2C_READ_COMMAND;
 
-        SERCOM2_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_ACK);
+        BL_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_ACK);
     }
     else if (intFlags & SERCOM_I2C_SLAVE_INTFLAG_DRDY)
     {
         if (transferDir == SERCOM_I2C_SLAVE_TRANSFER_DIR_WRITE) /**** Write */
         {
-            if (BL_I2CMasterWriteHandler(SERCOM2_I2CS_ReadByte()) == true)
+            if (BL_I2CMasterWriteHandler(BL_I2CS_ReadByte()) == true)
             {
-                SERCOM2_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_ACK);
+                BL_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_ACK);
             }
             else
             {
-                SERCOM2_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_NAK);
+                BL_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_NAK);
             }
         }
         else  /**** Read */
         {
-            if ((isFirstRxByte == true) && (SERCOM2_I2CS_LastByteAckStatusGet() == SERCOM_I2C_SLAVE_ACK_STATUS_RECEIVED_ACK))
+            if ((isFirstRxByte == true) && (BL_I2CS_LastByteAckStatusGet() == SERCOM_I2C_SLAVE_ACK_STATUS_RECEIVED_ACK))
             {
-                SERCOM2_I2CS_WriteByte(blProtocol.status);
+                BL_I2CS_WriteByte(blProtocol.status);
 
                 /* Clear all status bits except the busy bit */
                 blProtocol.status = BL_STATUS_NO_ERROR;
 
                 isFirstRxByte = false;
 
-                SERCOM2_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_RECEIVE_ACK_NAK);
+                BL_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_RECEIVE_ACK_NAK);
             }
             else if ((isFirstRxByte == false)
                     && (blProtocol.lastRdCmd == BL_COMMAND_READ_INFO)
-                    && (SERCOM2_I2CS_LastByteAckStatusGet() == SERCOM_I2C_SLAVE_ACK_STATUS_RECEIVED_ACK)
+                    && (BL_I2CS_LastByteAckStatusGet() == SERCOM_I2C_SLAVE_ACK_STATUS_RECEIVED_ACK)
                     )
             {
-                SERCOM2_I2CS_WriteByte(mxt_read_buf[mxt_read_buf_ind++]);
+                BL_I2CS_WriteByte(mxt_read_buf[mxt_read_buf_ind++]);
 
-                SERCOM2_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_RECEIVE_ACK_NAK);
+                BL_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_RECEIVE_ACK_NAK);
             }
             else
             {
-                SERCOM2_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_WAIT_FOR_START);
+                BL_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_WAIT_FOR_START);
             }
         }
     }
     else if (intFlags & SERCOM_I2C_SLAVE_INTFLAG_PREC)
     {
-        SERCOM2_I2CS_InterruptFlagsClear(SERCOM_I2C_SLAVE_INTFLAG_PREC);
+        BL_I2CS_InterruptFlagsClear(SERCOM_I2C_SLAVE_INTFLAG_PREC);
     }
 }
 
@@ -375,7 +374,7 @@ static void BL_MXT_SM(void)
 
         case BL_FLASH_STATE_RESET_MCU:
             /* Wait for the I2C transfer to complete */
-            while (!(SERCOM2_I2CS_InterruptFlagsGet() & SERCOM_I2C_SLAVE_INTFLAG_PREC));
+            while (!(BL_I2CS_InterruptFlagsGet() & SERCOM_I2C_SLAVE_INTFLAG_PREC));
             NVIC_SystemReset();
             break;
 

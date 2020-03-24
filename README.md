@@ -172,3 +172,6 @@ MAXTOUCH: matrix_ysize	 0x1A
 MAXTOUCH: object_num	 0x22
 root@sama5d27-som1-ek-sd:~# 
 ```
+
+## Known Issue
+READ Info response wrong data if no delay after INT_MCU release.

@@ -95,9 +95,6 @@ SYS_FS_Tasks();
     /* Call Application task APP_MXT. */
     APP_MXT_Tasks();
 
-    /* Call Application task APP_CONSOLE. */
-    APP_CONSOLE_Tasks();
-
 
 
 }

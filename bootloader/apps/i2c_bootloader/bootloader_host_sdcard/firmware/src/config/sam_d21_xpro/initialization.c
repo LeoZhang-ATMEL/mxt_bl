@@ -310,6 +310,7 @@ void SYS_Initialize ( void* data )
 
     SERCOM0_SPI_Initialize();
 
+	SYSTICK_TimerInitialize();
     TC3_TimerInitialize();
 
 	BSP_Initialize();
@@ -330,7 +331,6 @@ void SYS_Initialize ( void* data )
 
     APP_Initialize();
     APP_MXT_Initialize();
-    APP_CONSOLE_Initialize();
 
 
     NVIC_Initialize();

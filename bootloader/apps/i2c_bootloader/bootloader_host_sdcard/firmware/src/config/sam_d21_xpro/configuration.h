@@ -171,6 +171,11 @@ extern "C" {
 #define APP_MCU_FIRMWARE_NAME_INSTANCE1  "info4_board_test_app_INT_low.bin"
 #define APP_MCU_FIRMWARE_NAME_INSTANCE2  "info4_board_test_app_INT_high.bin"
 
+#define APP_MXT_FIRMWARE_NAME_INSTANCE1  "mXT1067TDAT_0x3D_1.0.00_PROD.bin"
+#define APP_MXT_FIRMWARE_NAME_INSTANCE2  "mXT1067TDAT_0x3D_1.0.AA_PROD.bin"
+
+#define MXT_CMD_PASSWORD             0xD70AB35C /* Password used for unlock matouch, Reset MCU */
+
 //DOM-IGNORE-BEGIN
 #ifdef __cplusplus
 }

@@ -46,7 +46,8 @@ extern "C" {
 // Section: Type Definitions
 // *****************************************************************************
 // *****************************************************************************
-
+#define APP_MXT_MAX_MEM_PAGE_SIZE                           (64UL)
+#define APP_MXT_PROTOCOL_HEADER_MAX_SIZE                    9
 // *****************************************************************************
 /* Application states
 
@@ -61,12 +62,58 @@ extern "C" {
 typedef enum
 {
     /* Application's state machine's initial state. */
-    APP_MXT_STATE_INIT=0,
-    APP_MXT_STATE_SERVICE_TASKS,
+    APP_MXT_INIT=0,
+    APP_MXT_FILE_OPEN,
+    APP_MXT_WAIT_SWITCH_PRESS,
+    APP_MXT_LOAD_I2C_SLAVE_DATA,
+    /* Read MaxTouch Firmware */
+    APP_MXT_INFO_SEND_READ_COMMAND,
+    APP_MXT_INFO_WAIT_READ_COMMAND_TRANSFER_COMPLETE,
+    APP_MXT_INFO_SEND_READ_BACK_COMMAND,
+    APP_MXT_INFO_WAIT_READ_BACK_COMMAND_TRANSFER_COMPLETE,
+    /* Unlock to program firmware */
+    APP_MXT_UNLOCK_SEND_COMMAND,
+    APP_MXT_UNLOCK_WAIT_COMMAND_TRANSFER_COMPLETE,
+    APP_MXT_UNLOCK_SEND_READ_STATUS_COMMAND,
+    APP_MXT_UNLOCK_WAIT_READ_STATUS_COMMAND_TRANSFER_COMPLETE,
+    /* Programming MaxTouch firmware */
+    APP_MXT_FW_SEND_WRITE_COMMAND,
+    APP_MXT_FW_WAIT_WRITE_COMMAND_TRANSFER_COMPLETE,
+    APP_MXT_FW_SEND_READ_STATUS_COMMAND,
+    APP_MXT_FW_WAIT_READ_STATUS_COMMAND_TRANSFER_COMPLETE,
+    /* Final Status */
+    APP_MXT_SUCCESSFUL,
+    APP_MXT_ERROR,
+    APP_MXT_IDLE,
     /* TODO: Define states used by the application state machine. */
 
 } APP_MXT_STATES;
 
+typedef enum
+{
+    APP_MXT_TRANSFER_STATUS_IN_PROGRESS,
+    APP_MXT_TRANSFER_STATUS_SUCCESS,
+    APP_MXT_TRANSFER_STATUS_ERROR,
+    APP_MXT_TRANSFER_STATUS_IDLE,
+
+} APP_MXT_TRANSFER_STATUS;
+
+typedef enum
+{
+    APP_MXT_BL_COMMAND_READ_INFO =      0xC0,   /* NO ARG */
+    APP_MXT_BL_COMMAND_UNLOCK =         0xC1,   /* Unlock MaxTouch for start program APP */
+    APP_MXT_BL_COMMAND_PROGRAM =        0xC2,   /* NUM_BYTES3-0, DATA0-n*/
+    APP_MXT_BL_COMMAND_RESET_MCU =      0xC4,   /* NO ARG, Reset immediate */
+    APP_MXT_BL_COMMAND_READ_STATUS =    0xC5,   /* NO ARG */
+    APP_MXT_BL_COMMAND_MAX,
+}MXT_BL_COMMAND;
+
+typedef struct
+{
+    uint16_t                i2cSlaveAddr;
+    uint32_t                programPageSize;
+    char*                   filename;
+}APP_MXT_FIRMWARE_UPDATE_INFO;
 
 // *****************************************************************************
 /* Application Data
@@ -84,11 +131,36 @@ typedef enum
 typedef struct
 {
     /* The application's current state */
-    APP_MXT_STATES state;
+    APP_MXT_STATES                              state;
+    APP_STATES                                  nextState;
+    uint8_t                                     i2cSlaveIndex;
+    uint16_t                                    i2cSlaveAddr;
+    uint8_t                                     percentageDone;
+    uint32_t                                    programPageSize;
+    /* SDCard related variables */
+    SYS_FS_HANDLE                               fileHandle;
+    uint32_t                                    fileSize;
+    volatile bool                               isSDCardMount;
+    /* I2C Bootloader related variables */
+    volatile APP_MXT_TRANSFER_STATUS            trasnferStatus;
+    uint32_t                                    appImageSize;
+    uint32_t                                    nBytesWritten;
+    uint8_t                                     status;
+    uint8_t                                     wrBuffer[APP_MXT_MAX_MEM_PAGE_SIZE + APP_MXT_PROTOCOL_HEADER_MAX_SIZE];
 
     /* TODO: Define any additional data used by the application. */
 
 } APP_MXT_DATA;
+
+struct mxt_id_info {
+	uint8_t family_id;
+	uint8_t variant_id;
+	uint8_t version;
+	uint8_t build;
+	uint8_t matrix_xsize;
+	uint8_t matrix_ysize;
+	uint8_t object_num;
+} __attribute__((packed));
 
 // *****************************************************************************
 // *****************************************************************************

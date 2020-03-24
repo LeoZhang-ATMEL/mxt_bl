@@ -2,6 +2,21 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="Tianma"/>
+        <group name="Tianma">
+            <file>file:/D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/mxt_bootloader_app/firmware/src/main.c</file>
+            <file>file:/D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/mxt_bootloader_app/firmware/src/config/sam_da1_xpro/definitions.h</file>
+            <file>file:/D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/mxt_bootloader_app/firmware/src/config/sam_da1_xpro/interrupts.c</file>
+            <file>file:/D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/mxt_bootloader_app/firmware/src/config/sam_da1_xpro/initialization.c</file>
+            <file>file:/D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/mxt_bootloader_app/firmware/src/config/sam_da1_xpro/peripheral/systick/plib_systick.c</file>
+            <file>file:/D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/mxt_bootloader_app/firmware/src/config/sam_da1_xpro/system/debug/sys_debug.h</file>
+            <file>file:/D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/mxt_bootloader_app/firmware/src/config/info4_board/bootloader/bootloader.c</file>
+            <file>file:/D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/mxt_bootloader_app/firmware/src/config/sam_da1_xpro/system/debug/src/sys_debug.c</file>
+            <file>file:/D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/mxt_bootloader_app/firmware/src/config/sam_da1_xpro/system/console/src/sys_console.c</file>
+            <file>file:/D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/mxt_bootloader_app/firmware/src/config/sam_da1_xpro/tasks.c</file>
+            <file>file:/D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/mxt_bootloader_app/firmware/src/config/sam_da1_xpro/bootloader/bootloader.c</file>
+            <file>file:/D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/mxt_bootloader_app/firmware/src/config/sam_da1_xpro/exceptions.c</file>
+            <file>file:/D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/mxt_bootloader_app/firmware/src/mxt_bootloader.c</file>
+            <file>file:/D:/Workspace/AI/Customer/Tianma/TPBL/tianma_info4_bootloader/bootloader/apps/i2c_bootloader/mxt_bootloader_app/firmware/src/app.c</file>
+        </group>
     </open-files>
 </project-private>

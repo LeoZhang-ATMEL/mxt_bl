@@ -57,6 +57,7 @@
 #include "peripheral/port/plib_port.h"
 #include "peripheral/clock/plib_clock.h"
 #include "peripheral/nvic/plib_nvic.h"
+#include "peripheral/systick/plib_systick.h"
 #include "peripheral/pac/plib_pac.h"
 #include "peripheral/tc/plib_tc3.h"
 #include "driver/sdspi/drv_sdspi.h"
@@ -76,7 +77,6 @@
 #include "osal/osal.h"
 #include "app.h"
 #include "app_mxt.h"
-#include "app_console.h"
 
 
 
