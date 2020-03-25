@@ -7,12 +7,23 @@ For fully using, a Embedded Linux System need to be used, the demo Linux Host pr
 using SAMA5D27-SOM1-EK EVB and yocto build system. All MCU upgrade and maxtouch upgrade
 function can be running by those demo.
 
+# Projects
+* i2c_bootloader_info4_board, I2C bootloader for INFO4 board. Flash range (0x0000 - 0x0800).
+* mxt_i2c_bootloader_info4_board, MaxTouch I2C bootloader application for INFO4 board. Flash range (0x0800 - 0x17FF)
+* i2c_bootloader_test_app_info4_board, test application for INFO4 board. Flash range (0x1800 - 0xFFFF).
+* i2c_bootloader_sam_da1_xpro, I2C bootloader for SAMDA1 XPRO EVB. Flash range (0x0000 - 0x0800).
+* mxt_i2c_bootloader_sam_da1_xpro, MaxTouch I2C bootloader application for SAMDA1 XPRO EVB. Flash range (0x0800 - 0x17FF)
+* i2c_bootloader_test_app_sam_da1_xpro, test application for SAMDA1 XPRO EVB. Flash range (0x1800 - 0xFFFF).
+* mchp-i2cbsl, Linux I2C bootloader host application
+
 # Command Usage
 * Copy demo files under the *firmware/* folder to the root folder of the host (Linux based)
 * Running `chmod 777 *.sh` and `chmod 777 mchp_i2cbsl`
 * Program **i2c_bootloader_sam_da1_xpro** to the board for testing app bootloader
-* Running `./app_1s.sh` download test app with 1s LED toggle, the board LED toggle every 1s
-* Running `./app_0.5s.sh` download test app with 0.5s LED toggle, the board LED toggle every 0.5s
+* Running `./app_1s.sh` download test app with 1s LED toggle, the SAMDA1 XPRO Board LED toggle every 1s
+* Running `./app_0.5s.sh` download test app with 0.5s LED toggle, the SAMDA1 XPRO LED Board toggle every 0.5s
+* Running `./app_int_1.sh` download test app will set INT_MCU pin high, the INFO4 Board INT_MCU pin was high
+* Running `./app_int_0.sh` download test app will set INT_MCU pin low, the INFO4 Board INT_MCU pin was low
 * Program **tianma_tp_i2c_bootloader_samda1_xpro** to the board for testing maxtouch firmware upgrade
 * Running `./mxt_info.sh` Checking currently version of the maxtouch
 * Running `./mxt_1067_v00.sh` download V00 version to the maxtouch
@@ -29,6 +40,14 @@ MBus1/SCL <--> PA09 <--> MXT/SCL
 MBus1/INT <--- PA02
                PB06 <--- MXT/CHG
                PB07 ---> MXT/RESET
+```
+Wired connect between SAMA5D27-SOM1-EK, INFO4 Board and mXTouch1067-EVB
+```python
+MBus1/SDA <--> PA00 <--> MXT/SDA
+MBus1/SCL <--> PA01 <--> MXT/SCL
+MBus1/INT <--- PA02
+               PB04 <--- MXT/CHG
+               PA03 ---> MXT/RESET
 ```
 
 # Demo example (MCU)
