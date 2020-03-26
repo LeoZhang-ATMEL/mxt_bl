@@ -97,7 +97,7 @@ APP_MXT_FIRMWARE_UPDATE_INFO  mxtFirmwareUpdateInfo[APP_BL_NUM_I2C_SLAVES] =
          * the actual program page size to reduce the RAM used to hold the
          * program data.
          */
-        .programPageSize    = 256
+        .programSize    = 64
     },
 
     /* Add firmware update information for the additional I2C slaves on the bus
@@ -153,14 +153,14 @@ static void setAppMxtData(void)
         app_mxtData.nBytesWritten = 0;
         app_mxtData.percentageDone = 0;
         app_mxtData.i2cSlaveAddr = mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].i2cSlaveAddr;
-        app_mxtData.programPageSize = mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].programPageSize;
+        app_mxtData.programSize = mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].programSize;
         SYS_CMD_PRINT("%s 0x%x ", "I2C Slave Addr:", app_mxtData.i2cSlaveAddr);
-        app_mxtData.state = APP_FILE_OPEN;
+        app_mxtData.state = APP_MXT_FILE_OPEN;
     }
     else
     {
         SYS_CMD_PRINT ("---------------------------------------------------------\r\n");
-        app_mxtData.state = APP_IDLE;
+        app_mxtData.state = APP_MXT_IDLE;
     }
 }
 static uint32_t APP_ReadInfoCommandHeaderGen(void)
@@ -168,6 +168,15 @@ static uint32_t APP_ReadInfoCommandHeaderGen(void)
     uint32_t nTxBytes = 0;
 
     app_mxtData.wrBuffer[nTxBytes++] = APP_MXT_BL_COMMAND_READ_INFO;
+
+    return nTxBytes;
+}
+
+static uint32_t APP_ReadStatusCommandHeaderGen(void)
+{
+    uint32_t nTxBytes = 0;
+
+    app_mxtData.wrBuffer[nTxBytes++] = APP_MXT_BL_COMMAND_READ_STATUS;
 
     return nTxBytes;
 }
@@ -185,6 +194,69 @@ static uint32_t APP_MXT_UnlockCommandHeaderGen(uint32_t seq, uint32_t fwSize)
     app_mxtData.wrBuffer[nTxBytes++] = (fwSize >> 16);
     app_mxtData.wrBuffer[nTxBytes++] = (fwSize >> 8);
     app_mxtData.wrBuffer[nTxBytes++] = (fwSize);
+
+    return nTxBytes;
+}
+
+static uint32_t APP_MXT_ProgramCommandHeaderGen(uint32_t nBytes)
+{
+    uint32_t nTxBytes = 0;
+
+    app_mxtData.wrBuffer[nTxBytes++] = APP_MXT_BL_COMMAND_PROGRAM;
+    app_mxtData.wrBuffer[nTxBytes++] = (nBytes >> 24);
+    app_mxtData.wrBuffer[nTxBytes++] = (nBytes >> 16);
+    app_mxtData.wrBuffer[nTxBytes++] = (nBytes >> 8);
+    app_mxtData.wrBuffer[nTxBytes++] = (nBytes);
+
+    return nTxBytes;
+}
+/* Read SD card content to the buffer with length,
+ * The file should be open before read
+ */
+static int32_t APP_MXT_SDCARD_ReadData(uint8_t* pBuffer, uint32_t nBytes)
+{
+    int32_t nBytesRead;
+
+    nBytesRead = SYS_FS_FileRead(app_mxtData.fileHandle, (void *)pBuffer, nBytes);
+
+    if (nBytesRead == -1)
+    {
+        /* There was an error while reading the file */
+        SYS_FS_FileClose(app_mxtData.fileHandle);
+        app_mxtData.fileHandle = SYS_FS_HANDLE_INVALID;
+    }
+    else
+    {
+        if(SYS_FS_FileEOF(app_mxtData.fileHandle) == true)
+        {
+            SYS_FS_FileClose(app_mxtData.fileHandle);
+            app_mxtData.fileHandle = SYS_FS_HANDLE_INVALID;
+        }
+    }
+    return nBytesRead;
+}
+
+/* Prepare mXTouch firmware data to the command */
+static int32_t APP_MXT_ImageDataWrite(uint32_t nBytes)
+{
+    int32_t nTxBytes = 0;
+    int32_t nDataBytesRead = 0;
+
+    nTxBytes = APP_MXT_ProgramCommandHeaderGen(nBytes);
+
+    nDataBytesRead = APP_MXT_SDCARD_ReadData(sdCardBuffer, nBytes);
+
+    if (nDataBytesRead < 0)
+    {
+        nTxBytes = -1;
+    }
+    else
+    {
+        /* Copy the data read from SD card to I2C wrBuffer */
+        memcpy(&app_mxtData.wrBuffer[nTxBytes], sdCardBuffer, nDataBytesRead);
+
+        nTxBytes += nBytes;
+    }
 
     return nTxBytes;
 }
@@ -207,6 +279,8 @@ static void printMxtInfo(void)
 static void CommandUpgradeMxt1(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     SYS_CMD_PRINT(" *** Upgrade MCU firmware 1 ***\r\n" );
+    SERCOM2_I2C_CallbackRegister( APP_MXT_I2CEventHandler, (uintptr_t)&app_mxtData.trasnferStatus );
+    SYS_FS_FileClose(app_mxtData.fileHandle);
     mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].filename = APP_MXT_FIRMWARE_NAME_INSTANCE1;
     appData.state = APP_IDLE;
     app_mxtData.state = APP_MXT_WAIT_SWITCH_PRESS;
@@ -215,6 +289,8 @@ static void CommandUpgradeMxt1(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** arg
 static void CommandUpgradeMxt2(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     SYS_CMD_PRINT(" *** Upgrade MCU firmware 2 ***\r\n" );
+    SERCOM2_I2C_CallbackRegister( APP_MXT_I2CEventHandler, (uintptr_t)&app_mxtData.trasnferStatus );
+    SYS_FS_FileClose(app_mxtData.fileHandle);
     mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].filename = APP_MXT_FIRMWARE_NAME_INSTANCE2;
     appData.state = APP_IDLE;
     app_mxtData.state = APP_MXT_WAIT_SWITCH_PRESS;
@@ -275,6 +351,7 @@ void APP_MXT_Initialize ( void )
 void APP_MXT_Tasks ( void )
 {
     uint32_t nTxBytes;
+    uint8_t temp;
 
     /* Check the application's current state. */
     switch ( app_mxtData.state )
@@ -282,6 +359,7 @@ void APP_MXT_Tasks ( void )
         case APP_MXT_INIT:
             break;
 
+        /* Below 4 steps used to read MaxTouch info */
         case APP_MXT_INFO_SEND_READ_COMMAND:
             setAppMxtData();
             nTxBytes = APP_ReadInfoCommandHeaderGen();
@@ -321,6 +399,7 @@ void APP_MXT_Tasks ( void )
             }
             break;
 
+        /* Wait firmware upgrade for trigger */
         case APP_MXT_WAIT_SWITCH_PRESS:
             if (mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].filename != NULL)
             {
@@ -328,20 +407,21 @@ void APP_MXT_Tasks ( void )
             }
             break;
 
+        /* Reset Data */
         case APP_MXT_LOAD_I2C_SLAVE_DATA:
             if (app_mxtData.i2cSlaveIndex < APP_BL_NUM_I2C_SLAVES)
             {
                 app_mxtData.nBytesWritten = 0;
                 app_mxtData.percentageDone = 0;
                 app_mxtData.i2cSlaveAddr = mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].i2cSlaveAddr;
-                app_mxtData.programPageSize = mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].programPageSize;
+                app_mxtData.programSize = mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].programSize;
                 SYS_CMD_PRINT("%s 0x%x ", "I2C Slave Addr:", app_mxtData.i2cSlaveAddr);
                 app_mxtData.state = APP_MXT_FILE_OPEN;
             }
             else
             {
                 SYS_CMD_PRINT ("---------------------------------------------------------\r\n");
-                app_mxtData.state = APP_IDLE;
+                app_mxtData.state = APP_MXT_IDLE;
             }
             break;
 
@@ -350,6 +430,7 @@ void APP_MXT_Tasks ( void )
             if(app_mxtData.fileHandle == SYS_FS_HANDLE_INVALID)
             {
                 /* Could not open the file. Error out */
+                SYS_CMD_PRINT(LINE_TERM "%s Cannot open file %s", (const char*)mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].filename);
                 app_mxtData.state = APP_MXT_ERROR;
             }
             else
@@ -359,6 +440,7 @@ void APP_MXT_Tasks ( void )
             }
             break;
 
+        /* Send Unlock Command */
         case APP_MXT_UNLOCK_SEND_COMMAND:
             app_mxtData.appImageSize = app_mxtData.fileSize;
 
@@ -380,8 +462,8 @@ void APP_MXT_Tasks ( void )
             break;
 
         case APP_MXT_UNLOCK_SEND_READ_STATUS_COMMAND:
-
-            SERCOM2_I2C_Read(app_mxtData.i2cSlaveAddr, &app_mxtData.wrBuffer[0], 1);
+            APP_ReadStatusCommandHeaderGen();
+            SERCOM2_I2C_WriteRead(app_mxtData.i2cSlaveAddr, &app_mxtData.wrBuffer[0], 1, &app_mxtData.wrBuffer[0], 1);
             app_mxtData.trasnferStatus = APP_MXT_TRANSFER_STATUS_IN_PROGRESS;
             app_mxtData.state = APP_MXT_UNLOCK_WAIT_READ_STATUS_COMMAND_TRANSFER_COMPLETE;
             break;
@@ -394,7 +476,7 @@ void APP_MXT_Tasks ( void )
                 } else {
                     SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: Unlock Failed, return code (0x%02X).", app_mxtData.wrBuffer[0]);
                 }
-                app_mxtData.state = APP_MXT_IDLE;
+                app_mxtData.state = APP_MXT_FW_SEND_WRITE_COMMAND;
             }
             else if (app_mxtData.trasnferStatus == APP_MXT_TRANSFER_STATUS_ERROR)
             {
@@ -403,9 +485,101 @@ void APP_MXT_Tasks ( void )
             }
             break;
 
-        /* TODO: implement your application state machine.*/
+        /* Send Firmware */
+        case APP_MXT_FW_SEND_WRITE_COMMAND:
+
+            if (app_mxtData.nBytesWritten < app_mxtData.appImageSize)
+            {
+                app_mxtData.curBlockSize = app_mxtData.programSize;
+                if ((app_mxtData.appImageSize - app_mxtData.nBytesWritten) < app_mxtData.programSize) {
+                    app_mxtData.curBlockSize = app_mxtData.appImageSize - app_mxtData.nBytesWritten;
+                }
+                //nTxBytes = APP_MXT_ProgramCommandHeaderGen(app_mxtData.curBlockSize);
+                nTxBytes = APP_MXT_ImageDataWrite(app_mxtData.curBlockSize);
+                app_mxtData.trasnferStatus = APP_MXT_TRANSFER_STATUS_IN_PROGRESS;
+                SERCOM2_I2C_Write(app_mxtData.i2cSlaveAddr, &app_mxtData.wrBuffer[0], nTxBytes);
+                app_mxtData.state = APP_MXT_FW_WAIT_WRITE_COMMAND_TRANSFER_COMPLETE;
+                
+            }
+            else
+            {
+                /* Firmware programming complete. */
+                app_mxtData.state = APP_MXT_SUCCESSFUL;
+            }
+            break;
+
+        case APP_MXT_FW_WAIT_WRITE_COMMAND_TRANSFER_COMPLETE:
+            if ((app_mxtData.trasnferStatus == APP_MXT_TRANSFER_STATUS_SUCCESS) && INT_MCU_Get())
+            {
+                app_mxtData.state = APP_MXT_FW_SEND_READ_STATUS_COMMAND;
+            }
+            else if (app_mxtData.trasnferStatus == APP_MXT_TRANSFER_STATUS_ERROR)
+            {
+                app_mxtData.state = APP_MXT_ERROR;
+            }
+            break;
+
+        case APP_MXT_FW_SEND_READ_STATUS_COMMAND:
+            APP_ReadStatusCommandHeaderGen();
+            SERCOM2_I2C_WriteRead(app_mxtData.i2cSlaveAddr, &app_mxtData.wrBuffer[0], 1, &app_mxtData.wrBuffer[0], 1);
+            app_mxtData.trasnferStatus = APP_MXT_TRANSFER_STATUS_IN_PROGRESS;
+            app_mxtData.state = APP_MXT_FW_WAIT_READ_STATUS_COMMAND_TRANSFER_COMPLETE;
+            break;
+
+        case APP_MXT_FW_WAIT_READ_STATUS_COMMAND_TRANSFER_COMPLETE:
+            if (app_mxtData.trasnferStatus == APP_MXT_TRANSFER_STATUS_SUCCESS)
+            {
+                /* Check if the block program success */
+                if (app_mxtData.wrBuffer[0] != 0) {
+                    SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: Upgrade Failed, return code (0x%02X).", app_mxtData.wrBuffer[0]);
+                    app_mxtData.state = APP_MXT_ERROR;
+                    break;
+                }
+
+                app_mxtData.nBytesWritten += app_mxtData.curBlockSize;
+
+                /* Display progress on console */
+                temp = (app_mxtData.nBytesWritten/(float)app_mxtData.appImageSize) * 100.0;
+                while ((temp - app_mxtData.percentageDone) > 10)
+                {
+                    app_mxtData.percentageDone += 10;
+                    SYS_CMD_PRINT ("%c%c", 178, 178);
+                }
+                /* Continue to write */
+                app_mxtData.state = APP_MXT_FW_SEND_WRITE_COMMAND;
+            }
+            else if (app_mxtData.trasnferStatus == APP_MXT_TRANSFER_STATUS_ERROR)
+            {
+                app_mxtData.state = APP_MXT_ERROR;
+                SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: Upgrade Failed, I2C Bus error.");
+            }
+            break;
 
 
+        case APP_MXT_SUCCESSFUL:
+            app_mxtData.percentageDone = 100;
+            SYS_CMD_PRINT ("%d%%   !!Success!!  \r\n", app_mxtData.percentageDone);
+
+            /* Load next I2C slave data */
+            app_mxtData.state = APP_MXT_IDLE;
+            mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].filename = NULL;
+            break;
+
+        case APP_MXT_ERROR:
+
+            if (app_mxtData.fileHandle != SYS_FS_HANDLE_INVALID)
+            {
+                SYS_FS_FileClose(app_mxtData.fileHandle);
+            }
+            SYS_CMD_PRINT ("%d%%   !!Failure!!  \r\n", app_mxtData.percentageDone);
+
+            /* Load next I2C slave data */
+            app_mxtData.state = APP_MXT_IDLE;
+            mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].filename = NULL;
+            break;
+
+        case APP_MXT_IDLE:
+            break;
         /* The default state should never be executed. */
         default:
         {

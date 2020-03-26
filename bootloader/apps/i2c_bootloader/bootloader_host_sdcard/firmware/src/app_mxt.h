@@ -111,9 +111,9 @@ typedef enum
 typedef struct
 {
     uint16_t                i2cSlaveAddr;
-    uint32_t                programPageSize;
+    uint32_t                programSize;
     char*                   filename;
-}APP_MXT_FIRMWARE_UPDATE_INFO;
+} APP_MXT_FIRMWARE_UPDATE_INFO;
 
 // *****************************************************************************
 /* Application Data
@@ -136,7 +136,7 @@ typedef struct
     uint8_t                                     i2cSlaveIndex;
     uint16_t                                    i2cSlaveAddr;
     uint8_t                                     percentageDone;
-    uint32_t                                    programPageSize;
+    uint32_t                                    programSize;
     /* SDCard related variables */
     SYS_FS_HANDLE                               fileHandle;
     uint32_t                                    fileSize;
@@ -145,6 +145,7 @@ typedef struct
     volatile APP_MXT_TRANSFER_STATUS            trasnferStatus;
     uint32_t                                    appImageSize;
     uint32_t                                    nBytesWritten;
+    uint32_t                                    curBlockSize;
     uint8_t                                     status;
     uint8_t                                     wrBuffer[APP_MXT_MAX_MEM_PAGE_SIZE + APP_MXT_PROTOCOL_HEADER_MAX_SIZE];
 
