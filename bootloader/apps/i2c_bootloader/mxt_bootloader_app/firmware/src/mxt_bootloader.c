@@ -268,50 +268,6 @@ int mxt_i2c_write_read(uint8_t i2c_addr, uint8_t *wbuf, uint32_t wlen, uint8_t *
 	return 0;
 }
 
-/** 
-  @Function
-    int mxt_read_info_by_host ( void ) 
-
-  @Summary
-    Brief Read MaxTouch information
-    Information includes:
-    -  7 bytes MXT ID information
-    - 3 bytes config CRC
-
-  @Remarks
-    Refer to the example_file.h interface header for function usage details.
- */
-#if 0
-void mxt_read_info_by_host(void)
-{
-	uint32_t i;
-	uint32_t crc;
-
-	/* Ack cmd */
-	bl_send_ack('s');
-
-	/* Read ID information */
-	/* First try to read with application I2C address */
-	if (mxt_read_register(mxt_dev.i2c_addr_app, (void *)bl_outbuf, 0, 7) != 0) {
-		/* If fail, then try to read with bootloader I2C address */
-		if (mxt_read_register(mxt_dev.i2c_addr_bl, (void *)bl_outbuf, 0, 7) != 0) {
-			for (i = 0; i < 7; i++) {
-				bl_outbuf[i] = 0;
-			}
-		}
-	}
-
-	/* Read config CRC */
-	mxt_get_config_crc(&crc);
-	bl_outbuf[7] = crc & 0xFF;
-	bl_outbuf[8] = (crc >> 8) & 0xFF;
-	bl_outbuf[9] = (crc >> 16) & 0xFF;
-
-	bl_send_buf(bl_outbuf, (7+3));
-}
-
-#endif
-
 void mxt_buf_reset(void)
 {
     uint32_t i;
@@ -333,7 +289,14 @@ int8_t mxt_init(void)
     mxt_hardware_reset();
     mxt_buf_reset();
     
-    if (CTP_CHG_Get() == 0) { // Ops, MaxTouch firmware CRC failed?
+    if (mxt_i2c_write_read(MXT_I2C_ADDR_APP, mxt_read_buf, 2, mxt_read_buf, MXT_ID_INFO_SIZE) == 0) {
+        info = (struct mxt_id_info *) mxt_read_buf;
+        if (info->family_id != 0x00) {
+            return 0;
+        }
+    }
+
+    //if (CTP_CHG_Get() == 0) { // Ops, MaxTouch firmware CRC failed?
         if (mxt_i2c_write_read(MXT_I2C_ADDR_BL, NULL, 0, mxt_read_buf, 1) != 0) { // No valid firmware? maybe in bootloader mode.
             goto app_mode;
         }
@@ -347,8 +310,8 @@ int8_t mxt_init(void)
             return -1; /* No sure what's going on */
         }
         /* We are in bootloader mode, and APP CRC Check failed, the extend ID (bootloader version) now in byte 1 and 2 */
-        return 1;
-    }
+        //return 1;
+    //}
 
 app_mode:
 

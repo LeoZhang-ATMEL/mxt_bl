@@ -163,14 +163,6 @@ static void setAppMxtData(void)
         app_mxtData.state = APP_MXT_IDLE;
     }
 }
-static uint32_t APP_ReadInfoCommandHeaderGen(void)
-{
-    uint32_t nTxBytes = 0;
-
-    app_mxtData.wrBuffer[nTxBytes++] = APP_MXT_BL_COMMAND_READ_INFO;
-
-    return nTxBytes;
-}
 
 static uint32_t APP_ReadStatusCommandHeaderGen(void)
 {
@@ -265,8 +257,7 @@ static void printMxtInfo(void)
 {
     struct mxt_id_info *info;
     
-    info = (struct mxt_id_info *) (&app_mxtData.wrBuffer[1]);
-    SYS_CMD_PRINT(LINE_TERM "MAXTOUCH Chip Info Read %s", (app_mxtData.wrBuffer[0] == 0)? "Success" : "Failed");
+    info = (struct mxt_id_info *) (&app_mxtData.wrBuffer[0]);
     SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: family_id\t 0x%02X", info->family_id);
     SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: variant_id\t 0x%02X", info->variant_id);
     SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: version\t 0x%02X", info->version);
@@ -362,16 +353,21 @@ void APP_MXT_Tasks ( void )
         /* Below 4 steps used to read MaxTouch info */
         case APP_MXT_INFO_SEND_READ_COMMAND:
             setAppMxtData();
-            nTxBytes = APP_ReadInfoCommandHeaderGen();
+            //nTxBytes = APP_ReadInfoCommandHeaderGen();
+            app_mxtData.wrBuffer[0] = 0x00;
+            app_mxtData.wrBuffer[1] = 0x00;
             app_mxtData.trasnferStatus = APP_MXT_TRANSFER_STATUS_IN_PROGRESS;
-            SERCOM2_I2C_Write(app_mxtData.i2cSlaveAddr, &app_mxtData.wrBuffer[0], nTxBytes);
+            SERCOM2_I2C_WriteRead(0x4A, &app_mxtData.wrBuffer[0], 2, &app_mxtData.wrBuffer[0], sizeof(struct mxt_id_info));
+            
+            //SERCOM2_I2C_Write(app_mxtData.i2cSlaveAddr, &app_mxtData.wrBuffer[0], nTxBytes);
             app_mxtData.state = APP_MXT_INFO_WAIT_READ_COMMAND_TRANSFER_COMPLETE;
             break;
 
         case APP_MXT_INFO_WAIT_READ_COMMAND_TRANSFER_COMPLETE:
-            if ((app_mxtData.trasnferStatus == APP_MXT_TRANSFER_STATUS_SUCCESS) && INT_MCU_Get())
+            if (app_mxtData.trasnferStatus == APP_MXT_TRANSFER_STATUS_SUCCESS)
             {
-                app_mxtData.state = APP_MXT_INFO_SEND_READ_BACK_COMMAND;
+                app_mxtData.state = APP_MXT_IDLE;
+                printMxtInfo();
             }
             else if (app_mxtData.trasnferStatus == APP_MXT_TRANSFER_STATUS_ERROR)
             {
@@ -565,8 +561,11 @@ void APP_MXT_Tasks ( void )
             app_mxtData.percentageDone = 100;
             SYS_CMD_PRINT ("%d%%   !!Success!!  \r\n", app_mxtData.percentageDone);
             timeStamp = SYS_TIME_CountToMS((SYS_TIME_CounterGet() - timeStamp));
-            timeStamp = (uint32_t)(((float)app_mxtData.appImageSize / (float)timeStamp) * 1000);
-            SYS_CMD_PRINT ("MAXTOUCH: Download Speed %d Bytes/Second \r\n", timeStamp);
+            //timeStamp = (uint32_t)(((float)app_mxtData.appImageSize / (float)timeStamp) * 1000);
+            SYS_CMD_PRINT ("MAXTOUCH: Download Speed %d Bytes/Second @ %d seconds \r\n",
+                    (uint32_t)(((float)app_mxtData.appImageSize / (float)(timeStamp)) * 1000),
+                    (timeStamp / 1000 )
+                    );
             /* Load next I2C slave data */
             app_mxtData.state = APP_MXT_IDLE;
             mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].filename = NULL;
