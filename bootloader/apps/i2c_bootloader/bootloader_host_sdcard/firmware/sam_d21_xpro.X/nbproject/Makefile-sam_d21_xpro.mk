@@ -19,7 +19,7 @@ endif
 endif
 
 # Environment
-MKDIR=mkdir -p
+MKDIR=gnumkdir -p
 RM=rm -f 
 MV=mv 
 CP=cp 
@@ -70,7 +70,7 @@ OBJECTFILES=${OBJECTDIR}/_ext/1011596308/bsp.o ${OBJECTDIR}/_ext/283281740/drv_s
 SOURCEFILES=../src/config/sam_d21_xpro/bsp/bsp.c ../src/config/sam_d21_xpro/driver/sdspi/src/drv_sdspi.c ../src/config/sam_d21_xpro/driver/sdspi/src/drv_sdspi_plib_interface.c ../src/config/sam_d21_xpro/driver/sdspi/src/drv_sdspi_file_system.c ../src/config/sam_d21_xpro/peripheral/clock/plib_clock.c ../src/config/sam_d21_xpro/peripheral/dsu/plib_dsu.c ../src/config/sam_d21_xpro/peripheral/evsys/plib_evsys.c ../src/config/sam_d21_xpro/peripheral/nvic/plib_nvic.c ../src/config/sam_d21_xpro/peripheral/nvmctrl/plib_nvmctrl.c ../src/config/sam_d21_xpro/peripheral/pac/plib_pac.c ../src/config/sam_d21_xpro/peripheral/port/plib_port.c ../src/config/sam_d21_xpro/peripheral/sercom/i2c_master/plib_sercom2_i2c_master.c ../src/config/sam_d21_xpro/peripheral/sercom/spim/plib_sercom0_spi.c ../src/config/sam_d21_xpro/peripheral/sercom/usart/plib_sercom3_usart.c ../src/config/sam_d21_xpro/peripheral/systick/plib_systick.c ../src/config/sam_d21_xpro/peripheral/tc/plib_tc3.c ../src/config/sam_d21_xpro/stdio/xc32_monitor.c ../src/config/sam_d21_xpro/system/command/src/sys_command.c ../src/config/sam_d21_xpro/system/console/src/sys_console.c ../src/config/sam_d21_xpro/system/console/src/sys_console_uart.c ../src/config/sam_d21_xpro/system/dma/sys_dma.c ../src/config/sam_d21_xpro/system/fs/fat_fs/src/ff.c ../src/config/sam_d21_xpro/system/fs/fat_fs/src/diskio.c ../src/config/sam_d21_xpro/system/fs/src/sys_fs.c ../src/config/sam_d21_xpro/system/fs/src/sys_fs_media_manager.c ../src/config/sam_d21_xpro/system/int/src/sys_int.c ../src/config/sam_d21_xpro/system/time/src/sys_time.c ../src/config/sam_d21_xpro/initialization.c ../src/config/sam_d21_xpro/interrupts.c ../src/config/sam_d21_xpro/exceptions.c ../src/config/sam_d21_xpro/startup_xc32.c ../src/config/sam_d21_xpro/libc_syscalls.c ../src/config/sam_d21_xpro/tasks.c ../src/main.c ../src/app.c ../src/app_mxt.c
 
 # Pack Options 
-PACK_COMMON_OPTIONS=-I ${CMSIS_DIR}/CMSIS/Core/Include
+PACK_COMMON_OPTIONS=-I ${CMSIS_DIR}\CMSIS\Core\Include
 
 
 
@@ -562,7 +562,7 @@ else
 dist/${CND_CONF}/${IMAGE_TYPE}/sam_d21_xpro.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
 	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION) -mno-device-startup-code -o dist/${CND_CONF}/${IMAGE_TYPE}/sam_d21_xpro.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_sam_d21_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=_min_heap_size=1548,--gc-sections,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -mdfp=${DFP_DIR}/samd21a
-	${MP_CC_DIR}/xc32-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/sam_d21_xpro.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
+	${MP_CC_DIR}\\xc32-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/sam_d21_xpro.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
 endif
 
 
@@ -581,7 +581,7 @@ endif
 # Enable dependency checking
 .dep.inc: .depcheck-impl
 
-DEPFILES=$(shell "${PATH_TO_IDE_BIN}"mplabwildcard ${POSSIBLE_DEPFILES})
+DEPFILES=$(shell mplabwildcard ${POSSIBLE_DEPFILES})
 ifneq (${DEPFILES},)
 include ${DEPFILES}
 endif

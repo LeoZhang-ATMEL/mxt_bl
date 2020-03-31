@@ -59,8 +59,8 @@
           <Name dnOrder="1">plib_nvic.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/nvic/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/nvic/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">D0684B5522FCD6E33EAAF787D58818BE</GeneratedChecksum>
-          <UserChecksum dnOrder="5">D0684B5522FCD6E33EAAF787D58818BE</UserChecksum>
+          <GeneratedChecksum dnOrder="4">AF0033EC1C893C5A9E39C6FF1C08A617</GeneratedChecksum>
+          <UserChecksum dnOrder="5">AF0033EC1C893C5A9E39C6FF1C08A617</UserChecksum>
         </File>
         <File dnOrder="7">
           <Type dnOrder="0">SOURCE</Type>
@@ -91,8 +91,8 @@
           <Name dnOrder="1">plib_sercom1_i2c_slave.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/sercom/i2c_slave/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/sercom/i2c_slave/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">DE412F72DD934D827F0FA4ED4399DAC5</GeneratedChecksum>
-          <UserChecksum dnOrder="5">DE412F72DD934D827F0FA4ED4399DAC5</UserChecksum>
+          <GeneratedChecksum dnOrder="4">B5398769F142D173C8B123C862D3FE18</GeneratedChecksum>
+          <UserChecksum dnOrder="5">B5398769F142D173C8B123C862D3FE18</UserChecksum>
         </File>
         <File dnOrder="11">
           <Type dnOrder="0">SOURCE</Type>

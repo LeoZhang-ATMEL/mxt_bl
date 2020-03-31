@@ -153,7 +153,7 @@ int mxt_getinfo(void)
 	info = (struct mxt_id_info *)(buf + 1);
 
 	if (samd_i2c_addr == 0) {
-		samd_i2c_addr = APP_I2C_SLAVE_ADDR;
+		samd_i2c_addr = 0x4A;
 	}
 
 	if (open_I2C_Wait_INT()) {
@@ -161,20 +161,18 @@ int mxt_getinfo(void)
 	}
 
 	printf("MAXTOUCH: Send Get Info command\n");
-	nTxBytes = MXT_GetInfoCommandSend(buf);
-    if (write(i2c_file, buf, nTxBytes) != nTxBytes) {
-		printf("MAXTOUCH: Fail send get Info command\n");
+	memset(buf, 10, 0x00);
+	if (write(i2c_file, buf, 2) != nTxBytes) {
+		printf("MAXTOUCH: Fail Send Unlock Command\n");
 		return -1;
 	}
-    close_I2C();
-
-	if (open_I2C_Wait_INT()) {
-		return -1;
-	}
-    if (read(i2c_file, buf, sizeof(struct mxt_id_info) + 1) != sizeof(struct mxt_id_info) + 1) {
+	if (read(i2c_file, buf, sizeof(struct mxt_id_info)) != sizeof(struct mxt_id_info)) {
 		printf("RMAXTOUCH: Fail read Info command\n");
 		return -1;
 	}
+
+	close_I2C();
+
     printf("\n\t MAXTOUCH Chip Info Read %s\n", (buf[0] == 0)? "Success" : "Failed");
     printf("MAXTOUCH: family_id\t 0x%02X\n", info->family_id);
     printf("MAXTOUCH: variant_id\t 0x%02X\n", info->variant_id);

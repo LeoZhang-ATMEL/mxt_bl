@@ -8,7 +8,7 @@
 #ifndef BLCONFIG_H_
 #define BLCONFIG_H_
 
-#define APP_I2C_SLAVE_ADDR 0x54
+#define APP_I2C_SLAVE_ADDR 0x12
 /* TARGET MCU SIZE 64K Default for SAMDA1J16B */
 #define APP_FLASH_SIZE (0x10000)
 #define APP_ERASE_PAGE_SIZE (256L)

@@ -115,7 +115,7 @@ BUFFER_ATTRIBUTES uint8_t               sdCardBuffer[APP_MAX_MEM_PAGE_SIZE];
 APP_FIRMWARE_UPDATE_INFO  firmwareUpdateInfo[APP_BL_NUM_I2C_SLAVES] =
 {
     {
-        .i2cSlaveAddr       = 0x0054,
+        .i2cSlaveAddr       = 0x0012,
         .erasePageSize      = 256,
         /* This example programs all the pages in an erase row in one shot. In case the
          * embedded host has limited RAM, the programPageSize macro can be set to
@@ -375,7 +375,7 @@ static void CommandUpgradeApp2(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** arg
 static void CommandUpgradeApp3(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
    SYS_CMD_PRINT(" *** Upgrade MCU firmware %s ***\r\n", APP_MCU_FIRMWARE_NAME_INSTANCE3);
-   firmwareUpdateInfo[appData.i2cSlaveIndex].filename = APP_MCU_FIRMWARE_NAME_INSTANCE4;
+   firmwareUpdateInfo[appData.i2cSlaveIndex].filename = APP_MCU_FIRMWARE_NAME_INSTANCE3;
 }
 
 static void CommandUpgradeApp4(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)

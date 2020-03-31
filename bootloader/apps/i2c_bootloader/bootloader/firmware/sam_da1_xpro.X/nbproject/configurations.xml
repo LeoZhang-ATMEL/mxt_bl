@@ -159,7 +159,7 @@
         <targetDevice>ATSAMDA1J16B</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>pk4hybrid</platformTool>
+        <platformTool>EdbgTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>2.30</languageToolchainVersion>
         <platform>3</platform>

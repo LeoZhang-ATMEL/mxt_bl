@@ -767,7 +767,7 @@
       <Symbols dnOrder="0">
         <Integer dnOrder="0" id="I2CM_BAUD">
           <Values dnOrder="0">
-            <Dynamic dnOrder="0" id="sercom2" value="59880"/>
+            <Dynamic dnOrder="0" id="sercom2" value="13620"/>
           </Values>
         </Integer>
         <KeyValueSet dnOrder="1" id="I2CM_MODE">
@@ -795,6 +795,9 @@
               <Value dnOrder="0">true</Value>
             </Boolean>
           </Attributes>
+          <Values dnOrder="1">
+            <User dnOrder="0" value="400"/>
+          </Values>
         </Integer>
         <Boolean dnOrder="5" id="I2C_RUNSTDBY">
           <Attributes dnOrder="0">

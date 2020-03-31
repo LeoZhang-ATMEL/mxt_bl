@@ -44,19 +44,26 @@ MBus1/INT <--- PA02
                PA03 ---> MXT/RESET
 ```
 
+# Projects
+* i2c_bootloader_host_sdcard_sam_d21_xpro, I2C Bootloader host for both Info4 board and [SAM D21 Xplained Pro Evaluation Kit](https://www.microchip.com/developmenttools/ProductDetails/atsamd21-xpro)
+* i2c_bootloader_info4_board, I2C bootloader for INFO4 board. Flash range (0x0000 - 0x0800).
+* mxt_i2c_bootloader_info4_board, MaxTouch I2C bootloader application for INFO4 board. Flash range (0x0800 - 0x17FF)
+* i2c_bootloader_test_app_info4_board, test application for INFO4 board. Flash range (0x1800 - 0xFFFF).
+* i2c_bootloader_sam_da1_xpro, I2C bootloader for SAMDA1 XPRO EVB. Flash range (0x0000 - 0x0800).
+* mxt_i2c_bootloader_sam_da1_xpro, MaxTouch I2C bootloader application for SAMDA1 XPRO EVB. Flash range (0x0800 - 0x17FF)
+* i2c_bootloader_test_app_sam_da1_xpro, test application for SAMDA1 XPRO EVB. Flash range (0x1800 - 0xFFFF).
+* mchp-i2cbsl, Linux I2C bootloader host application
+
 
 # Demo example (SAMD21-XPRO Host)
+* Program **i2c_bootloader_host_sdcard_sam_d21_xpro** to the [SAM D21 Xplained Pro Evaluation Kit](https://www.microchip.com/developmenttools/ProductDetails/atsamd21-xpro)
+* Program **mxt_i2c_bootloader_info4_board** to the info4 board for testing maxtouch firmware upgrade
 
-Program **i2c_bootloader_sam_da1_xpro** to the board for testing app bootloader
-## Upgrade MCU with app1.bin, the INT_MCU PIN will set High.
-
-
-Program **tianma_tp_i2c_bootloader_samda1_xpro** to the board for testing maxtouch firmware upgrade
 ## Display MAXTOUCH firmware version, now the build version was 0x00
 ```bash
 >readinfo
  *** Read Max Touch Firmware Info ***
->I2C Slave Addr: 0x54
+>I2C Slave Addr: 0x12
 MAXTOUCH: family_id      0xA4
 MAXTOUCH: variant_id     0x3D
 MAXTOUCH: version        0x10
@@ -71,7 +78,7 @@ MAXTOUCH: object_num     0x22
 ```
 >mxt1
  *** Upgrade MCU firmware 1 ***
->I2C Slave Addr: 0x54
+>I2C Slave Addr: 0x12
 MAXTOUCH: Unlock Success.
 MAXTOUCH: Start Programming mXT1067TDAT_0x3D_1.0.00_PROD.bin, 146992 Bytes
 MAXTOUCH: â€°Â°â€°Â°â€°Â°â€°Â°â€°Â°â€°Â°â€°Â°â€°Â°â€°Â°100%   !!Success!!
@@ -83,7 +90,7 @@ MAXTOUCH: Download Speed 5628 Bytes/Second @ 26 seconds
 ```
 >readinfo
  *** Read Max Touch Firmware Info ***
->I2C Slave Addr: 0x54
+>I2C Slave Addr: 0x12
 MAXTOUCH: family_id      0xA4
 MAXTOUCH: variant_id     0x3D
 MAXTOUCH: version        0x10
@@ -98,7 +105,7 @@ MAXTOUCH: object_num     0x22
 ```
 >mxt2
  *** Upgrade MCU firmware 2 ***
->I2C Slave Addr: 0x54
+>I2C Slave Addr: 0x12
 MAXTOUCH: Unlock Success.
 MAXTOUCH: Start Programming mXT1067TDAT_0x3D_1.0.AA_PROD.bin, 146992 Bytes
 MAXTOUCH: â€°Â°â€°Â°â€°Â°â€°Â°â€°Â°â€°Â°â€°Â°â€°Â°â€°Â°100%   !!Success!!
@@ -110,7 +117,7 @@ MAXTOUCH: Download Speed 5628 Bytes/Second @ 26 seconds
 ```bash
 >readinfo
  *** Read Max Touch Firmware Info ***
->I2C Slave Addr: 0x54
+>I2C Slave Addr: 0x12
 MAXTOUCH: family_id      0xA4
 MAXTOUCH: variant_id     0x3D
 MAXTOUCH: version        0x10
@@ -121,20 +128,42 @@ MAXTOUCH: object_num     0x22
 
 ```
 
+* Program **i2c_bootloader_host_sdcard_sam_d21_xpro** to the [SAM D21 Xplained Pro Evaluation Kit](https://www.microchip.com/developmenttools/ProductDetails/atsamd21-xpro)
+* Program **i2c_bootloader_info4_board** to the info4 board for testing MCU application upgrade
+
+## Upgrade MCU with **info4_board_test_app_INT_low.bin**, the INT_MCU PIN will set Low.
+```python
+>info4_app1
+ *** Upgrade MCU firmware info4_board_test_app_INT_low.bin ***
+>I2C Slave Addr: 0x12 ‰°‰°‰°‰°‰°‰°‰°‰°‰°100%   !!Success!!
+
+```
+## Read INT_MCU PIN Status, the value should be 0.
+```python
+>readint
+ *** Read INT_MCU Pin Value (0) ***
+>
+```
+
+## Upgrade MCU with **info4_board_test_app_INT_high.bin**, the INT_MCU PIN will set High.
+```python
+>info4_app2
+ *** Upgrade MCU firmware info4_board_test_app_INT_high.bin ***
+>I2C Slave Addr: 0x12 ‰°‰°‰°‰°‰°‰°‰°‰°‰°100%   !!Success!!
+
+```
+## Read INT_MCU PIN Status, the value should be 1.
+```python
+>readint
+ *** Read INT_MCU Pin Value (1) ***
+>
+```
+
 # Demo example (Linux Host)
 
 For fully using, an Embedded Linux System needs to be used, the demo Linux Host project
 using SAMA5D27-SOM1-EK EVB and yocto build system. All MCU upgrades and maXTouch upgrade
 function can be running by those demos.
-
-# Projects
-* i2c_bootloader_info4_board, I2C bootloader for INFO4 board. Flash range (0x0000 - 0x0800).
-* mxt_i2c_bootloader_info4_board, MaxTouch I2C bootloader application for INFO4 board. Flash range (0x0800 - 0x17FF)
-* i2c_bootloader_test_app_info4_board, test application for INFO4 board. Flash range (0x1800 - 0xFFFF).
-* i2c_bootloader_sam_da1_xpro, I2C bootloader for SAMDA1 XPRO EVB. Flash range (0x0000 - 0x0800).
-* mxt_i2c_bootloader_sam_da1_xpro, MaxTouch I2C bootloader application for SAMDA1 XPRO EVB. Flash range (0x0800 - 0x17FF)
-* i2c_bootloader_test_app_sam_da1_xpro, test application for SAMDA1 XPRO EVB. Flash range (0x1800 - 0xFFFF).
-* mchp-i2cbsl, Linux I2C bootloader host application
 
 ## Command Usage
 * Copy demo files under the *firmware/* folder to the root folder of the host (Linux based)

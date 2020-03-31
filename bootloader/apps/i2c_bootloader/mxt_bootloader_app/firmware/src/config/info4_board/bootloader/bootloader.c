@@ -55,7 +55,6 @@
 
 typedef enum
 {
-    BL_COMMAND_READ_INFO = 0xC0,   /* NO ARG */
     BL_COMMAND_UNLOCK = 0xC1,      /* Unlock MaxTouch for start program APP */
     BL_COMMAND_PROGRAM = 0xC2,     /* NUM_BYTES3-0, DATA0-n*/
     BL_COMMAND_RESET_MCU = 0xC4,   /* NO ARG, Reset immediate */
@@ -73,7 +72,6 @@ typedef enum
 typedef enum
 {
     BL_MXT_STATE_IDLE = 0,
-    BL_MXT_STATE_FW_INFO,
     BL_MXT_STATE_BL_UNLOCK,
     BL_MXT_STATE_FW_WRITE,
     BL_FLASH_STATE_RESET_MCU,
@@ -141,12 +139,12 @@ static BL_PROTOCOL                          blProtocol;
 // Section: Bootloader Local Functions
 // *****************************************************************************
 // *****************************************************************************
-static uint32_t mxt_read_buf_ind = 0;
+
 extern uint8_t mxt_read_buf[];
 extern void mxt_set_bootloader_len(uint32_t len);
 int mxt_enter_boatloader_mode(void);
 int mxt_upgrade_firmware(uint8_t *buf, uint8_t len);
-
+static void BL_I2C_EventsProcess(void);
 static void BL_Switch_I2C_Role(bool role)
 {
     if (role) { // Master
@@ -171,19 +169,10 @@ static bool BL_I2CMasterWriteHandler(uint8_t rdByte)
 
             blProtocol.nCmdArgWords = 0;
 
-            if ((blProtocol.command < BL_COMMAND_READ_INFO) || (blProtocol.command >= BL_COMMAND_MAX))
+            if ((blProtocol.command < BL_COMMAND_UNLOCK) || (blProtocol.command >= BL_COMMAND_MAX))
             {
                 blProtocol.status = BL_STATUS_INVALID_COMMAND;
                 return false;
-            }
-            else if (blProtocol.command == BL_COMMAND_READ_INFO)
-            {
-                blProtocol.mxtState = BL_MXT_STATE_FW_INFO;
-                blProtocol.lastRdCmd = BL_COMMAND_READ_INFO;
-            }
-            else if (blProtocol.command == BL_COMMAND_READ_STATUS)
-            {
-                blProtocol.lastRdCmd = BL_COMMAND_READ_STATUS;
             }
             else
             {
@@ -310,15 +299,6 @@ static void BL_I2C_EventsProcess(void)
 
                 BL_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_RECEIVE_ACK_NAK);
             }
-            else if ((isFirstRxByte == false)
-                    && (blProtocol.lastRdCmd == BL_COMMAND_READ_INFO)
-                    && (BL_I2CS_LastByteAckStatusGet() == SERCOM_I2C_SLAVE_ACK_STATUS_RECEIVED_ACK)
-                    )
-            {
-                BL_I2CS_WriteByte(mxt_read_buf[mxt_read_buf_ind++]);
-
-                BL_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_RECEIVE_ACK_NAK);
-            }
             else
             {
                 BL_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND_WAIT_FOR_START);
@@ -336,18 +316,6 @@ static void BL_MXT_SM(void)
 {
     switch(blProtocol.mxtState)
     {
-        case BL_MXT_STATE_FW_INFO:
-            BL_Switch_I2C_Role(true);
-            if (mxt_init() != -1) {
-                blProtocol.status = 0;
-            } else {
-                blProtocol.status = BL_STATUS_MXT_EXECUTION_ERROR;
-            }
-            mxt_read_buf_ind = 0;
-            blProtocol.mxtState = BL_MXT_STATE_IDLE;
-            BL_Switch_I2C_Role(false);
-            break;
-
         case BL_MXT_STATE_BL_UNLOCK:
             BL_Switch_I2C_Role(true);
             if (mxt_enter_boatloader_mode()) {

@@ -91,7 +91,7 @@ volatile uint32_t timeStamp;
 APP_MXT_FIRMWARE_UPDATE_INFO  mxtFirmwareUpdateInfo[APP_BL_NUM_I2C_SLAVES] =
 {
     {
-        .i2cSlaveAddr       = 0x0054,
+        .i2cSlaveAddr       = 0x0012,
         /* This example programs all the pages in an erase row in one shot. In case the
          * embedded host has limited RAM, the programPageSize macro can be set to
          * the actual program page size to reduce the RAM used to hold the
