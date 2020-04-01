@@ -1,11 +1,131 @@
-# Simple Use
-For simple use those project, there at least need an MCU host board, and currently
-MCU firmware upgrade funtion can be demo on the MCU Host board (ATSAMD21-XPRO).
-Reference docs/index.html for how to running MCU host demo.
+# How to Using the Demo
+Those demos projects present how to upgrade mXTouch firmware through a Host platform.
+For using those projects, there at least need an MCU host board, Both
+[SAM D21 Xplained Pro Evaluation Kit](https://www.microchip.com/developmenttools/ProductDetails/atsamd21-xpro) and
+[SAMA5D27-SOM1-EK1](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/ATSAMA5D27-SOM1-EK1) can be used as Bootloader Host Platform.
 
-For fully using, a Embedded Linux System need to be used, the demo Linux Host project
-using SAMA5D27-SOM1-EK EVB and yocto build system. All MCU upgrade and maxtouch upgrade
-function can be running by those demo.
+# Convert MaxTouch firmware and configuration file to binary file
+Before running the demo, the maXTouch firmware needs to be converted to the binary file, following bellow command to convert a ENC file to the binary file.
+```
+xxd -r -p mXT1067TDAT_0x3D_1.0.00_PROD.enc > mXT1067TDAT_0x3D_1.0.00_PROD.bin
+```
+
+# Demo Wired Connection
+1. Wired connect between ATSAMD21-XPRO, ATSAMDA1-XPRO and mXTouch1067-EVB
+* Connect [I/O1 Xplained Pro board](https://www.microchip.com/DevelopmentTools/ProductDetails/ATIO1-XPRO) to EXT1 header of the [SAM D21 Xplained Pro Evaluation Kit](https://www.microchip.com/developmenttools/ProductDetails/atsamd21-xpro)
+* Copy mXTouch firmware to the microSD card, and Insert a microSD card to [I/O1 Xplained Pro board](https://www.microchip.com/DevelopmentTools/ProductDetails/ATIO1-XPRO).
+mXT1067TDAT_0x3D_1.0.00_PROD.bin
+mXT1067TDAT_0x3D_1.0.AA_PROD.bin
+* Connect the Debug USB port on the board to the computer using a micro USB cable
+
+|SAMD21-XPRO|SAMDA1-XPRO|mXTouch1067-EVB|
+|-----|-----|-----|
+|EXT3-PA08 | EXT1-PA08 | MXT/SDA   |
+|EXT3-PA09 | EXT1-PA09 | MXT/SCL   |
+|EXT3-PB17 | EXT3-PA02 |           |
+|          | EXT1-PB06 | MXT/CHG   |
+|          | EXT1-PB07 | MXT/RESET |
+
+
+2. Wired connect between SAMA5D27-SOM1-EK, ATSAMDA1-XPRO and mXTouch1067-EVB
+```python
+MBus1/SDA <--> PA08 <--> MXT/SDA
+MBus1/SCL <--> PA09 <--> MXT/SCL
+MBus1/INT <--- PA02
+               PB06 <--- MXT/CHG
+               PB07 ---> MXT/RESET
+```
+3. Wired connect between SAMA5D27-SOM1-EK, INFO4 Board and mXTouch1067-EVB
+```python
+MBus1/SDA <--> PA00 <--> MXT/SDA
+MBus1/SCL <--> PA01 <--> MXT/SCL
+MBus1/INT <--- PA02
+               PB04 <--- MXT/CHG
+               PA03 ---> MXT/RESET
+```
+
+
+# Demo example (SAMD21-XPRO Host)
+
+Program **i2c_bootloader_sam_da1_xpro** to the board for testing app bootloader
+## Upgrade MCU with app1.bin, the INT_MCU PIN will set High.
+
+
+Program **tianma_tp_i2c_bootloader_samda1_xpro** to the board for testing maxtouch firmware upgrade
+## Display MAXTOUCH firmware version, now the build version was 0x00
+```bash
+>readinfo
+ *** Read Max Touch Firmware Info ***
+>I2C Slave Addr: 0x54
+MAXTOUCH: family_id      0xA4
+MAXTOUCH: variant_id     0x3D
+MAXTOUCH: version        0x10
+MAXTOUCH: build          0xAA
+MAXTOUCH: matrix_xsize   0x29
+MAXTOUCH: matrix_ysize   0x1A
+MAXTOUCH: object_num     0x22
+
+```
+
+## Upgrade MAXTouch firmware mXT1067TDAT_0x3D_1.0.*00*_PROD.bin
+```
+>mxt1
+ *** Upgrade MCU firmware 1 ***
+>I2C Slave Addr: 0x54
+MAXTOUCH: Unlock Success.
+MAXTOUCH: Start Programming mXT1067TDAT_0x3D_1.0.00_PROD.bin, 146992 Bytes
+MAXTOUCH: ‰°‰°‰°‰°‰°‰°‰°‰°‰°100%   !!Success!!
+MAXTOUCH: Download Speed 5628 Bytes/Second @ 26 seconds
+
+```
+
+## Display MAXTOUCH firmware version, now the build version was 0x00
+```
+>readinfo
+ *** Read Max Touch Firmware Info ***
+>I2C Slave Addr: 0x54
+MAXTOUCH: family_id      0xA4
+MAXTOUCH: variant_id     0x3D
+MAXTOUCH: version        0x10
+MAXTOUCH: build          0x00
+MAXTOUCH: matrix_xsize   0x29
+MAXTOUCH: matrix_ysize   0x1A
+MAXTOUCH: object_num     0x22
+
+```
+
+## Upgrade MAXTouch firmware mXT1067TDAT_0x3D_1.0.*AA*_PROD.bin
+```
+>mxt2
+ *** Upgrade MCU firmware 2 ***
+>I2C Slave Addr: 0x54
+MAXTOUCH: Unlock Success.
+MAXTOUCH: Start Programming mXT1067TDAT_0x3D_1.0.AA_PROD.bin, 146992 Bytes
+MAXTOUCH: ‰°‰°‰°‰°‰°‰°‰°‰°‰°100%   !!Success!!
+MAXTOUCH: Download Speed 5628 Bytes/Second @ 26 seconds
+
+```
+
+## Display MAXTOUCH firmware version, now the build version was 0xAA
+```bash
+>readinfo
+ *** Read Max Touch Firmware Info ***
+>I2C Slave Addr: 0x54
+MAXTOUCH: family_id      0xA4
+MAXTOUCH: variant_id     0x3D
+MAXTOUCH: version        0x10
+MAXTOUCH: build          0xAA
+MAXTOUCH: matrix_xsize   0x29
+MAXTOUCH: matrix_ysize   0x1A
+MAXTOUCH: object_num     0x22
+
+```
+
+# Demo example (Linux Host)
+
+For fully using, an Embedded Linux System needs to be used, the demo Linux Host project
+using SAMA5D27-SOM1-EK EVB and yocto build system. All MCU upgrades and maXTouch upgrade
+function can be running by those demos.
 
 # Projects
 * i2c_bootloader_info4_board, I2C bootloader for INFO4 board. Flash range (0x0000 - 0x0800).
@@ -16,7 +136,7 @@ function can be running by those demo.
 * i2c_bootloader_test_app_sam_da1_xpro, test application for SAMDA1 XPRO EVB. Flash range (0x1800 - 0xFFFF).
 * mchp-i2cbsl, Linux I2C bootloader host application
 
-# Command Usage
+## Command Usage
 * Copy demo files under the *firmware/* folder to the root folder of the host (Linux based)
 * Running `chmod 777 *.sh` and `chmod 777 mchp_i2cbsl`
 * Program **i2c_bootloader_sam_da1_xpro** to the board for testing app bootloader
@@ -29,30 +149,8 @@ function can be running by those demo.
 * Running `./mxt_1067_v00.sh` download V00 version to the maxtouch
 * Running `./mxt_1067_vAA.sh` download V00 version to the maxtouch
 
-#Convert MaxTouch firmware and configuration file to binary file
-xxd -r -p mXT1067TDAT_0x3D_1.0.00_PROD.enc > mXT1067TDAT_0x3D_1.0.00_PROD.bin
-
-# Demo Wired Connection
-Wired connect between SAMA5D27-SOM1-EK, ATSAMDA1-XPRO and mXTouch1067-EVB
-```python
-MBus1/SDA <--> PA08 <--> MXT/SDA
-MBus1/SCL <--> PA09 <--> MXT/SCL
-MBus1/INT <--- PA02
-               PB06 <--- MXT/CHG
-               PB07 ---> MXT/RESET
-```
-Wired connect between SAMA5D27-SOM1-EK, INFO4 Board and mXTouch1067-EVB
-```python
-MBus1/SDA <--> PA00 <--> MXT/SDA
-MBus1/SCL <--> PA01 <--> MXT/SCL
-MBus1/INT <--- PA02
-               PB04 <--- MXT/CHG
-               PA03 ---> MXT/RESET
-```
-
-# Demo example (MCU)
 Program **i2c_bootloader_sam_da1_xpro** to the board for testing app bootloader
-## Upgrade MCU with samda1_1s.bin, the LED will toggle every 1s after finish.
+## Upgrade MCU with samda1_1s.bin, the LED will toggle every 1s after the finish.
 Long push button 1 for trigger the bootloader if application already running
 ```bash
 root@sama5d27-som1-ek-sd:~# ./mchp-i2cbsl -t app -a 0x1800 0x2400 -i /dev/i2c-2 -f samda1_1s.bin
@@ -89,7 +187,7 @@ INFO: Reset Target Success
 root@sama5d27-som1-ek-sd:~# 
 ```
 
-# Demo example (Maxtouch)
+# Linux Host Get and Display mXTouch Version
 Program **tianma_tp_i2c_bootloader_samda1_xpro** to the board for testing maxtouch firmware upgrade
 ## Display MAXTOUCH firmware version, now the build version was 0x00
 ```bash
@@ -191,6 +289,3 @@ MAXTOUCH: matrix_ysize	 0x1A
 MAXTOUCH: object_num	 0x22
 root@sama5d27-som1-ek-sd:~# 
 ```
-
-## Known Issue
-READ Info response wrong data if no delay after INT_MCU release.

@@ -170,6 +170,8 @@ extern "C" {
 // *****************************************************************************
 #define APP_MCU_FIRMWARE_NAME_INSTANCE1  "info4_board_test_app_INT_low.bin"
 #define APP_MCU_FIRMWARE_NAME_INSTANCE2  "info4_board_test_app_INT_high.bin"
+#define APP_MCU_FIRMWARE_NAME_INSTANCE3  "samda1_xpro_testapp_1s_0x1800.bin"
+#define APP_MCU_FIRMWARE_NAME_INSTANCE4  "samda1_xpro_testapp_0.5s_0x1800.bin"
 
 #define APP_MXT_FIRMWARE_NAME_INSTANCE1  "mXT1067TDAT_0x3D_1.0.00_PROD.bin"
 #define APP_MXT_FIRMWARE_NAME_INSTANCE2  "mXT1067TDAT_0x3D_1.0.AA_PROD.bin"

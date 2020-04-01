@@ -876,7 +876,7 @@ static void CommandHelp(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, pTbl->cmdGroupName);
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, pTbl->cmdMenuStr);
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, " ***");
-                
+#if 0
                 for(ix = 0, pDcpt = pTbl->pCmd; ix < pTbl->nCmds; ix++, pDcpt++)
                 {
                     (*pCmdIO->pCmdApi->msg)(cmdIoParam, LINE_TERM " *** ");
@@ -884,6 +884,7 @@ static void CommandHelp(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
                     (*pCmdIO->pCmdApi->msg)(cmdIoParam, pDcpt->cmdDescr);
                     (*pCmdIO->pCmdApi->msg)(cmdIoParam, " ***");
                 }
+#endif
             }
             pTbl++;
         }

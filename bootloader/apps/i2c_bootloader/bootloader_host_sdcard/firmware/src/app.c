@@ -132,11 +132,15 @@ APP_FIRMWARE_UPDATE_INFO  firmwareUpdateInfo[APP_BL_NUM_I2C_SLAVES] =
 
 static void CommandUpgradeApp1(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 static void CommandUpgradeApp2(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void CommandUpgradeApp3(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void CommandUpgradeApp4(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 static void CommandReadINT(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 static const SYS_CMD_DESCRIPTOR    appCmdTbl[]=
 {
-    {"app1",   CommandUpgradeApp1,   ": Upgrade Application instance 1 (app1.bin)"},
-    {"app2",   CommandUpgradeApp2,   ": Upgrade Application Instance 2 (app2.bin)"},
+    {"info4_app1",   CommandUpgradeApp1,   ": Upgrade Info4 board MCU instance 1"},
+    {"info4_app2",   CommandUpgradeApp2,   ": Upgrade Info4 board MCU instance 2"},
+    {"da1_xpro_app1",   CommandUpgradeApp3,   ": Upgrade SAMDA1-XPRO MCU instance 1"},
+    {"da1_xpro_app2",   CommandUpgradeApp4,   ": Upgrade SAMDA1-XPRO MCU instance 2"},
     {"readint", CommandReadINT,      ": Read INT PIN voltage"},
 };
 // *****************************************************************************
@@ -358,14 +362,26 @@ static int32_t APP_ImageDataWrite(
 // implementation
 static void CommandUpgradeApp1(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
-     SYS_CMD_PRINT(" *** Upgrade MCU firmware 1 ***\r\n" );
+     SYS_CMD_PRINT(" *** Upgrade MCU firmware %s ***\r\n", APP_MCU_FIRMWARE_NAME_INSTANCE1);
     firmwareUpdateInfo[appData.i2cSlaveIndex].filename = APP_MCU_FIRMWARE_NAME_INSTANCE1;
 }
 
 static void CommandUpgradeApp2(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
-   SYS_CMD_PRINT(" *** Upgrade MCU firmware 2 ***\r\n" );
+   SYS_CMD_PRINT(" *** Upgrade MCU firmware %s ***\r\n", APP_MCU_FIRMWARE_NAME_INSTANCE2);
    firmwareUpdateInfo[appData.i2cSlaveIndex].filename = APP_MCU_FIRMWARE_NAME_INSTANCE2;
+}
+
+static void CommandUpgradeApp3(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+{
+   SYS_CMD_PRINT(" *** Upgrade MCU firmware %s ***\r\n", APP_MCU_FIRMWARE_NAME_INSTANCE3);
+   firmwareUpdateInfo[appData.i2cSlaveIndex].filename = APP_MCU_FIRMWARE_NAME_INSTANCE4;
+}
+
+static void CommandUpgradeApp4(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+{
+   SYS_CMD_PRINT(" *** Upgrade MCU firmware %s ***\r\n", APP_MCU_FIRMWARE_NAME_INSTANCE4);
+   firmwareUpdateInfo[appData.i2cSlaveIndex].filename = APP_MCU_FIRMWARE_NAME_INSTANCE4;
 }
 
 static void CommandReadINT(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
