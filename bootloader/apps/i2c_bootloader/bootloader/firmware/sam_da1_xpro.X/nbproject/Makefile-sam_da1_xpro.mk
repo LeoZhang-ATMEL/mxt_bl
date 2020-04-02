@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../src/config/sam_da1_xpro/peripheral/nvmctrl/plib_nvmctrl.c ../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom2_i2c_slave.c ../src/config/sam_da1_xpro/peripheral/evsys/plib_evsys.c ../src/config/sam_da1_xpro/peripheral/port/plib_port.c ../src/config/sam_da1_xpro/peripheral/clock/plib_clock.c ../src/config/sam_da1_xpro/peripheral/nvic/plib_nvic.c ../src/config/sam_da1_xpro/peripheral/pac/plib_pac.c ../src/config/sam_da1_xpro/bootloader/bootloader.c ../src/main.c ../src/config/sam_da1_xpro/startup_xc32.c ../src/config/sam_da1_xpro/initialization.c ../src/config/sam_da1_xpro/peripheral/dsu/plib_dsu.c
+SOURCEFILES_QUOTED_IF_SPACED=../src/config/sam_da1_xpro/bootloader/bootloader.c ../src/config/sam_da1_xpro/peripheral/clock/plib_clock.c ../src/config/sam_da1_xpro/peripheral/dsu/plib_dsu.c ../src/config/sam_da1_xpro/peripheral/evsys/plib_evsys.c ../src/config/sam_da1_xpro/peripheral/nvic/plib_nvic.c ../src/config/sam_da1_xpro/peripheral/nvmctrl/plib_nvmctrl.c ../src/config/sam_da1_xpro/peripheral/pac/plib_pac.c ../src/config/sam_da1_xpro/peripheral/port/plib_port.c ../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom2_i2c_slave.c ../src/config/sam_da1_xpro/startup_xc32.c ../src/config/sam_da1_xpro/initialization.c ../src/main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o ${OBJECTDIR}/_ext/1748485477/plib_evsys.o ${OBJECTDIR}/_ext/472365688/plib_port.o ${OBJECTDIR}/_ext/1746335991/plib_clock.o ${OBJECTDIR}/_ext/472312537/plib_nvic.o ${OBJECTDIR}/_ext/985068475/plib_pac.o ${OBJECTDIR}/_ext/123868735/bootloader.o ${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1365142701/startup_xc32.o ${OBJECTDIR}/_ext/1365142701/initialization.o ${OBJECTDIR}/_ext/985057519/plib_dsu.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o.d ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o.d ${OBJECTDIR}/_ext/1748485477/plib_evsys.o.d ${OBJECTDIR}/_ext/472365688/plib_port.o.d ${OBJECTDIR}/_ext/1746335991/plib_clock.o.d ${OBJECTDIR}/_ext/472312537/plib_nvic.o.d ${OBJECTDIR}/_ext/985068475/plib_pac.o.d ${OBJECTDIR}/_ext/123868735/bootloader.o.d ${OBJECTDIR}/_ext/1360937237/main.o.d ${OBJECTDIR}/_ext/1365142701/startup_xc32.o.d ${OBJECTDIR}/_ext/1365142701/initialization.o.d ${OBJECTDIR}/_ext/985057519/plib_dsu.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/123868735/bootloader.o ${OBJECTDIR}/_ext/1746335991/plib_clock.o ${OBJECTDIR}/_ext/985057519/plib_dsu.o ${OBJECTDIR}/_ext/1748485477/plib_evsys.o ${OBJECTDIR}/_ext/472312537/plib_nvic.o ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o ${OBJECTDIR}/_ext/985068475/plib_pac.o ${OBJECTDIR}/_ext/472365688/plib_port.o ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o ${OBJECTDIR}/_ext/1365142701/startup_xc32.o ${OBJECTDIR}/_ext/1365142701/initialization.o ${OBJECTDIR}/_ext/1360937237/main.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/123868735/bootloader.o.d ${OBJECTDIR}/_ext/1746335991/plib_clock.o.d ${OBJECTDIR}/_ext/985057519/plib_dsu.o.d ${OBJECTDIR}/_ext/1748485477/plib_evsys.o.d ${OBJECTDIR}/_ext/472312537/plib_nvic.o.d ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o.d ${OBJECTDIR}/_ext/985068475/plib_pac.o.d ${OBJECTDIR}/_ext/472365688/plib_port.o.d ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o.d ${OBJECTDIR}/_ext/1365142701/startup_xc32.o.d ${OBJECTDIR}/_ext/1365142701/initialization.o.d ${OBJECTDIR}/_ext/1360937237/main.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o ${OBJECTDIR}/_ext/1748485477/plib_evsys.o ${OBJECTDIR}/_ext/472365688/plib_port.o ${OBJECTDIR}/_ext/1746335991/plib_clock.o ${OBJECTDIR}/_ext/472312537/plib_nvic.o ${OBJECTDIR}/_ext/985068475/plib_pac.o ${OBJECTDIR}/_ext/123868735/bootloader.o ${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1365142701/startup_xc32.o ${OBJECTDIR}/_ext/1365142701/initialization.o ${OBJECTDIR}/_ext/985057519/plib_dsu.o
+OBJECTFILES=${OBJECTDIR}/_ext/123868735/bootloader.o ${OBJECTDIR}/_ext/1746335991/plib_clock.o ${OBJECTDIR}/_ext/985057519/plib_dsu.o ${OBJECTDIR}/_ext/1748485477/plib_evsys.o ${OBJECTDIR}/_ext/472312537/plib_nvic.o ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o ${OBJECTDIR}/_ext/985068475/plib_pac.o ${OBJECTDIR}/_ext/472365688/plib_port.o ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o ${OBJECTDIR}/_ext/1365142701/startup_xc32.o ${OBJECTDIR}/_ext/1365142701/initialization.o ${OBJECTDIR}/_ext/1360937237/main.o
 
 # Source Files
-SOURCEFILES=../src/config/sam_da1_xpro/peripheral/nvmctrl/plib_nvmctrl.c ../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom2_i2c_slave.c ../src/config/sam_da1_xpro/peripheral/evsys/plib_evsys.c ../src/config/sam_da1_xpro/peripheral/port/plib_port.c ../src/config/sam_da1_xpro/peripheral/clock/plib_clock.c ../src/config/sam_da1_xpro/peripheral/nvic/plib_nvic.c ../src/config/sam_da1_xpro/peripheral/pac/plib_pac.c ../src/config/sam_da1_xpro/bootloader/bootloader.c ../src/main.c ../src/config/sam_da1_xpro/startup_xc32.c ../src/config/sam_da1_xpro/initialization.c ../src/config/sam_da1_xpro/peripheral/dsu/plib_dsu.c
+SOURCEFILES=../src/config/sam_da1_xpro/bootloader/bootloader.c ../src/config/sam_da1_xpro/peripheral/clock/plib_clock.c ../src/config/sam_da1_xpro/peripheral/dsu/plib_dsu.c ../src/config/sam_da1_xpro/peripheral/evsys/plib_evsys.c ../src/config/sam_da1_xpro/peripheral/nvic/plib_nvic.c ../src/config/sam_da1_xpro/peripheral/nvmctrl/plib_nvmctrl.c ../src/config/sam_da1_xpro/peripheral/pac/plib_pac.c ../src/config/sam_da1_xpro/peripheral/port/plib_port.c ../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom2_i2c_slave.c ../src/config/sam_da1_xpro/startup_xc32.c ../src/config/sam_da1_xpro/initialization.c ../src/main.c
 
 # Pack Options 
 PACK_COMMON_OPTIONS=-I ${CMSIS_DIR}\CMSIS\Core\Include
@@ -128,29 +128,11 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o: ../src/config/sam_da1_xpro/peripheral/nvmctrl/plib_nvmctrl.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/353737273" 
-	@${RM} ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o.d 
-	@${RM} ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o.d" -o ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o ../src/config/sam_da1_xpro/peripheral/nvmctrl/plib_nvmctrl.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
-	
-${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o: ../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom2_i2c_slave.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/836180475" 
-	@${RM} ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o.d 
-	@${RM} ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o.d" -o ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o ../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom2_i2c_slave.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
-	
-${OBJECTDIR}/_ext/1748485477/plib_evsys.o: ../src/config/sam_da1_xpro/peripheral/evsys/plib_evsys.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1748485477" 
-	@${RM} ${OBJECTDIR}/_ext/1748485477/plib_evsys.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1748485477/plib_evsys.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1748485477/plib_evsys.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1748485477/plib_evsys.o.d" -o ${OBJECTDIR}/_ext/1748485477/plib_evsys.o ../src/config/sam_da1_xpro/peripheral/evsys/plib_evsys.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
-	
-${OBJECTDIR}/_ext/472365688/plib_port.o: ../src/config/sam_da1_xpro/peripheral/port/plib_port.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/472365688" 
-	@${RM} ${OBJECTDIR}/_ext/472365688/plib_port.o.d 
-	@${RM} ${OBJECTDIR}/_ext/472365688/plib_port.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/472365688/plib_port.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/472365688/plib_port.o.d" -o ${OBJECTDIR}/_ext/472365688/plib_port.o ../src/config/sam_da1_xpro/peripheral/port/plib_port.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
+${OBJECTDIR}/_ext/123868735/bootloader.o: ../src/config/sam_da1_xpro/bootloader/bootloader.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/123868735" 
+	@${RM} ${OBJECTDIR}/_ext/123868735/bootloader.o.d 
+	@${RM} ${OBJECTDIR}/_ext/123868735/bootloader.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/123868735/bootloader.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/123868735/bootloader.o.d" -o ${OBJECTDIR}/_ext/123868735/bootloader.o ../src/config/sam_da1_xpro/bootloader/bootloader.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
 ${OBJECTDIR}/_ext/1746335991/plib_clock.o: ../src/config/sam_da1_xpro/peripheral/clock/plib_clock.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1746335991" 
@@ -158,11 +140,29 @@ ${OBJECTDIR}/_ext/1746335991/plib_clock.o: ../src/config/sam_da1_xpro/peripheral
 	@${RM} ${OBJECTDIR}/_ext/1746335991/plib_clock.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1746335991/plib_clock.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1746335991/plib_clock.o.d" -o ${OBJECTDIR}/_ext/1746335991/plib_clock.o ../src/config/sam_da1_xpro/peripheral/clock/plib_clock.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
+${OBJECTDIR}/_ext/985057519/plib_dsu.o: ../src/config/sam_da1_xpro/peripheral/dsu/plib_dsu.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/985057519" 
+	@${RM} ${OBJECTDIR}/_ext/985057519/plib_dsu.o.d 
+	@${RM} ${OBJECTDIR}/_ext/985057519/plib_dsu.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/985057519/plib_dsu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/985057519/plib_dsu.o.d" -o ${OBJECTDIR}/_ext/985057519/plib_dsu.o ../src/config/sam_da1_xpro/peripheral/dsu/plib_dsu.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
+	
+${OBJECTDIR}/_ext/1748485477/plib_evsys.o: ../src/config/sam_da1_xpro/peripheral/evsys/plib_evsys.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1748485477" 
+	@${RM} ${OBJECTDIR}/_ext/1748485477/plib_evsys.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1748485477/plib_evsys.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1748485477/plib_evsys.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1748485477/plib_evsys.o.d" -o ${OBJECTDIR}/_ext/1748485477/plib_evsys.o ../src/config/sam_da1_xpro/peripheral/evsys/plib_evsys.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
+	
 ${OBJECTDIR}/_ext/472312537/plib_nvic.o: ../src/config/sam_da1_xpro/peripheral/nvic/plib_nvic.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/472312537" 
 	@${RM} ${OBJECTDIR}/_ext/472312537/plib_nvic.o.d 
 	@${RM} ${OBJECTDIR}/_ext/472312537/plib_nvic.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/472312537/plib_nvic.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/472312537/plib_nvic.o.d" -o ${OBJECTDIR}/_ext/472312537/plib_nvic.o ../src/config/sam_da1_xpro/peripheral/nvic/plib_nvic.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
+	
+${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o: ../src/config/sam_da1_xpro/peripheral/nvmctrl/plib_nvmctrl.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/353737273" 
+	@${RM} ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o.d 
+	@${RM} ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o.d" -o ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o ../src/config/sam_da1_xpro/peripheral/nvmctrl/plib_nvmctrl.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
 ${OBJECTDIR}/_ext/985068475/plib_pac.o: ../src/config/sam_da1_xpro/peripheral/pac/plib_pac.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/985068475" 
@@ -170,17 +170,17 @@ ${OBJECTDIR}/_ext/985068475/plib_pac.o: ../src/config/sam_da1_xpro/peripheral/pa
 	@${RM} ${OBJECTDIR}/_ext/985068475/plib_pac.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/985068475/plib_pac.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/985068475/plib_pac.o.d" -o ${OBJECTDIR}/_ext/985068475/plib_pac.o ../src/config/sam_da1_xpro/peripheral/pac/plib_pac.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/123868735/bootloader.o: ../src/config/sam_da1_xpro/bootloader/bootloader.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/123868735" 
-	@${RM} ${OBJECTDIR}/_ext/123868735/bootloader.o.d 
-	@${RM} ${OBJECTDIR}/_ext/123868735/bootloader.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/123868735/bootloader.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/123868735/bootloader.o.d" -o ${OBJECTDIR}/_ext/123868735/bootloader.o ../src/config/sam_da1_xpro/bootloader/bootloader.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
+${OBJECTDIR}/_ext/472365688/plib_port.o: ../src/config/sam_da1_xpro/peripheral/port/plib_port.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/472365688" 
+	@${RM} ${OBJECTDIR}/_ext/472365688/plib_port.o.d 
+	@${RM} ${OBJECTDIR}/_ext/472365688/plib_port.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/472365688/plib_port.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/472365688/plib_port.o.d" -o ${OBJECTDIR}/_ext/472365688/plib_port.o ../src/config/sam_da1_xpro/peripheral/port/plib_port.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
-	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1360937237/main.o.d" -o ${OBJECTDIR}/_ext/1360937237/main.o ../src/main.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
+${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o: ../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom2_i2c_slave.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/836180475" 
+	@${RM} ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o.d 
+	@${RM} ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o.d" -o ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o ../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom2_i2c_slave.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
 ${OBJECTDIR}/_ext/1365142701/startup_xc32.o: ../src/config/sam_da1_xpro/startup_xc32.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1365142701" 
@@ -194,36 +194,18 @@ ${OBJECTDIR}/_ext/1365142701/initialization.o: ../src/config/sam_da1_xpro/initia
 	@${RM} ${OBJECTDIR}/_ext/1365142701/initialization.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1365142701/initialization.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1365142701/initialization.o.d" -o ${OBJECTDIR}/_ext/1365142701/initialization.o ../src/config/sam_da1_xpro/initialization.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/985057519/plib_dsu.o: ../src/config/sam_da1_xpro/peripheral/dsu/plib_dsu.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/985057519" 
-	@${RM} ${OBJECTDIR}/_ext/985057519/plib_dsu.o.d 
-	@${RM} ${OBJECTDIR}/_ext/985057519/plib_dsu.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/985057519/plib_dsu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/985057519/plib_dsu.o.d" -o ${OBJECTDIR}/_ext/985057519/plib_dsu.o ../src/config/sam_da1_xpro/peripheral/dsu/plib_dsu.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
+${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
+	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1360937237/main.o.d" -o ${OBJECTDIR}/_ext/1360937237/main.o ../src/main.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
 else
-${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o: ../src/config/sam_da1_xpro/peripheral/nvmctrl/plib_nvmctrl.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/353737273" 
-	@${RM} ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o.d 
-	@${RM} ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o.d" -o ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o ../src/config/sam_da1_xpro/peripheral/nvmctrl/plib_nvmctrl.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
-	
-${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o: ../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom2_i2c_slave.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/836180475" 
-	@${RM} ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o.d 
-	@${RM} ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o.d" -o ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o ../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom2_i2c_slave.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
-	
-${OBJECTDIR}/_ext/1748485477/plib_evsys.o: ../src/config/sam_da1_xpro/peripheral/evsys/plib_evsys.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1748485477" 
-	@${RM} ${OBJECTDIR}/_ext/1748485477/plib_evsys.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1748485477/plib_evsys.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1748485477/plib_evsys.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1748485477/plib_evsys.o.d" -o ${OBJECTDIR}/_ext/1748485477/plib_evsys.o ../src/config/sam_da1_xpro/peripheral/evsys/plib_evsys.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
-	
-${OBJECTDIR}/_ext/472365688/plib_port.o: ../src/config/sam_da1_xpro/peripheral/port/plib_port.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/472365688" 
-	@${RM} ${OBJECTDIR}/_ext/472365688/plib_port.o.d 
-	@${RM} ${OBJECTDIR}/_ext/472365688/plib_port.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/472365688/plib_port.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/472365688/plib_port.o.d" -o ${OBJECTDIR}/_ext/472365688/plib_port.o ../src/config/sam_da1_xpro/peripheral/port/plib_port.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
+${OBJECTDIR}/_ext/123868735/bootloader.o: ../src/config/sam_da1_xpro/bootloader/bootloader.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/123868735" 
+	@${RM} ${OBJECTDIR}/_ext/123868735/bootloader.o.d 
+	@${RM} ${OBJECTDIR}/_ext/123868735/bootloader.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/123868735/bootloader.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/123868735/bootloader.o.d" -o ${OBJECTDIR}/_ext/123868735/bootloader.o ../src/config/sam_da1_xpro/bootloader/bootloader.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
 ${OBJECTDIR}/_ext/1746335991/plib_clock.o: ../src/config/sam_da1_xpro/peripheral/clock/plib_clock.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1746335991" 
@@ -231,11 +213,29 @@ ${OBJECTDIR}/_ext/1746335991/plib_clock.o: ../src/config/sam_da1_xpro/peripheral
 	@${RM} ${OBJECTDIR}/_ext/1746335991/plib_clock.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1746335991/plib_clock.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1746335991/plib_clock.o.d" -o ${OBJECTDIR}/_ext/1746335991/plib_clock.o ../src/config/sam_da1_xpro/peripheral/clock/plib_clock.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
+${OBJECTDIR}/_ext/985057519/plib_dsu.o: ../src/config/sam_da1_xpro/peripheral/dsu/plib_dsu.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/985057519" 
+	@${RM} ${OBJECTDIR}/_ext/985057519/plib_dsu.o.d 
+	@${RM} ${OBJECTDIR}/_ext/985057519/plib_dsu.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/985057519/plib_dsu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/985057519/plib_dsu.o.d" -o ${OBJECTDIR}/_ext/985057519/plib_dsu.o ../src/config/sam_da1_xpro/peripheral/dsu/plib_dsu.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
+	
+${OBJECTDIR}/_ext/1748485477/plib_evsys.o: ../src/config/sam_da1_xpro/peripheral/evsys/plib_evsys.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1748485477" 
+	@${RM} ${OBJECTDIR}/_ext/1748485477/plib_evsys.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1748485477/plib_evsys.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1748485477/plib_evsys.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1748485477/plib_evsys.o.d" -o ${OBJECTDIR}/_ext/1748485477/plib_evsys.o ../src/config/sam_da1_xpro/peripheral/evsys/plib_evsys.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
+	
 ${OBJECTDIR}/_ext/472312537/plib_nvic.o: ../src/config/sam_da1_xpro/peripheral/nvic/plib_nvic.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/472312537" 
 	@${RM} ${OBJECTDIR}/_ext/472312537/plib_nvic.o.d 
 	@${RM} ${OBJECTDIR}/_ext/472312537/plib_nvic.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/472312537/plib_nvic.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/472312537/plib_nvic.o.d" -o ${OBJECTDIR}/_ext/472312537/plib_nvic.o ../src/config/sam_da1_xpro/peripheral/nvic/plib_nvic.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
+	
+${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o: ../src/config/sam_da1_xpro/peripheral/nvmctrl/plib_nvmctrl.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/353737273" 
+	@${RM} ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o.d 
+	@${RM} ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o.d" -o ${OBJECTDIR}/_ext/353737273/plib_nvmctrl.o ../src/config/sam_da1_xpro/peripheral/nvmctrl/plib_nvmctrl.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
 ${OBJECTDIR}/_ext/985068475/plib_pac.o: ../src/config/sam_da1_xpro/peripheral/pac/plib_pac.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/985068475" 
@@ -243,17 +243,17 @@ ${OBJECTDIR}/_ext/985068475/plib_pac.o: ../src/config/sam_da1_xpro/peripheral/pa
 	@${RM} ${OBJECTDIR}/_ext/985068475/plib_pac.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/985068475/plib_pac.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/985068475/plib_pac.o.d" -o ${OBJECTDIR}/_ext/985068475/plib_pac.o ../src/config/sam_da1_xpro/peripheral/pac/plib_pac.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/123868735/bootloader.o: ../src/config/sam_da1_xpro/bootloader/bootloader.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/123868735" 
-	@${RM} ${OBJECTDIR}/_ext/123868735/bootloader.o.d 
-	@${RM} ${OBJECTDIR}/_ext/123868735/bootloader.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/123868735/bootloader.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/123868735/bootloader.o.d" -o ${OBJECTDIR}/_ext/123868735/bootloader.o ../src/config/sam_da1_xpro/bootloader/bootloader.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
+${OBJECTDIR}/_ext/472365688/plib_port.o: ../src/config/sam_da1_xpro/peripheral/port/plib_port.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/472365688" 
+	@${RM} ${OBJECTDIR}/_ext/472365688/plib_port.o.d 
+	@${RM} ${OBJECTDIR}/_ext/472365688/plib_port.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/472365688/plib_port.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/472365688/plib_port.o.d" -o ${OBJECTDIR}/_ext/472365688/plib_port.o ../src/config/sam_da1_xpro/peripheral/port/plib_port.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
-	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1360937237/main.o.d" -o ${OBJECTDIR}/_ext/1360937237/main.o ../src/main.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
+${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o: ../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom2_i2c_slave.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/836180475" 
+	@${RM} ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o.d 
+	@${RM} ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o.d" -o ${OBJECTDIR}/_ext/836180475/plib_sercom2_i2c_slave.o ../src/config/sam_da1_xpro/peripheral/sercom/i2c_slave/plib_sercom2_i2c_slave.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
 ${OBJECTDIR}/_ext/1365142701/startup_xc32.o: ../src/config/sam_da1_xpro/startup_xc32.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1365142701" 
@@ -267,11 +267,11 @@ ${OBJECTDIR}/_ext/1365142701/initialization.o: ../src/config/sam_da1_xpro/initia
 	@${RM} ${OBJECTDIR}/_ext/1365142701/initialization.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1365142701/initialization.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1365142701/initialization.o.d" -o ${OBJECTDIR}/_ext/1365142701/initialization.o ../src/config/sam_da1_xpro/initialization.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/985057519/plib_dsu.o: ../src/config/sam_da1_xpro/peripheral/dsu/plib_dsu.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/985057519" 
-	@${RM} ${OBJECTDIR}/_ext/985057519/plib_dsu.o.d 
-	@${RM} ${OBJECTDIR}/_ext/985057519/plib_dsu.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/985057519/plib_dsu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/985057519/plib_dsu.o.d" -o ${OBJECTDIR}/_ext/985057519/plib_dsu.o ../src/config/sam_da1_xpro/peripheral/dsu/plib_dsu.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
+${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
+	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -DBOARD_SAMDA1_XPRO -I"../src" -I"../src/config/sam_da1_xpro" -I"../src/packs/ATSAMDA1J16B_DFP" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/CMSIS/" -I"../src/arm" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1360937237/main.o.d" -o ${OBJECTDIR}/_ext/1360937237/main.o ../src/main.c    -DXPRJ_sam_da1_xpro=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp=${DFP_DIR} ${PACK_COMMON_OPTIONS} 
 	
 endif
 

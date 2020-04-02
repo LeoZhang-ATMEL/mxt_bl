@@ -57,8 +57,8 @@
 // *****************************************************************************
 
 
-/* SERCOM2 I2C baud value for 100 Khz baud rate */
-#define SERCOM2_I2CM_BAUD_VALUE			(59880U)
+/* SERCOM2 I2C baud value for 400 Khz baud rate */
+#define SERCOM2_I2CM_BAUD_VALUE			(52U)
 
 #define RIGHT_ALIGNED (8U)
 
@@ -139,7 +139,7 @@ bool SERCOM2_I2C_TransferSetup(SERCOM_I2C_TRANSFER_SETUP* setup, uint32_t srcClk
     
     if( srcClkFreq == 0)
     {
-        srcClkFreq = 48000000UL;
+        srcClkFreq = 47972352UL;
     }    
     
     /* Reference clock frequency must be atleast two times the baud rate */
