@@ -2,6 +2,10 @@
 */**/debug
 */**/dist
 */**/*.logicdata
+*/**/nbproject/*.mk
+*/**/nbproject/*.properties
+*/**/nbproject/*.bash
+*/**/nbproject/private/
 
 /bootloader/apps/i2c_bootloader/bootloader/firmware/sam_da1_xpro.X/build/
 /bootloader/apps/i2c_bootloader/bootloader/firmware/sam_da1_xpro.X/dist/
