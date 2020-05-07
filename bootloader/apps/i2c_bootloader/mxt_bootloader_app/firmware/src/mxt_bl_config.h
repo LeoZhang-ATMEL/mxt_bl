@@ -30,24 +30,24 @@
     #define BL_I2C_IsBusy SERCOM2_I2C_IsBusy
     #define BL_I2C_ErrorGet SERCOM2_I2C_ErrorGet
 #else
-    #include "plib_sercom1_i2c_slave.h"
+    #include "plib_sercom5_i2c_slave.h"
     #define LED_Clear()
     /* I2C Slave */
-    #define BL_I2CS_Initialize SERCOM1_I2CS_Initialize
-    #define BL_I2CS_InterruptFlagsGet SERCOM1_I2CS_InterruptFlagsGet
-    #define BL_I2CS_TransferDirGet SERCOM1_I2CS_TransferDirGet
-    #define BL_I2CS_CommandSet SERCOM1_I2CS_CommandSet
-    #define BL_I2CS_ReadByte SERCOM1_I2CS_ReadByte
-    #define BL_I2CS_LastByteAckStatusGet SERCOM1_I2CS_LastByteAckStatusGet
-    #define BL_I2CS_InterruptFlagsClear SERCOM1_I2CS_InterruptFlagsClear
-    #define BL_I2CS_WriteByte SERCOM1_I2CS_WriteByte
+    #define BL_I2CS_Initialize SERCOM5_I2CS_Initialize
+    #define BL_I2CS_InterruptFlagsGet SERCOM5_I2CS_InterruptFlagsGet
+    #define BL_I2CS_TransferDirGet SERCOM5_I2CS_TransferDirGet
+    #define BL_I2CS_CommandSet SERCOM5_I2CS_CommandSet
+    #define BL_I2CS_ReadByte SERCOM5_I2CS_ReadByte
+    #define BL_I2CS_LastByteAckStatusGet SERCOM5_I2CS_LastByteAckStatusGet
+    #define BL_I2CS_InterruptFlagsClear SERCOM5_I2CS_InterruptFlagsClear
+    #define BL_I2CS_WriteByte SERCOM5_I2CS_WriteByte
     /* I2C Master */
-    #define BL_I2C_Initialize SERCOM1_I2C_Initialize
-    #define BL_I2C_WriteRead SERCOM1_I2C_WriteRead
-    #define BL_I2C_Write SERCOM1_I2C_Write
-    #define BL_I2C_Read SERCOM1_I2C_Read
-    #define BL_I2C_IsBusy SERCOM1_I2C_IsBusy
-    #define BL_I2C_ErrorGet SERCOM1_I2C_ErrorGet
+    #define BL_I2C_Initialize SERCOM5_I2C_Initialize
+    #define BL_I2C_WriteRead SERCOM5_I2C_WriteRead
+    #define BL_I2C_Write SERCOM5_I2C_Write
+    #define BL_I2C_Read SERCOM5_I2C_Read
+    #define BL_I2C_IsBusy SERCOM5_I2C_IsBusy
+    #define BL_I2C_ErrorGet SERCOM5_I2C_ErrorGet
 #endif
 
 #ifndef MXT_BL_CONFIG_H

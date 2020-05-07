@@ -19,16 +19,16 @@
           <Name dnOrder="1">initialization.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">F0ACA7D87E6883C7F6DD00FE7F8C3227</GeneratedChecksum>
-          <UserChecksum dnOrder="5">F0ACA7D87E6883C7F6DD00FE7F8C3227</UserChecksum>
+          <GeneratedChecksum dnOrder="4">5BCEB6ED354A613E13F4F4AD7E9EFC42</GeneratedChecksum>
+          <UserChecksum dnOrder="5">5BCEB6ED354A613E13F4F4AD7E9EFC42</UserChecksum>
         </File>
         <File dnOrder="2">
           <Type dnOrder="0">SOURCE</Type>
           <Name dnOrder="1">interrupts.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">0D404F0CCE38A5AFC8EB1607FF1B1ADC</GeneratedChecksum>
-          <UserChecksum dnOrder="5">0D404F0CCE38A5AFC8EB1607FF1B1ADC</UserChecksum>
+          <GeneratedChecksum dnOrder="4">EE6F91CAC7D8065A64DA506D252E151A</GeneratedChecksum>
+          <UserChecksum dnOrder="5">EE6F91CAC7D8065A64DA506D252E151A</UserChecksum>
         </File>
         <File dnOrder="3">
           <Type dnOrder="0">SOURCE</Type>
@@ -51,8 +51,8 @@
           <Name dnOrder="1">plib_clock.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/clock/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/clock/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">10F8212A2A1E7D6DF1AA9A881852C14B</GeneratedChecksum>
-          <UserChecksum dnOrder="5">10F8212A2A1E7D6DF1AA9A881852C14B</UserChecksum>
+          <GeneratedChecksum dnOrder="4">209D7EC27A34A283653AA12EA6777FAE</GeneratedChecksum>
+          <UserChecksum dnOrder="5">209D7EC27A34A283653AA12EA6777FAE</UserChecksum>
         </File>
         <File dnOrder="6">
           <Type dnOrder="0">SOURCE</Type>
@@ -67,8 +67,8 @@
           <Name dnOrder="1">plib_nvic.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/nvic/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/nvic/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">AF0033EC1C893C5A9E39C6FF1C08A617</GeneratedChecksum>
-          <UserChecksum dnOrder="5">AF0033EC1C893C5A9E39C6FF1C08A617</UserChecksum>
+          <GeneratedChecksum dnOrder="4">59AEAF4E1F46B4A0F5BD6C70A2AFFED0</GeneratedChecksum>
+          <UserChecksum dnOrder="5">59AEAF4E1F46B4A0F5BD6C70A2AFFED0</UserChecksum>
         </File>
         <File dnOrder="8">
           <Type dnOrder="0">SOURCE</Type>
@@ -83,16 +83,16 @@
           <Name dnOrder="1">plib_port.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/port/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/port/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">2F57C44ABF7499D967AA7A564B692DF5</GeneratedChecksum>
-          <UserChecksum dnOrder="5">2F57C44ABF7499D967AA7A564B692DF5</UserChecksum>
+          <GeneratedChecksum dnOrder="4">37F9281C0C1781D90537CC7886A4038E</GeneratedChecksum>
+          <UserChecksum dnOrder="5">37F9281C0C1781D90537CC7886A4038E</UserChecksum>
         </File>
         <File dnOrder="10">
           <Type dnOrder="0">SOURCE</Type>
-          <Name dnOrder="1">plib_sercom1_i2c_master.c</Name>
+          <Name dnOrder="1">plib_sercom5_i2c_master.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/sercom/i2c_master/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/sercom/i2c_master/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">A1F901475166B850B5646C6D17714605</GeneratedChecksum>
-          <UserChecksum dnOrder="5">A1F901475166B850B5646C6D17714605</UserChecksum>
+          <GeneratedChecksum dnOrder="4">327BDD6ED4E12A511BB8C908B942315B</GeneratedChecksum>
+          <UserChecksum dnOrder="5">327BDD6ED4E12A511BB8C908B942315B</UserChecksum>
         </File>
         <File dnOrder="11">
           <Type dnOrder="0">SOURCE</Type>
@@ -219,8 +219,8 @@
           <Name dnOrder="1">definitions.h</Name>
           <LogicalPath dnOrder="2">config/info4_board/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">94BC503C50E1D975144E0049ABF253DE</GeneratedChecksum>
-          <UserChecksum dnOrder="5">94BC503C50E1D975144E0049ABF253DE</UserChecksum>
+          <GeneratedChecksum dnOrder="4">D82745500F321CD58BB3DC1D533119F3</GeneratedChecksum>
+          <UserChecksum dnOrder="5">D82745500F321CD58BB3DC1D533119F3</UserChecksum>
         </File>
         <File dnOrder="27">
           <Type dnOrder="0">HEADER</Type>
@@ -363,16 +363,16 @@
           <Name dnOrder="1">plib_port.h</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/port/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/port/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">4AF5B0E4A359CD6D79BF4B5E59E3B5D7</GeneratedChecksum>
-          <UserChecksum dnOrder="5">4AF5B0E4A359CD6D79BF4B5E59E3B5D7</UserChecksum>
+          <GeneratedChecksum dnOrder="4">075704ED2E0866F0CBD7922066C3A182</GeneratedChecksum>
+          <UserChecksum dnOrder="5">075704ED2E0866F0CBD7922066C3A182</UserChecksum>
         </File>
         <File dnOrder="45">
           <Type dnOrder="0">HEADER</Type>
-          <Name dnOrder="1">plib_sercom1_i2c_master.h</Name>
+          <Name dnOrder="1">plib_sercom5_i2c_master.h</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/sercom/i2c_master/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/sercom/i2c_master/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">1030BC1CF8B7EFA12768A1B2D823302D</GeneratedChecksum>
-          <UserChecksum dnOrder="5">1030BC1CF8B7EFA12768A1B2D823302D</UserChecksum>
+          <GeneratedChecksum dnOrder="4">5AA00B2318653B49AE17A820AF830B2A</GeneratedChecksum>
+          <UserChecksum dnOrder="5">5AA00B2318653B49AE17A820AF830B2A</UserChecksum>
         </File>
         <File dnOrder="46">
           <Type dnOrder="0">HEADER</Type>
@@ -495,12 +495,12 @@
       </Settings>
     </Manifest>
     <Settings dnOrder="4">
-      <Setting dnOrder="0" key="CMSISPath" value=".\dev_packs\arm\CMSIS\5.6.0"/>
-      <Setting dnOrder="1" key="DFPPath" value=".\dev_packs\Microchip\SAMDA1_DFP\2.2.43\atdf\ATSAMDA1J16B.atdf"/>
+      <Setting dnOrder="0" key="CMSISPath" value="./dev_packs/arm/CMSIS/5.6.0"/>
+      <Setting dnOrder="1" key="DFPPath" value="./dev_packs/Microchip/SAMDA1_DFP/2.2.43/atdf/ATSAMDA1J16B.atdf"/>
       <Setting dnOrder="2" key="FORCE_OPTIMIZATION" value="false"/>
       <Setting dnOrder="3" key="GENERATE_BACKUP" value="true"/>
       <Setting dnOrder="4" key="MERGE_STRATEGY" value="USER_ALL"/>
-      <Setting dnOrder="5" key="PackageFilter" value="audio;aws_cloud;bootloader;bsp;bt;core;crypto;cryptoauthlib;cryptoauthlib_apps;csp;expresslogic_threadx;gfx;gfx_apps;micrium_ucos3;motor_control;net;touch;usb;wireless;"/>
+      <Setting dnOrder="5" key="PackageFilter" value="gfx;audio;aws_cloud;bootloader;bsp;bt;core;crypto;cryptoauthlib;cryptoauthlib_apps;csp;expresslogic_threadx;gfx_apps;micrium_ucos3;motor_control;net;touch;usb;wireless;"/>
     </Settings>
   </Configurator>
 </Configuration>

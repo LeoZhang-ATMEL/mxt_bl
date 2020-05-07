@@ -28,11 +28,11 @@
             <logicalFolder name="f1" displayName="sercom" projectFiles="true">
               <logicalFolder name="f1" displayName="i2c_master" projectFiles="true">
                 <itemPath>../src/config/info4_board/peripheral/sercom/i2c_master/plib_sercom_i2c_master_common.h</itemPath>
-                <itemPath>../src/config/info4_board/peripheral/sercom/i2c_master/plib_sercom1_i2c_master.h</itemPath>
+                <itemPath>../src/config/info4_board/peripheral/sercom/i2c_master/plib_sercom5_i2c_master.h</itemPath>
               </logicalFolder>
               <logicalFolder name="i2c_slave" displayName="i2c_slave" projectFiles="true">
                 <itemPath>../src/config/info4_board/peripheral/sercom/i2c_slave/plib_sercom_i2c_slave_common.h</itemPath>
-                <itemPath>../src/config/info4_board/peripheral/sercom/i2c_slave/plib_sercom1_i2c_slave.h</itemPath>
+                <itemPath>../src/config/info4_board/peripheral/sercom/i2c_slave/plib_sercom5_i2c_slave.h</itemPath>
               </logicalFolder>
             </logicalFolder>
             <logicalFolder name="f7" displayName="systick" projectFiles="true">
@@ -126,10 +126,10 @@
             </logicalFolder>
             <logicalFolder name="f1" displayName="sercom" projectFiles="true">
               <logicalFolder name="f1" displayName="i2c_master" projectFiles="true">
-                <itemPath>../src/config/info4_board/peripheral/sercom/i2c_master/plib_sercom1_i2c_master.c</itemPath>
+                <itemPath>../src/config/info4_board/peripheral/sercom/i2c_master/plib_sercom5_i2c_master.c</itemPath>
               </logicalFolder>
               <logicalFolder name="i2c_slave" displayName="i2c_slave" projectFiles="true">
-                <itemPath>../src/config/info4_board/peripheral/sercom/i2c_slave/plib_sercom1_i2c_slave.c</itemPath>
+                <itemPath>../src/config/info4_board/peripheral/sercom/i2c_slave/plib_sercom5_i2c_slave.c</itemPath>
               </logicalFolder>
             </logicalFolder>
             <logicalFolder name="f7" displayName="systick" projectFiles="true">
@@ -167,10 +167,10 @@
         <targetDevice>ATSAMDA1J16B</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>samice</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>2.30</languageToolchainVersion>
-        <platform>3</platform>
+        <platform>2</platform>
       </toolsSet>
       <packs>
         <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
@@ -185,7 +185,7 @@
         </archiverTool>
         <loading>
           <useAlternateLoadableFile>false</useAlternateLoadableFile>
-          <parseOnProdLoad>false</parseOnProdLoad>
+          <parseOnProdLoad>true</parseOnProdLoad>
           <alternateLoadableFile></alternateLoadableFile>
         </loading>
         <subordinates>
@@ -238,7 +238,7 @@
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
         <property key="make-warnings-into-errors" value="true"/>
-        <property key="optimization-level" value="-O1"/>
+        <property key="optimization-level" value=""/>
         <property key="place-data-into-section" value="true"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
@@ -883,7 +883,7 @@
         <platformTool>samice</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>2.30</languageToolchainVersion>
-        <platform>3</platform>
+        <platform>2</platform>
       </toolsSet>
       <packs>
         <pack name="SAMDA1_DFP" vendor="Microchip" version="2.2.52"/>
@@ -977,11 +977,11 @@
             ex="true"
             overriding="false">
       </item>
-      <item path="../src/config/info4_board/peripheral/sercom/i2c_master/plib_sercom1_i2c_master.c"
+      <item path="../src/config/info4_board/peripheral/sercom/i2c_master/plib_sercom5_i2c_master.c"
             ex="true"
             overriding="false">
       </item>
-      <item path="../src/config/info4_board/peripheral/sercom/i2c_master/plib_sercom1_i2c_master.h"
+      <item path="../src/config/info4_board/peripheral/sercom/i2c_master/plib_sercom5_i2c_master.h"
             ex="true"
             overriding="false">
       </item>

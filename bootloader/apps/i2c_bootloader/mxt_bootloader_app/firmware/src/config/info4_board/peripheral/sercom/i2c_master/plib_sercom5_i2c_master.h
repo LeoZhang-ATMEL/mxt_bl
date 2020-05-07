@@ -6,7 +6,7 @@
     Microchip Technology Inc.
 
   File Name:
-    plib_sercom1_i2c.h
+    plib_sercom5_i2c.h
 
   Summary:
     SERCOM I2C PLIB Header file
@@ -41,8 +41,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef PLIB_SERCOM1_I2C_H
-#define PLIB_SERCOM1_I2C_H
+#ifndef PLIB_SERCOM5_I2C_H
+#define PLIB_SERCOM5_I2C_H
 
 // *****************************************************************************
 // *****************************************************************************
@@ -75,7 +75,7 @@
 
 // *****************************************************************************
 /* Function:
-    void SERCOM1_I2C_Initialize(void)
+    void SERCOM5_I2C_Initialize(void)
 
   Summary:
     Initializes the instance of the SERCOM peripheral operating in I2C mode.
@@ -96,18 +96,18 @@
 
   Example:
     <code>
-        SERCOM1_I2C_Initialize();
+        SERCOM5_I2C_Initialize();
     </code>
 
   Remarks:
     Stops the SERCOM I2C if it was already running and reinitializes it.
 */
 
-void SERCOM1_I2C_Initialize(void);
+void SERCOM5_I2C_Initialize(void);
 
 // *****************************************************************************
 /* Function:
-    bool SERCOM1_I2C_Read(uint16_t address, uint8_t *pdata,
+    bool SERCOM5_I2C_Read(uint16_t address, uint8_t *pdata,
                                                                  uint32_t length)
 
   Summary:
@@ -120,7 +120,7 @@ void SERCOM1_I2C_Initialize(void);
     read the data and then generate a Stop Condition. If the Master lost
     arbitration, then the library will attempt to regain the control of the bus.
     If the slave NAKs the request or a bus error is encountered on the bus, the
-    transfer is terminated. The application can call SERCOM1_I2C_ErrorGet()
+    transfer is terminated. The application can call SERCOM5_I2C_ErrorGet()
     function to know that cause of the error.
 
     The function is non-blocking. It initiates bus activity and returns
@@ -133,7 +133,7 @@ void SERCOM1_I2C_Initialize(void);
     terminated if callback is registered.
 
   Precondition:
-    SERCOM1_I2C_Initialize must have been called for the associated
+    SERCOM5_I2C_Initialize must have been called for the associated
     SERCOM I2C instance. At least one TRB should be available.
 
   Parameters:
@@ -162,10 +162,10 @@ void SERCOM1_I2C_Initialize(void);
             // that this functioin executes in the context of the I2C interrupt.
         }
 
-        SERCOM1_I2C_Initialize();
-        SERCOM1_I2C_CallbackRegister(MyI2CCallback, NULL);
+        SERCOM5_I2C_Initialize();
+        SERCOM5_I2C_CallbackRegister(MyI2CCallback, NULL);
 
-        if(!SERCOM1_I2C_Read( SLAVE_ADDR, &myData[0], NUM_BYTES ))
+        if(!SERCOM5_I2C_Read( SLAVE_ADDR, &myData[0], NUM_BYTES ))
         {
             // error handling
         }
@@ -177,11 +177,11 @@ void SERCOM1_I2C_Initialize(void);
     None.
 */
 
-bool SERCOM1_I2C_Read(uint16_t address, uint8_t *pdata, uint32_t length);
+bool SERCOM5_I2C_Read(uint16_t address, uint8_t *pdata, uint32_t length);
 
 // *****************************************************************************
 /* Function:
-    bool SERCOM1_I2C_Write(uint16_t address, uint8_t *pdata,
+    bool SERCOM5_I2C_Write(uint16_t address, uint8_t *pdata,
                                                                  uint32_t length)
 
   Summary:
@@ -195,7 +195,7 @@ bool SERCOM1_I2C_Read(uint16_t address, uint8_t *pdata, uint32_t length);
     arbitration, then the library will attempt to regain the control of the bus.
     If the slave NAKs the request or a bus error was encountered on the bus, the
     transfer is terminated. The application can call the
-    SERCOM1_I2C_ErrorGet()
+    SERCOM5_I2C_ErrorGet()
     function to know that cause of the error.
 
     The function is non-blocking. It initiates bus activity and returns
@@ -208,7 +208,7 @@ bool SERCOM1_I2C_Read(uint16_t address, uint8_t *pdata, uint32_t length);
     terminated.
 
   Precondition:
-    SERCOM1_I2C_Initialize must have been called for the associated
+    SERCOM5_I2C_Initialize must have been called for the associated
     SERCOM I2C instance.  At least one TRB should be available.
 
   Parameters:
@@ -236,10 +236,10 @@ bool SERCOM1_I2C_Read(uint16_t address, uint8_t *pdata, uint32_t length);
             // that this functioin executes in the context of the I2C interrupt.
         }
 
-        SERCOM1_I2C_Initialize();
-        SERCOM1_I2C_CallbackRegister(MyI2CCallback, NULL);
+        SERCOM5_I2C_Initialize();
+        SERCOM5_I2C_CallbackRegister(MyI2CCallback, NULL);
 
-        if(!SERCOM1_I2C_Read( SLAVE_ADDR, &myData[0], NUM_BYTES ))
+        if(!SERCOM5_I2C_Read( SLAVE_ADDR, &myData[0], NUM_BYTES ))
         {
             // error handling
         }
@@ -250,11 +250,11 @@ bool SERCOM1_I2C_Read(uint16_t address, uint8_t *pdata, uint32_t length);
     None.
 */
 
-bool SERCOM1_I2C_Write(uint16_t address, uint8_t *pdata, uint32_t length);
+bool SERCOM5_I2C_Write(uint16_t address, uint8_t *pdata, uint32_t length);
 
 // *****************************************************************************
 /* Function:
-    bool SERCOM1_I2C_WriteRead(uint16_t address, uint8_t *wdata,
+    bool SERCOM5_I2C_WriteRead(uint16_t address, uint8_t *wdata,
                                uint32_t wlength, uint8_t *rdata, uint32_t rlength)
 
   Summary:
@@ -272,7 +272,7 @@ bool SERCOM1_I2C_Write(uint16_t address, uint8_t *pdata, uint32_t length);
     If the Master lost arbitration, then the library will attempt to regain the
     control of the bus.  If the slave NAKs the request or a bus error was
     encountered on the bus, the transfer is terminated. The application can call
-    SERCOM1_I2C_ErrorGet()function to know that cause of the error.
+    SERCOM5_I2C_ErrorGet()function to know that cause of the error.
 
     The function is non-blocking. It initiates bus activity and returns
     immediately. The transfer is then completed in the peripheral interrupt. A
@@ -284,7 +284,7 @@ bool SERCOM1_I2C_Write(uint16_t address, uint8_t *pdata, uint32_t length);
     terminated.
 
   Precondition:
-    SERCOM1_I2C_Initialize must have been called for the associated
+    SERCOM5_I2C_Initialize must have been called for the associated
     SERCOM I2C instance.  A minimum of two TRB's should be available.
 
   Parameters:
@@ -316,9 +316,9 @@ bool SERCOM1_I2C_Write(uint16_t address, uint8_t *pdata, uint32_t length);
             // that this functioin executes in the context of the I2C interrupt.
         }
 
-        SERCOM1_I2C_Initialize();
-        SERCOM1_I2C_CallbackRegister(MyI2CCallback, NULL);
-        if(!SERCOM1_I2C_WriteRead( SLAVE_ADDR, &myTxData[0], NUM_BYTES, myRxData, NUM_BYTES ))
+        SERCOM5_I2C_Initialize();
+        SERCOM5_I2C_CallbackRegister(MyI2CCallback, NULL);
+        if(!SERCOM5_I2C_WriteRead( SLAVE_ADDR, &myTxData[0], NUM_BYTES, myRxData, NUM_BYTES ))
         {
             // error handling
         }
@@ -327,33 +327,33 @@ bool SERCOM1_I2C_Write(uint16_t address, uint8_t *pdata, uint32_t length);
     </code>
 
   Remarks:
-    Calling this function is not the same as calling the SERCOM1_I2C_Write()
-    function and then calling the SERCOM1_I2C_Read() function.
-    The SERCOM1_I2C_WriteRead function will insert a Repeated Start
-    condition between the Write and the Read stages. The SERCOM1_I2C_Write()
-    and the SERCOM1_I2C_Read() function insert a stop condtion after
+    Calling this function is not the same as calling the SERCOM5_I2C_Write()
+    function and then calling the SERCOM5_I2C_Read() function.
+    The SERCOM5_I2C_WriteRead function will insert a Repeated Start
+    condition between the Write and the Read stages. The SERCOM5_I2C_Write()
+    and the SERCOM5_I2C_Read() function insert a stop condtion after
     the write and the read has completed.
 */
 
-bool SERCOM1_I2C_WriteRead(uint16_t address, uint8_t *wdata, uint32_t wlength, uint8_t *rdata, uint32_t rlength);
+bool SERCOM5_I2C_WriteRead(uint16_t address, uint8_t *wdata, uint32_t wlength, uint8_t *rdata, uint32_t rlength);
 
 
 // *****************************************************************************
 /* Function:
-    bool SERCOM1_I2C_IsBusy(void)
+    bool SERCOM5_I2C_IsBusy(void)
 
   Summary:
     Returns the Peripheral busy status.
 
   Description:
-    This function ture if the SERCOM SERCOM1I2C module is busy with a
+    This function ture if the SERCOM SERCOM5I2C module is busy with a
     transfer. The application can use the function to check if SERCOM
-    SERCOM1I2C module is busy before calling any of the data transfer
+    SERCOM5I2C module is busy before calling any of the data transfer
     functions. The library does not allow a data transfer operation if another
     transfer operation is already in progress.
 
   Precondition:
-    SERCOM1_I2C_Initialize must have been called for the
+    SERCOM5_I2C_Initialize must have been called for the
     associated SERCOM instance.
 
   Parameters:
@@ -368,10 +368,10 @@ bool SERCOM1_I2C_WriteRead(uint16_t address, uint8_t *wdata, uint32_t wlength, u
         uint8_t myData [NUM_BYTES] = {'1', '0', ' ', 'B', 'Y', 'T', 'E', 'S', '!', '!'};
 
         // wait for the current transfer to complete
-        while(SERCOM1_I2C_IsBusy( ));
+        while(SERCOM5_I2C_IsBusy( ));
 
         // perform the next transfer
-        if(!SERCOM1_I2C_Write( SLAVE_ADDR, &myData[0], NUM_BYTES ))
+        if(!SERCOM5_I2C_Write( SLAVE_ADDR, &myData[0], NUM_BYTES ))
         {
             // error handling
         }
@@ -382,11 +382,11 @@ bool SERCOM1_I2C_WriteRead(uint16_t address, uint8_t *wdata, uint32_t wlength, u
     None.
 */
 
-bool SERCOM1_I2C_IsBusy(void);
+bool SERCOM5_I2C_IsBusy(void);
 
 // *****************************************************************************
 /* Function:
-    SERCOM_I2C_ERROR SERCOM1_I2C_ErrorGet(void)
+    SERCOM_I2C_ERROR SERCOM5_I2C_ErrorGet(void)
 
   Summary:
     Returns the latest error that occurred on the bus.
@@ -396,7 +396,7 @@ bool SERCOM1_I2C_IsBusy(void);
     function can be called to identify the error cause.
 
   Precondition:
-    SERCOM1_I2C_Initialize must have been called for the
+    SERCOM5_I2C_Initialize must have been called for the
     associated SERCOM I2C instance.
 
   Parameters:
@@ -410,11 +410,11 @@ bool SERCOM1_I2C_IsBusy(void);
     None.
 */
 
-SERCOM_I2C_ERROR SERCOM1_I2C_ErrorGet(void);
+SERCOM_I2C_ERROR SERCOM5_I2C_ErrorGet(void);
 
 // *****************************************************************************
 /* Function:
-    void SERCOM1_I2C_CallbackRegister(SERCOM_I2C_CALLBACK callback,
+    void SERCOM5_I2C_CallbackRegister(SERCOM_I2C_CALLBACK callback,
                                                               uintptr_t context)
 
    Summary:
@@ -429,7 +429,7 @@ SERCOM_I2C_ERROR SERCOM1_I2C_ErrorGet(void);
     peripheral interrupt context.
 
   Precondition:
-    SERCOM1_I2C_Initialize must have been called for the associated
+    SERCOM5_I2C_Initialize must have been called for the associated
     SERCOM I2C instance.
 
   Parameters:
@@ -453,17 +453,17 @@ SERCOM_I2C_ERROR SERCOM1_I2C_ErrorGet(void);
     None.
 */
 
-void SERCOM1_I2C_CallbackRegister(SERCOM_I2C_CALLBACK callback, uintptr_t contextHandle);
+void SERCOM5_I2C_CallbackRegister(SERCOM_I2C_CALLBACK callback, uintptr_t contextHandle);
 
 // *****************************************************************************
 /* Function:
-    bool SERCOM1_TransferSetup(SERCOM_I2C_TRANSFER_SETUP* setup, uint32_t srcClkFreq)
+    bool SERCOM5_TransferSetup(SERCOM_I2C_TRANSFER_SETUP* setup, uint32_t srcClkFreq)
 
    Summary:
     Dynamic setup of TWIHS Peripheral.
 
    Precondition:
-    SERCOM1_Initialize must have been called for the associated SERCOM I2C instance.
+    SERCOM5_Initialize must have been called for the associated SERCOM I2C instance.
 	The transfer status should not be busy.
 	
    Parameters:
@@ -482,9 +482,9 @@ void SERCOM1_I2C_CallbackRegister(SERCOM_I2C_CALLBACK callback, uintptr_t contex
     setup.clkSpeed = 400000;
     
     // Make sure that the I2C is not busy before changing the I2C clock frequency
-    if (SERCOM1_I2C_IsBusy() == false)
+    if (SERCOM5_I2C_IsBusy() == false)
     {
-        if (SERCOM1_I2C_TransferSetup( &setup, 0 ) == true)
+        if (SERCOM5_I2C_TransferSetup( &setup, 0 ) == true)
         {
             // Transfer Setup updated successfully
         }
@@ -496,7 +496,7 @@ void SERCOM1_I2C_CallbackRegister(SERCOM_I2C_CALLBACK callback, uintptr_t contex
     If configured to zero PLib takes the peripheral clock frequency from MHC.
 */
 
-bool SERCOM1_I2C_TransferSetup(SERCOM_I2C_TRANSFER_SETUP* setup, uint32_t srcClkFreq );
+bool SERCOM5_I2C_TransferSetup(SERCOM_I2C_TRANSFER_SETUP* setup, uint32_t srcClkFreq );
 
 
 // DOM-IGNORE-BEGIN
@@ -505,4 +505,4 @@ bool SERCOM1_I2C_TransferSetup(SERCOM_I2C_TRANSFER_SETUP* setup, uint32_t srcClk
 #endif
 // DOM-IGNORE-END
 
-#endif /* PLIB_SERCOM1_I2C_H */
+#endif /* PLIB_SERCOM5_I2C_H */

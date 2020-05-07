@@ -109,11 +109,11 @@ void SYS_Initialize ( void* data )
 
     NVMCTRL_Initialize( );
 
-    SERCOM1_I2C_Initialize();
-
     EVSYS_Initialize();
 
 	SYSTICK_TimerInitialize();
+    SERCOM5_I2C_Initialize();
+
 
 
 

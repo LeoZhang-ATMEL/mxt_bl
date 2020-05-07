@@ -1,19 +1,21 @@
 /*******************************************************************************
-  System Exceptions File
+  Serial Communication Interface Inter-Integrated Circuit (SERCOM I2C) Library
+  Instance Header File
+
+  Company:
+    Microchip Technology Inc.
 
   File Name:
-    exceptions.c
+    plib_sercom5_i2c_slave.h
 
   Summary:
-    This file contains a function which overrides the default _weak_ exception
-    handlers provided by the interrupt.c file.
+    SERCOM I2C Slave PLIB Header file
 
   Description:
-    This file redefines the default _weak_  exception handler with a more debug
-    friendly one. If an unexpected exception occurs the code will stop in a
-    while(1) loop.
- *******************************************************************************/
-
+    This file defines the interface to the SERCOM I2C peripheral library. This
+    library provides access to and control of the associated peripheral
+    instance.
+*******************************************************************************/
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
@@ -39,42 +41,42 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
+#ifndef PLIB_SERCOM5_I2CS_SLAVE_H
+#define PLIB_SERCOM5_I2CS_SLAVE_H
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-#include "definitions.h"
+/* This section lists the other files that are included in this file.
+*/
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: Exception Handling Routine
-// *****************************************************************************
-// *****************************************************************************
+#include "plib_sercom_i2c_slave_common.h"
 
-/* Brief default interrupt handlers for core IRQs.*/
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus // Provide C++ Compatibility
 
-void NonMaskableInt_Handler(void)
-{
-#if defined(__DEBUG) || defined(__DEBUG_D) && defined(__XC32)
-    __builtin_software_breakpoint();
+    extern "C" {
+
 #endif
-    while (1)
-    {
-    }
-}
+// DOM-IGNORE-END
 
-void HardFault_Handler(void)
-{
-#if defined(__DEBUG) || defined(__DEBUG_D) && defined(__XC32)
-   __builtin_software_breakpoint();
+void SERCOM5_I2CS_Initialize(void);
+SERCOM_I2C_SLAVE_INTFLAG SERCOM5_I2CS_InterruptFlagsGet(void);
+void SERCOM5_I2CS_InterruptFlagsClear(SERCOM_I2C_SLAVE_INTFLAG intFlags);
+uint8_t SERCOM5_I2CS_ReadByte(void);
+void SERCOM5_I2CS_WriteByte(uint8_t wrByte);
+SERCOM_I2C_SLAVE_ERROR SERCOM5_I2CS_ErrorGet(void);
+SERCOM_I2C_SLAVE_TRANSFER_DIR SERCOM5_I2CS_TransferDirGet(void);
+SERCOM_I2C_SLAVE_ACK_STATUS SERCOM5_I2CS_LastByteAckStatusGet(void);
+void SERCOM5_I2CS_CommandSet(SERCOM_I2C_SLAVE_COMMAND command);
+
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+}
 #endif
-   while (1)
-   {
-   }
-}
+// DOM-IGNORE-END
 
-/*******************************************************************************
- End of File
- */
-
+#endif /* PLIB_SERCOM5_I2CS_SLAVE_H */
