@@ -59,8 +59,8 @@
           <Name dnOrder="1">plib_nvic.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/nvic/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/nvic/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">59AEAF4E1F46B4A0F5BD6C70A2AFFED0</GeneratedChecksum>
-          <UserChecksum dnOrder="5">59AEAF4E1F46B4A0F5BD6C70A2AFFED0</UserChecksum>
+          <GeneratedChecksum dnOrder="4">D0684B5522FCD6E33EAAF787D58818BE</GeneratedChecksum>
+          <UserChecksum dnOrder="5">D0684B5522FCD6E33EAAF787D58818BE</UserChecksum>
         </File>
         <File dnOrder="7">
           <Type dnOrder="0">SOURCE</Type>
@@ -83,8 +83,8 @@
           <Name dnOrder="1">plib_port.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/port/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/port/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">04F349F623B9EE934FC73230669CAF50</GeneratedChecksum>
-          <UserChecksum dnOrder="5">04F349F623B9EE934FC73230669CAF50</UserChecksum>
+          <GeneratedChecksum dnOrder="4">F379EA649FB0B85BEDD5846357652CC3</GeneratedChecksum>
+          <UserChecksum dnOrder="5">F379EA649FB0B85BEDD5846357652CC3</UserChecksum>
         </File>
         <File dnOrder="10">
           <Type dnOrder="0">SOURCE</Type>
