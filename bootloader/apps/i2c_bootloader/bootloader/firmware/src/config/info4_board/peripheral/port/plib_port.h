@@ -67,6 +67,42 @@
 
 
 
+/*** Macros for PMIC_FAULT pin ***/
+#define PMIC_FAULT_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = 1 << 22)
+#define PMIC_FAULT_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = 1 << 22)
+#define PMIC_FAULT_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = 1 << 22)
+#define PMIC_FAULT_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 22)) & 0x01)
+#define PMIC_FAULT_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = 1 << 22)
+#define PMIC_FAULT_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = 1 << 22)
+#define PMIC_FAULT_PIN                  PORT_PIN_PB22
+
+/*** Macros for POWER_3_3V pin ***/
+#define POWER_3_3V_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = 1 << 23)
+#define POWER_3_3V_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = 1 << 23)
+#define POWER_3_3V_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = 1 << 23)
+#define POWER_3_3V_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 23)) & 0x01)
+#define POWER_3_3V_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = 1 << 23)
+#define POWER_3_3V_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = 1 << 23)
+#define POWER_3_3V_PIN                  PORT_PIN_PB23
+
+/*** Macros for PMIC_EN pin ***/
+#define PMIC_EN_Set()               (PORT_REGS->GROUP[0].PORT_OUTSET = 1 << 27)
+#define PMIC_EN_Clear()             (PORT_REGS->GROUP[0].PORT_OUTCLR = 1 << 27)
+#define PMIC_EN_Toggle()            (PORT_REGS->GROUP[0].PORT_OUTTGL = 1 << 27)
+#define PMIC_EN_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 27)) & 0x01)
+#define PMIC_EN_OutputEnable()      (PORT_REGS->GROUP[0].PORT_DIRSET = 1 << 27)
+#define PMIC_EN_InputEnable()       (PORT_REGS->GROUP[0].PORT_DIRCLR = 1 << 27)
+#define PMIC_EN_PIN                  PORT_PIN_PA27
+
+/*** Macros for POWER_5V pin ***/
+#define POWER_5V_Set()               (PORT_REGS->GROUP[0].PORT_OUTSET = 1 << 28)
+#define POWER_5V_Clear()             (PORT_REGS->GROUP[0].PORT_OUTCLR = 1 << 28)
+#define POWER_5V_Toggle()            (PORT_REGS->GROUP[0].PORT_OUTTGL = 1 << 28)
+#define POWER_5V_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 28)) & 0x01)
+#define POWER_5V_OutputEnable()      (PORT_REGS->GROUP[0].PORT_DIRSET = 1 << 28)
+#define POWER_5V_InputEnable()       (PORT_REGS->GROUP[0].PORT_DIRCLR = 1 << 28)
+#define POWER_5V_PIN                  PORT_PIN_PA28
+
 
 
 // *****************************************************************************
