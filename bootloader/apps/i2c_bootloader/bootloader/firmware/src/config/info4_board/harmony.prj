@@ -35,8 +35,8 @@
           <Name dnOrder="1">plib_clock.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/clock/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/clock/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">2ACA898B15CB2A3F20E09B46B2E8E2DD</GeneratedChecksum>
-          <UserChecksum dnOrder="5">2ACA898B15CB2A3F20E09B46B2E8E2DD</UserChecksum>
+          <GeneratedChecksum dnOrder="4">0C16CDD8FE66A19A7936C4D772F3A816</GeneratedChecksum>
+          <UserChecksum dnOrder="5">0C16CDD8FE66A19A7936C4D772F3A816</UserChecksum>
         </File>
         <File dnOrder="4">
           <Type dnOrder="0">SOURCE</Type>
@@ -59,8 +59,8 @@
           <Name dnOrder="1">plib_nvic.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/nvic/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/nvic/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">D0684B5522FCD6E33EAAF787D58818BE</GeneratedChecksum>
-          <UserChecksum dnOrder="5">D0684B5522FCD6E33EAAF787D58818BE</UserChecksum>
+          <GeneratedChecksum dnOrder="4">59AEAF4E1F46B4A0F5BD6C70A2AFFED0</GeneratedChecksum>
+          <UserChecksum dnOrder="5">59AEAF4E1F46B4A0F5BD6C70A2AFFED0</UserChecksum>
         </File>
         <File dnOrder="7">
           <Type dnOrder="0">SOURCE</Type>
