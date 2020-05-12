@@ -22,19 +22,25 @@ mXT1067TDAT_0x3D_1.0.AA_PROD.bin
 |-----|-----|-----|
 |EXT3-PA08 | EXT1-PA08 | MXT/SDA   |
 |EXT3-PA09 | EXT1-PA09 | MXT/SCL   |
-|EXT3-PB17 | EXT3-PA02 |           |
-|          | EXT1-PB06 | MXT/CHG   |
-|          | EXT1-PB07 | MXT/RESET |
+|EXT3-PA02 | EXT3-PA02 |           |
+|          | EXT3-PA12 | MXT/CHG   |
+|          | EXT3-PA13 | MXT/RESET |
 
+|SAMD21-XPRO|INFO4-Board|mXTouch1067-EVB|
+|-----|-----|-----|
+|EXT3-PA08 | PB16 | MXT/SDA   |
+|EXT3-PA09 | PB17 | MXT/SCL   |
+|EXT3-PA02 | PA02 |           |
+|          | PB04 | MXT/CHG   |
+|          | PA03 | MXT/RESET |
 
 2. Wired connect between SAMA5D27-SOM1-EK, ATSAMDA1-XPRO and mXTouch1067-EVB
-```python
-MBus1/SDA <--> PA08 <--> MXT/SDA
-MBus1/SCL <--> PA09 <--> MXT/SCL
-MBus1/INT <--- PA02
-               PB06 <--- MXT/CHG
-               PB07 ---> MXT/RESET
-```
+|MBus1/SDA | EXT1-PA08 | MXT/SDA   |
+|MBus1/SCL | EXT1-PA09 | MXT/SCL   |
+|MBus1/INT | EXT3-PA02 |           |
+|          | EXT3-PA12 | MXT/CHG   |
+|          | EXT3-PA13 | MXT/RESET |
+
 3. Wired connect between SAMA5D27-SOM1-EK, INFO4 Board and mXTouch1067-EVB
 ```python
 MBus1/SDA <--> PA00 <--> MXT/SDA
