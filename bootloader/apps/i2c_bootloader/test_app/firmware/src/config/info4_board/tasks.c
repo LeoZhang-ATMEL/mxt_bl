@@ -1,24 +1,27 @@
 /*******************************************************************************
-  Main Source File
-
-  Company:
-    Microchip Technology Inc.
+ System Tasks File
 
   File Name:
-    main.c
+    tasks.c
 
   Summary:
-    This file contains the "main" function for a project.
+    This file contains source code necessary to maintain system's polled tasks.
 
   Description:
-    This file contains the "main" function for a project.  The
-    "main" function calls the "SYS_Initialize" function to initialize the state
-    machines of all modules in the system
+    This file contains source code necessary to maintain system's polled tasks.
+    It implements the "SYS_Tasks" function that calls the individual "Tasks"
+    functions for all polled MPLAB Harmony modules in the system.
+
+  Remarks:
+    This file requires access to the systemObjects global data structure that
+    contains the object handles to all MPLAB Harmony module objects executing
+    polled in the system.  These handles are passed into the individual module
+    "Tasks" functions to identify the instance of the module to maintain.
  *******************************************************************************/
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -47,36 +50,44 @@
 // *****************************************************************************
 // *****************************************************************************
 
-#include <stddef.h>                     // Defines NULL
-#include <stdbool.h>                    // Defines true
-#include <stdlib.h>                     // Defines EXIT_FAILURE
-#include "definitions.h"                // SYS function prototypes
+#include "configuration.h"
+#include "definitions.h"
+
+
 
 // *****************************************************************************
 // *****************************************************************************
-// Section: Main Entry Point
+// Section: System "Tasks" Routine
 // *****************************************************************************
 // *****************************************************************************
 
-int main ( void )
+/*******************************************************************************
+  Function:
+    void SYS_Tasks ( void )
+
+  Remarks:
+    See prototype in system/common/sys_module.h.
+*/
+void SYS_Tasks ( void )
 {
-    /* Initialize all modules */
-    SYS_Initialize ( NULL );
+    /* Maintain system services */
+    
 
-    INT_MCU_Clear();
-    while ( true )
-    {
-        /* Maintain state machines of all polled MPLAB Harmony modules. */
-        SYS_Tasks ( );
-    }
+    /* Maintain Device Drivers */
+    
 
-    /* Execution should not come here during normal operation */
+    /* Maintain Middleware & Other Libraries */
+    
 
-    return ( EXIT_FAILURE );
+    /* Maintain the application's state machine. */
+        /* Call Application task APP_INFO4. */
+    APP_INFO4_Tasks();
+
+
+
 }
-
 
 /*******************************************************************************
  End of File
-*/
+ */
 

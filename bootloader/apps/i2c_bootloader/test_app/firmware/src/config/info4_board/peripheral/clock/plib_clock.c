@@ -86,16 +86,34 @@ static void GCLK0_Initialize(void)
     }
 }
 
+
+static void GCLK4_Initialize(void)
+{
+    GCLK_REGS->GCLK_GENCTRL = GCLK_GENCTRL_SRC(3) | GCLK_GENCTRL_RUNSTDBY_Msk | GCLK_GENCTRL_OE_Msk | GCLK_GENCTRL_GENEN_Msk | GCLK_GENCTRL_ID(4);
+
+    GCLK_REGS->GCLK_GENDIV = GCLK_GENDIV_DIV(255) | GCLK_GENDIV_ID(4);
+    while((GCLK_REGS->GCLK_STATUS & GCLK_STATUS_SYNCBUSY_Msk) == GCLK_STATUS_SYNCBUSY_Msk)
+    {
+        /* wait for the Generator 4 synchronization */
+    }
+}
+
 void CLOCK_Initialize (void)
 {
     /* Function to Initialize the Oscillators */
     SYSCTRL_Initialize();
 
+    GCLK4_Initialize();
     DFLL_Initialize();
     GCLK0_Initialize();
 
 
+    /* Selection of the Generator and write Lock for SERCOM5_CORE */
+    GCLK_REGS->GCLK_CLKCTRL = GCLK_CLKCTRL_ID(25) | GCLK_CLKCTRL_GEN(0x0)  | GCLK_CLKCTRL_CLKEN_Msk;
     
+    /* Configure the APBC Bridge Clocks */
+    PM_REGS->PM_APBCMASK = 0x10080;
+
 
     /*Disable RC oscillator*/
     SYSCTRL_REGS->SYSCTRL_OSC8M = 0x0;
