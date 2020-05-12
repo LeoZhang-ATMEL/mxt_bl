@@ -307,62 +307,62 @@ static void BL_I2C_EventsProcess(void)
 {
     static bool isFirstRxByte;
     static bool transferDir;
-    SERCOM_I2C_SLAVE_INTFLAG intFlags = SERCOM1_I2C_InterruptFlagsGet();
+    SERCOM_I2C_SLAVE_INTFLAG intFlags = SERCOM5_I2C_InterruptFlagsGet();
 
     if (intFlags & SERCOM_I2C_SLAVE_INTFLAG_AMATCH)
     {
         isFirstRxByte = true;
 
-        transferDir = SERCOM1_I2C_TransferDirGet();
+        transferDir = SERCOM5_I2C_TransferDirGet();
 
         /* Reset the I2C read state machine */
         blProtocol.rdState = BL_I2C_READ_COMMAND;
 
         if (IS_BIT_SET(blProtocol.status, BL_STATUS_BIT_BUSY))
         {
-            SERCOM1_I2C_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_NAK);
+            SERCOM5_I2C_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_NAK);
         }
         else
         {
-            SERCOM1_I2C_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_ACK);
+            SERCOM5_I2C_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_ACK);
         }
     }
     else if (intFlags & SERCOM_I2C_SLAVE_INTFLAG_DRDY)
     {
         if (transferDir == SERCOM_I2C_SLAVE_TRANSFER_DIR_WRITE)
         {
-            if (BL_I2CMasterWriteHandler(SERCOM1_I2C_ReadByte()) == true)
+            if (BL_I2CMasterWriteHandler(SERCOM5_I2C_ReadByte()) == true)
             {
-                SERCOM1_I2C_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_ACK);
+                SERCOM5_I2C_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_ACK);
             }
             else
             {
-                SERCOM1_I2C_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_NAK);
+                SERCOM5_I2C_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_NAK);
             }
         }
         else
         {
-            if ((isFirstRxByte == true) || (SERCOM1_I2C_LastByteAckStatusGet() == SERCOM_I2C_SLAVE_ACK_STATUS_RECEIVED_ACK))
+            if ((isFirstRxByte == true) || (SERCOM5_I2C_LastByteAckStatusGet() == SERCOM_I2C_SLAVE_ACK_STATUS_RECEIVED_ACK))
             {
-                SERCOM1_I2C_WriteByte(blProtocol.status);
+                SERCOM5_I2C_WriteByte(blProtocol.status);
 
                 /* Clear all status bits except the busy bit */
                 CLR_BIT(blProtocol.status, (BL_STATUS_BIT_ALL & ~(BL_STATUS_BIT_BUSY)));
 
                 isFirstRxByte = false;
 
-                SERCOM1_I2C_CommandSet(SERCOM_I2C_SLAVE_COMMAND_RECEIVE_ACK_NAK);
+                SERCOM5_I2C_CommandSet(SERCOM_I2C_SLAVE_COMMAND_RECEIVE_ACK_NAK);
             }
             else
             {
-                SERCOM1_I2C_CommandSet(SERCOM_I2C_SLAVE_COMMAND_WAIT_FOR_START);
+                SERCOM5_I2C_CommandSet(SERCOM_I2C_SLAVE_COMMAND_WAIT_FOR_START);
             }
         }
 
     }
     else if (intFlags & SERCOM_I2C_SLAVE_INTFLAG_PREC)
     {
-        SERCOM1_I2C_InterruptFlagsClear(SERCOM_I2C_SLAVE_INTFLAG_PREC);
+        SERCOM5_I2C_InterruptFlagsClear(SERCOM_I2C_SLAVE_INTFLAG_PREC);
     }
 }
 
@@ -423,7 +423,7 @@ static void BL_FlashSM(void)
 
         case BL_FLASH_STATE_RESET:
             /* Wait for the I2C transfer to complete */
-            while (!(SERCOM1_I2C_InterruptFlagsGet() & SERCOM_I2C_SLAVE_INTFLAG_PREC));
+            while (!(SERCOM5_I2C_InterruptFlagsGet() & SERCOM_I2C_SLAVE_INTFLAG_PREC));
             NVIC_SystemReset();
             break;
 

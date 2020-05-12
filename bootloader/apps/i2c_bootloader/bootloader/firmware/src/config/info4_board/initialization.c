@@ -99,9 +99,9 @@ void SYS_Initialize ( void* data )
 
     NVMCTRL_Initialize( );
 
-    SERCOM1_I2C_Initialize();
-
     EVSYS_Initialize();
+
+    SERCOM5_I2C_Initialize();
 
 
 }

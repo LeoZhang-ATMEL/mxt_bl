@@ -49,12 +49,12 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include "peripheral/nvmctrl/plib_nvmctrl.h"
-#include "peripheral/sercom/i2c_slave/plib_sercom1_i2c_slave.h"
 #include "peripheral/evsys/plib_evsys.h"
 #include "peripheral/port/plib_port.h"
 #include "peripheral/clock/plib_clock.h"
 #include "peripheral/nvic/plib_nvic.h"
 #include "peripheral/pac/plib_pac.h"
+#include "peripheral/sercom/i2c_slave/plib_sercom5_i2c_slave.h"
 #include "bootloader/bootloader.h"
 #include "peripheral/dsu/plib_dsu.h"
 

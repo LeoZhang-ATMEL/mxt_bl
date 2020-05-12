@@ -1,26 +1,24 @@
 /*******************************************************************************
-  Cortex-M L1 Cache Header
+  Serial Communication Interface Inter-Integrated Circuit (SERCOM I2C) Library
+  Instance Header File
+
+  Company:
+    Microchip Technology Inc.
 
   File Name:
-    device_cache.h
+    plib_sercom5_i2c_slave.h
 
   Summary:
-    Preprocessor definitions to provide L1 Cache control.
+    SERCOM I2C Slave PLIB Header file
 
   Description:
-    An MPLAB PLIB or Project can include this header to perform cache cleans,
-    invalidates etc. For the DCache and ICache.
-
-  Remarks:
-    This header should not define any prototypes or data definitions, or
-    include any files that do.  The file only provides macro definitions for
-    build-time.
-
+    This file defines the interface to the SERCOM I2C peripheral library. This
+    library provides access to and control of the associated peripheral
+    instance.
 *******************************************************************************/
-
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -43,54 +41,42 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef DEVICE_CACHE_H
-#define DEVICE_CACHE_H
+#ifndef PLIB_SERCOM5_I2C_SLAVE_H
+#define PLIB_SERCOM5_I2C_SLAVE_H
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-/*  This section Includes other configuration headers necessary to completely
-    define this configuration.
+/* This section lists the other files that are included in this file.
 */
 
-#include "device.h"
+#include "plib_sercom_i2c_slave_common.h"
 
 // DOM-IGNORE-BEGIN
-#ifdef __cplusplus  // Provide C++ Compatibility
+#ifdef __cplusplus // Provide C++ Compatibility
 
-extern "C" {
+    extern "C" {
 
 #endif
 // DOM-IGNORE-END
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: L1 Cache Configuration
-// *****************************************************************************
-// *****************************************************************************
+void SERCOM5_I2C_Initialize(void);
+SERCOM_I2C_SLAVE_INTFLAG SERCOM5_I2C_InterruptFlagsGet(void);
+void SERCOM5_I2C_InterruptFlagsClear(SERCOM_I2C_SLAVE_INTFLAG intFlags);
+uint8_t SERCOM5_I2C_ReadByte(void);
+void SERCOM5_I2C_WriteByte(uint8_t wrByte);
+SERCOM_I2C_SLAVE_ERROR SERCOM5_I2C_ErrorGet(void);
+SERCOM_I2C_SLAVE_TRANSFER_DIR SERCOM5_I2C_TransferDirGet(void);
+SERCOM_I2C_SLAVE_ACK_STATUS SERCOM5_I2C_LastByteAckStatusGet(void);
+void SERCOM5_I2C_CommandSet(SERCOM_I2C_SLAVE_COMMAND command);
 
-#define DATA_CACHE_IS_ENABLED()            			   (SCB->CCR & (uint32_t)SCB_CCR_DC_Msk)
-#define INSTRUCTION_CACHE_IS_ENABLED()     			   (SCB->CCR & (uint32_t)SCB_CCR_IC_Msk)
 
-#define ICACHE_ENABLE()
-#define ICACHE_DISABLE()
-#define ICACHE_INVALIDATE()
-
-#define DCACHE_ENABLE()
-#define DCACHE_DISABLE()
-#define DCACHE_INVALIDATE()
-#define DCACHE_CLEAN()
-#define DCACHE_CLEAN_INVALIDATE()
-#define DCACHE_CLEAN_BY_ADDR(addr,sz)
-#define DCACHE_INVALIDATE_BY_ADDR(addr,sz)
-#define DCACHE_CLEAN_INVALIDATE_BY_ADDR(addr,sz)
-
-//DOM-IGNORE-BEGIN
-#ifdef __cplusplus
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
 }
 #endif
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
-#endif // #ifndef DEVICE_CACHE_H
+#endif /* PLIB_SERCOM5_I2C_SLAVE_H */

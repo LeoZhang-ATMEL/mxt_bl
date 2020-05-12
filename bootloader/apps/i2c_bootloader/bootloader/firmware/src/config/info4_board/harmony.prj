@@ -11,16 +11,16 @@
           <Name dnOrder="1">bootloader.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/bootloader/</LogicalPath>
           <PhysicalPath dnOrder="3">/bootloader/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">25B26CF8CBEAA593BA7B80F7B7936809</GeneratedChecksum>
-          <UserChecksum dnOrder="5">25B26CF8CBEAA593BA7B80F7B7936809</UserChecksum>
+          <GeneratedChecksum dnOrder="4">18F8CC49AAEF7EC022529BF5A5E1E00A</GeneratedChecksum>
+          <UserChecksum dnOrder="5">797D4E553D44FB13E119342A36A82EEF</UserChecksum>
         </File>
         <File dnOrder="1">
           <Type dnOrder="0">SOURCE</Type>
           <Name dnOrder="1">initialization.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">F58D3A94D2198E2EB7876C98B538C547</GeneratedChecksum>
-          <UserChecksum dnOrder="5">F58D3A94D2198E2EB7876C98B538C547</UserChecksum>
+          <GeneratedChecksum dnOrder="4">4A47A0576EF174B1C2DD6EE08978D20B</GeneratedChecksum>
+          <UserChecksum dnOrder="5">4A47A0576EF174B1C2DD6EE08978D20B</UserChecksum>
         </File>
         <File dnOrder="2">
           <Type dnOrder="0">SOURCE</Type>
@@ -35,8 +35,8 @@
           <Name dnOrder="1">plib_clock.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/clock/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/clock/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">A25AC33470D942E0B84155512BE3B3F5</GeneratedChecksum>
-          <UserChecksum dnOrder="5">A25AC33470D942E0B84155512BE3B3F5</UserChecksum>
+          <GeneratedChecksum dnOrder="4">B1B1575557DADEB9C8E84D4D19B3950B</GeneratedChecksum>
+          <UserChecksum dnOrder="5">B1B1575557DADEB9C8E84D4D19B3950B</UserChecksum>
         </File>
         <File dnOrder="4">
           <Type dnOrder="0">SOURCE</Type>
@@ -59,8 +59,8 @@
           <Name dnOrder="1">plib_nvic.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/nvic/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/nvic/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">AF0033EC1C893C5A9E39C6FF1C08A617</GeneratedChecksum>
-          <UserChecksum dnOrder="5">AF0033EC1C893C5A9E39C6FF1C08A617</UserChecksum>
+          <GeneratedChecksum dnOrder="4">D0684B5522FCD6E33EAAF787D58818BE</GeneratedChecksum>
+          <UserChecksum dnOrder="5">D0684B5522FCD6E33EAAF787D58818BE</UserChecksum>
         </File>
         <File dnOrder="7">
           <Type dnOrder="0">SOURCE</Type>
@@ -83,16 +83,16 @@
           <Name dnOrder="1">plib_port.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/port/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/port/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">17A01C1FF6B5E068B9B43579DD663E55</GeneratedChecksum>
-          <UserChecksum dnOrder="5">17A01C1FF6B5E068B9B43579DD663E55</UserChecksum>
+          <GeneratedChecksum dnOrder="4">7556B6E89F9B41D27E55CD533E8BC3AE</GeneratedChecksum>
+          <UserChecksum dnOrder="5">7556B6E89F9B41D27E55CD533E8BC3AE</UserChecksum>
         </File>
         <File dnOrder="10">
           <Type dnOrder="0">SOURCE</Type>
-          <Name dnOrder="1">plib_sercom1_i2c_slave.c</Name>
+          <Name dnOrder="1">plib_sercom5_i2c_slave.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/sercom/i2c_slave/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/sercom/i2c_slave/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">B5398769F142D173C8B123C862D3FE18</GeneratedChecksum>
-          <UserChecksum dnOrder="5">B5398769F142D173C8B123C862D3FE18</UserChecksum>
+          <GeneratedChecksum dnOrder="4">DF5B512630EA645FE5B3995A15CFF7F3</GeneratedChecksum>
+          <UserChecksum dnOrder="5">DF5B512630EA645FE5B3995A15CFF7F3</UserChecksum>
         </File>
         <File dnOrder="11">
           <Type dnOrder="0">SOURCE</Type>
@@ -211,8 +211,8 @@
           <Name dnOrder="1">definitions.h</Name>
           <LogicalPath dnOrder="2">config/info4_board/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">37157AD147B58A7261EAA71242DF0623</GeneratedChecksum>
-          <UserChecksum dnOrder="5">37157AD147B58A7261EAA71242DF0623</UserChecksum>
+          <GeneratedChecksum dnOrder="4">315CDE31F06938270315ABDF0396081D</GeneratedChecksum>
+          <UserChecksum dnOrder="5">315CDE31F06938270315ABDF0396081D</UserChecksum>
         </File>
         <File dnOrder="26">
           <Type dnOrder="0">HEADER</Type>
@@ -376,11 +376,11 @@
         </File>
         <File dnOrder="46">
           <Type dnOrder="0">HEADER</Type>
-          <Name dnOrder="1">plib_sercom1_i2c_slave.h</Name>
+          <Name dnOrder="1">plib_sercom5_i2c_slave.h</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/sercom/i2c_slave/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/sercom/i2c_slave/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">7A55BAFE65ACB94329D6939DA3D91C48</GeneratedChecksum>
-          <UserChecksum dnOrder="5">7A55BAFE65ACB94329D6939DA3D91C48</UserChecksum>
+          <GeneratedChecksum dnOrder="4">0675B5A3A736EE3B7A3859C693BBAF88</GeneratedChecksum>
+          <UserChecksum dnOrder="5">0675B5A3A736EE3B7A3859C693BBAF88</UserChecksum>
         </File>
         <File dnOrder="47">
           <Type dnOrder="0">HEADER</Type>
@@ -510,7 +510,7 @@
       <Setting dnOrder="2" key="FORCE_OPTIMIZATION" value="false"/>
       <Setting dnOrder="3" key="GENERATE_BACKUP" value="true"/>
       <Setting dnOrder="4" key="MERGE_STRATEGY" value="USER_ALL"/>
-      <Setting dnOrder="5" key="PackageFilter" value="audio;bootloader;bsp;bt;core;crypto;cryptoauthlib;cryptoauthlib_apps;csp;expresslogic_threadx;gfx;gfx_apps;micrium_ucos3;motor_control;net;touch;usb;wireless;"/>
+      <Setting dnOrder="5" key="PackageFilter" value="audio;aws_cloud;bootloader;bsp;bt;core;crypto;cryptoauthlib;cryptoauthlib_apps;csp;expresslogic_threadx;gfx;gfx_apps;micrium_ucos3;motor_control;net;touch;usb;wireless;"/>
     </Settings>
   </Configurator>
 </Configuration>
