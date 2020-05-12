@@ -83,8 +83,8 @@
           <Name dnOrder="1">plib_port.c</Name>
           <LogicalPath dnOrder="2">config/sam_da1_xpro/peripheral/port/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/port/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">372BF6C8AE15EB8F03BD8C43B2728B90</GeneratedChecksum>
-          <UserChecksum dnOrder="5">372BF6C8AE15EB8F03BD8C43B2728B90</UserChecksum>
+          <GeneratedChecksum dnOrder="4">6FF0C535214378F811A38EE7641D2ACC</GeneratedChecksum>
+          <UserChecksum dnOrder="5">6FF0C535214378F811A38EE7641D2ACC</UserChecksum>
         </File>
         <File dnOrder="10">
           <Type dnOrder="0">SOURCE</Type>
@@ -363,8 +363,8 @@
           <Name dnOrder="1">plib_port.h</Name>
           <LogicalPath dnOrder="2">config/sam_da1_xpro/peripheral/port/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/port/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">6461D584243438672EB5F0F9E941BCB7</GeneratedChecksum>
-          <UserChecksum dnOrder="5">6461D584243438672EB5F0F9E941BCB7</UserChecksum>
+          <GeneratedChecksum dnOrder="4">E48F20185F010BE190D6D52C6D17C5D3</GeneratedChecksum>
+          <UserChecksum dnOrder="5">E48F20185F010BE190D6D52C6D17C5D3</UserChecksum>
         </File>
         <File dnOrder="45">
           <Type dnOrder="0">HEADER</Type>
@@ -500,7 +500,7 @@
       <Setting dnOrder="2" key="FORCE_OPTIMIZATION" value="false"/>
       <Setting dnOrder="3" key="GENERATE_BACKUP" value="true"/>
       <Setting dnOrder="4" key="MERGE_STRATEGY" value="USER_ALL"/>
-      <Setting dnOrder="5" key="PackageFilter" value="audio;bootloader;bsp;bt;core;crypto;cryptoauthlib;cryptoauthlib_apps;csp;expresslogic_threadx;gfx;gfx_apps;micrium_ucos3;motor_control;net;touch;usb;wireless;"/>
+      <Setting dnOrder="5" key="PackageFilter" value="audio;aws_cloud;bootloader;bsp;bt;core;crypto;cryptoauthlib;cryptoauthlib_apps;csp;expresslogic_threadx;gfx;gfx_apps;micrium_ucos3;motor_control;net;touch;usb;wireless;"/>
     </Settings>
   </Configurator>
 </Configuration>

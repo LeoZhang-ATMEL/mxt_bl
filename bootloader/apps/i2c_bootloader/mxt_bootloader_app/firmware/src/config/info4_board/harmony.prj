@@ -51,8 +51,8 @@
           <Name dnOrder="1">plib_clock.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/clock/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/clock/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">209D7EC27A34A283653AA12EA6777FAE</GeneratedChecksum>
-          <UserChecksum dnOrder="5">209D7EC27A34A283653AA12EA6777FAE</UserChecksum>
+          <GeneratedChecksum dnOrder="4">CF2F54776847FD32C40AB95A8E6C5D92</GeneratedChecksum>
+          <UserChecksum dnOrder="5">CF2F54776847FD32C40AB95A8E6C5D92</UserChecksum>
         </File>
         <File dnOrder="6">
           <Type dnOrder="0">SOURCE</Type>
@@ -83,8 +83,8 @@
           <Name dnOrder="1">plib_port.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/port/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/port/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">37F9281C0C1781D90537CC7886A4038E</GeneratedChecksum>
-          <UserChecksum dnOrder="5">37F9281C0C1781D90537CC7886A4038E</UserChecksum>
+          <GeneratedChecksum dnOrder="4">0EADBB88961A1465D303FB9AFDCAD66F</GeneratedChecksum>
+          <UserChecksum dnOrder="5">0EADBB88961A1465D303FB9AFDCAD66F</UserChecksum>
         </File>
         <File dnOrder="10">
           <Type dnOrder="0">SOURCE</Type>
@@ -363,8 +363,8 @@
           <Name dnOrder="1">plib_port.h</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/port/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/port/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">075704ED2E0866F0CBD7922066C3A182</GeneratedChecksum>
-          <UserChecksum dnOrder="5">075704ED2E0866F0CBD7922066C3A182</UserChecksum>
+          <GeneratedChecksum dnOrder="4">0B03AEA7BAB11532C9D047BCDEC0FF10</GeneratedChecksum>
+          <UserChecksum dnOrder="5">0B03AEA7BAB11532C9D047BCDEC0FF10</UserChecksum>
         </File>
         <File dnOrder="45">
           <Type dnOrder="0">HEADER</Type>
@@ -495,12 +495,12 @@
       </Settings>
     </Manifest>
     <Settings dnOrder="4">
-      <Setting dnOrder="0" key="CMSISPath" value="./dev_packs/arm/CMSIS/5.6.0"/>
-      <Setting dnOrder="1" key="DFPPath" value="./dev_packs/Microchip/SAMDA1_DFP/2.2.43/atdf/ATSAMDA1J16B.atdf"/>
+      <Setting dnOrder="0" key="CMSISPath" value=".\dev_packs\arm\CMSIS\5.6.0"/>
+      <Setting dnOrder="1" key="DFPPath" value=".\dev_packs\Microchip\SAMDA1_DFP\2.2.43\atdf\ATSAMDA1J16B.atdf"/>
       <Setting dnOrder="2" key="FORCE_OPTIMIZATION" value="false"/>
       <Setting dnOrder="3" key="GENERATE_BACKUP" value="true"/>
       <Setting dnOrder="4" key="MERGE_STRATEGY" value="USER_ALL"/>
-      <Setting dnOrder="5" key="PackageFilter" value="gfx;audio;aws_cloud;bootloader;bsp;bt;core;crypto;cryptoauthlib;cryptoauthlib_apps;csp;expresslogic_threadx;gfx_apps;micrium_ucos3;motor_control;net;touch;usb;wireless;"/>
+      <Setting dnOrder="5" key="PackageFilter" value="audio;aws_cloud;bootloader;bsp;bt;core;crypto;cryptoauthlib;cryptoauthlib_apps;csp;expresslogic_threadx;gfx;gfx_apps;micrium_ucos3;motor_control;net;touch;usb;wireless;"/>
     </Settings>
   </Configurator>
 </Configuration>

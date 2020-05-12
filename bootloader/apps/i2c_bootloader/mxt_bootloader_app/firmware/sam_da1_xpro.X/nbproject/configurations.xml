@@ -136,6 +136,9 @@
               <itemPath>../src/config/sam_da1_xpro/peripheral/systick/plib_systick.c</itemPath>
             </logicalFolder>
           </logicalFolder>
+          <logicalFolder name="f2" displayName="stdio" projectFiles="true">
+            <itemPath>../src/config/sam_da1_xpro/stdio/xc32_monitor.c</itemPath>
+          </logicalFolder>
           <itemPath>../src/config/sam_da1_xpro/initialization.c</itemPath>
           <itemPath>../src/config/sam_da1_xpro/interrupts.c</itemPath>
           <itemPath>../src/config/sam_da1_xpro/exceptions.c</itemPath>
@@ -1015,6 +1018,10 @@
             overriding="false">
       </item>
       <item path="../src/config/sam_da1_xpro/startup_xc32.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/config/sam_da1_xpro/stdio/xc32_monitor.c"
             ex="true"
             overriding="false">
       </item>

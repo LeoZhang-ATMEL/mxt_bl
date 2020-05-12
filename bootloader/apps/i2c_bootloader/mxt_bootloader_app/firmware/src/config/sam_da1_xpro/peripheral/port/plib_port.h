@@ -77,22 +77,22 @@
 #define INT_MCU_PIN                  PORT_PIN_PA02
 
 /*** Macros for CTP_CHG pin ***/
-#define CTP_CHG_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = 1 << 6)
-#define CTP_CHG_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = 1 << 6)
-#define CTP_CHG_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = 1 << 6)
-#define CTP_CHG_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 6)) & 0x01)
-#define CTP_CHG_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = 1 << 6)
-#define CTP_CHG_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = 1 << 6)
-#define CTP_CHG_PIN                  PORT_PIN_PB06
+#define CTP_CHG_Set()               (PORT_REGS->GROUP[0].PORT_OUTSET = 1 << 12)
+#define CTP_CHG_Clear()             (PORT_REGS->GROUP[0].PORT_OUTCLR = 1 << 12)
+#define CTP_CHG_Toggle()            (PORT_REGS->GROUP[0].PORT_OUTTGL = 1 << 12)
+#define CTP_CHG_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 12)) & 0x01)
+#define CTP_CHG_OutputEnable()      (PORT_REGS->GROUP[0].PORT_DIRSET = 1 << 12)
+#define CTP_CHG_InputEnable()       (PORT_REGS->GROUP[0].PORT_DIRCLR = 1 << 12)
+#define CTP_CHG_PIN                  PORT_PIN_PA12
 
 /*** Macros for CTP_RESET pin ***/
-#define CTP_RESET_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = 1 << 7)
-#define CTP_RESET_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = 1 << 7)
-#define CTP_RESET_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = 1 << 7)
-#define CTP_RESET_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 7)) & 0x01)
-#define CTP_RESET_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = 1 << 7)
-#define CTP_RESET_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = 1 << 7)
-#define CTP_RESET_PIN                  PORT_PIN_PB07
+#define CTP_RESET_Set()               (PORT_REGS->GROUP[0].PORT_OUTSET = 1 << 13)
+#define CTP_RESET_Clear()             (PORT_REGS->GROUP[0].PORT_OUTCLR = 1 << 13)
+#define CTP_RESET_Toggle()            (PORT_REGS->GROUP[0].PORT_OUTTGL = 1 << 13)
+#define CTP_RESET_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 13)) & 0x01)
+#define CTP_RESET_OutputEnable()      (PORT_REGS->GROUP[0].PORT_DIRSET = 1 << 13)
+#define CTP_RESET_InputEnable()       (PORT_REGS->GROUP[0].PORT_DIRCLR = 1 << 13)
+#define CTP_RESET_PIN                  PORT_PIN_PA13
 
 /*** Macros for SWITCH pin ***/
 #define SWITCH_Set()               (PORT_REGS->GROUP[0].PORT_OUTSET = 1 << 15)

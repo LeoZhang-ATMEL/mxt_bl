@@ -163,8 +163,8 @@
           <Name dnOrder="1">plib_port.c</Name>
           <LogicalPath dnOrder="2">config/sam_d21_xpro/peripheral/port/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/port/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">8A8449F4B2A0029AD730270295E07572</GeneratedChecksum>
-          <UserChecksum dnOrder="5">8A8449F4B2A0029AD730270295E07572</UserChecksum>
+          <GeneratedChecksum dnOrder="4">F7AF2F9B7E1CED95294ABBDEC39865E1</GeneratedChecksum>
+          <UserChecksum dnOrder="5">F7AF2F9B7E1CED95294ABBDEC39865E1</UserChecksum>
         </File>
         <File dnOrder="20">
           <Type dnOrder="0">SOURCE</Type>
@@ -179,8 +179,8 @@
           <Name dnOrder="1">plib_sercom2_i2c_master.c</Name>
           <LogicalPath dnOrder="2">config/sam_d21_xpro/peripheral/sercom/i2c_master/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/sercom/i2c_master/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">AA05A49B09641325FC2CAE71DE1B2BD0</GeneratedChecksum>
-          <UserChecksum dnOrder="5">AA05A49B09641325FC2CAE71DE1B2BD0</UserChecksum>
+          <GeneratedChecksum dnOrder="4">B837F231617B8C18D3EA76664B8A5B09</GeneratedChecksum>
+          <UserChecksum dnOrder="5">B837F231617B8C18D3EA76664B8A5B09</UserChecksum>
         </File>
         <File dnOrder="22">
           <Type dnOrder="0">SOURCE</Type>
@@ -707,8 +707,8 @@
           <Name dnOrder="1">plib_port.h</Name>
           <LogicalPath dnOrder="2">config/sam_d21_xpro/peripheral/port/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/port/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">1DF6CF508A92721BA1D7656E3B273506</GeneratedChecksum>
-          <UserChecksum dnOrder="5">1DF6CF508A92721BA1D7656E3B273506</UserChecksum>
+          <GeneratedChecksum dnOrder="4">8206EDFE39C59ADA25A2EA70B8985527</GeneratedChecksum>
+          <UserChecksum dnOrder="5">8206EDFE39C59ADA25A2EA70B8985527</UserChecksum>
         </File>
         <File dnOrder="88">
           <Type dnOrder="0">HEADER</Type>
@@ -1052,7 +1052,7 @@
       <Setting dnOrder="2" key="FORCE_OPTIMIZATION" value="false"/>
       <Setting dnOrder="3" key="GENERATE_BACKUP" value="true"/>
       <Setting dnOrder="4" key="MERGE_STRATEGY" value="USER_ALL"/>
-      <Setting dnOrder="5" key="PackageFilter" value="audio;bootloader;bsp;bt;core;crypto;cryptoauthlib;cryptoauthlib_apps;csp;expresslogic_threadx;gfx;gfx_apps;micrium_ucos3;motor_control;net;touch;usb;wireless;"/>
+      <Setting dnOrder="5" key="PackageFilter" value="audio;aws_cloud;bootloader;bsp;bt;core;crypto;cryptoauthlib;cryptoauthlib_apps;csp;expresslogic_threadx;gfx;gfx_apps;micrium_ucos3;motor_control;net;touch;usb;wireless;"/>
     </Settings>
   </Configurator>
 </Configuration>

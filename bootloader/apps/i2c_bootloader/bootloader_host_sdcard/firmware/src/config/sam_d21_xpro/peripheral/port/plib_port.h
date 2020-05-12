@@ -67,6 +67,15 @@
 
 
 
+/*** Macros for INT_MCU pin ***/
+#define INT_MCU_Set()               (PORT_REGS->GROUP[0].PORT_OUTSET = 1 << 2)
+#define INT_MCU_Clear()             (PORT_REGS->GROUP[0].PORT_OUTCLR = 1 << 2)
+#define INT_MCU_Toggle()            (PORT_REGS->GROUP[0].PORT_OUTTGL = 1 << 2)
+#define INT_MCU_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 2)) & 0x01)
+#define INT_MCU_OutputEnable()      (PORT_REGS->GROUP[0].PORT_DIRSET = 1 << 2)
+#define INT_MCU_InputEnable()       (PORT_REGS->GROUP[0].PORT_DIRCLR = 1 << 2)
+#define INT_MCU_PIN                  PORT_PIN_PA02
+
 /*** Macros for GPIO_PA05 pin ***/
 #define GPIO_PA05_Set()               (PORT_REGS->GROUP[0].PORT_OUTSET = 1 << 5)
 #define GPIO_PA05_Clear()             (PORT_REGS->GROUP[0].PORT_OUTCLR = 1 << 5)
@@ -75,15 +84,6 @@
 #define GPIO_PA05_OutputEnable()      (PORT_REGS->GROUP[0].PORT_DIRSET = 1 << 5)
 #define GPIO_PA05_InputEnable()       (PORT_REGS->GROUP[0].PORT_DIRCLR = 1 << 5)
 #define GPIO_PA05_PIN                  PORT_PIN_PA05
-
-/*** Macros for INT_MCU pin ***/
-#define INT_MCU_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = 1 << 17)
-#define INT_MCU_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = 1 << 17)
-#define INT_MCU_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = 1 << 17)
-#define INT_MCU_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 17)) & 0x01)
-#define INT_MCU_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = 1 << 17)
-#define INT_MCU_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = 1 << 17)
-#define INT_MCU_PIN                  PORT_PIN_PB17
 
 
 
