@@ -35,8 +35,8 @@
           <Name dnOrder="1">plib_clock.c</Name>
           <LogicalPath dnOrder="2">config/info4_board/peripheral/clock/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/clock/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">B1B1575557DADEB9C8E84D4D19B3950B</GeneratedChecksum>
-          <UserChecksum dnOrder="5">B1B1575557DADEB9C8E84D4D19B3950B</UserChecksum>
+          <GeneratedChecksum dnOrder="4">2ACA898B15CB2A3F20E09B46B2E8E2DD</GeneratedChecksum>
+          <UserChecksum dnOrder="5">2ACA898B15CB2A3F20E09B46B2E8E2DD</UserChecksum>
         </File>
         <File dnOrder="4">
           <Type dnOrder="0">SOURCE</Type>
