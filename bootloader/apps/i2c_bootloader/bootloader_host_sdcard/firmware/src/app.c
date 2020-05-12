@@ -77,6 +77,7 @@
 #define APP_BL_STATUS_BIT_ALL                       (APP_BL_STATUS_BIT_BUSY | APP_BL_STATUS_BIT_INVALID_COMMAND | APP_BL_STATUS_BIT_INVALID_MEM_ADDR | \
                                                     APP_BL_STATUS_BIT_COMMAND_EXECUTION_ERROR | APP_BL_STATUS_BIT_CRC_ERROR)
 
+#define BTL_MAGIC_WORD      (0x80A79127UL)
 #define BTL_TRIGGER_PATTERN (0x5048434DUL)
 // *****************************************************************************
 /* Application Data
@@ -322,9 +323,14 @@ static uint32_t APP_VerifyCommandHeaderGen(uint32_t crc)
 static uint32_t APP_TriggerCommandHeaderGen()
 {
     uint32_t nTxBytes = 0;
+    uint32_t magic = BTL_MAGIC_WORD;
     uint32_t pattern = BTL_TRIGGER_PATTERN;
 
     appData.wrBuffer[nTxBytes++] = APP_BL_COMMAND_TRIGGER;
+    appData.wrBuffer[nTxBytes++] = (magic >> 24);
+    appData.wrBuffer[nTxBytes++] = (magic >> 16);
+    appData.wrBuffer[nTxBytes++] = (magic >> 8);
+    appData.wrBuffer[nTxBytes++] = (magic);
     appData.wrBuffer[nTxBytes++] = (pattern >> 24);
     appData.wrBuffer[nTxBytes++] = (pattern >> 16);
     appData.wrBuffer[nTxBytes++] = (pattern >> 8);
@@ -521,7 +527,7 @@ void APP_Tasks ( void )
             else
             {
                 appData.fileSize = SYS_FS_FileSize(appData.fileHandle);
-                appData.state = APP_SEND_UNLOCK_COMMAND;
+                appData.state = APP_SEND_TRIGGER_COMMAND;
             }
             break;
 
@@ -529,21 +535,17 @@ void APP_Tasks ( void )
             nTxBytes = APP_TriggerCommandHeaderGen();
             appData.trasnferStatus = APP_TRANSFER_STATUS_IN_PROGRESS;
             SERCOM2_I2C_Write(appData.i2cSlaveAddr, &appData.wrBuffer[0], nTxBytes);
-            appData.state = APP_WAIT_UNLOCK_COMMAND_TRANSFER_COMPLETE;
+            appData.state = APP_WAIT_TRIGGER_COMMAND_TRANSFER_COMPLETE;
             break;
 
         case APP_WAIT_TRIGGER_COMMAND_TRANSFER_COMPLETE:
-            if (appData.trasnferStatus == APP_TRANSFER_STATUS_SUCCESS)
-            {
-                appData.state = APP_SEND_ERASE_COMMAND;
-            }
-            else if ((appData.trasnferStatus == APP_TRANSFER_STATUS_ERROR) && INT_MCU_Get())
+            if (appData.trasnferStatus == APP_TRANSFER_STATUS_SUCCESS && INT_MCU_Get())
             {
                 appData.state = APP_SEND_UNLOCK_COMMAND;
             }
             else if (appData.trasnferStatus == APP_TRANSFER_STATUS_ERROR)
             {
-                appData.state = APP_ERROR;
+                appData.state = APP_SEND_UNLOCK_COMMAND;
             }
             break;
 

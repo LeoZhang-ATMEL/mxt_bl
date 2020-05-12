@@ -157,8 +157,8 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
         <pack name="SAMDA1_DFP" vendor="Microchip" version="2.2.52"/>
+        <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
       </packs>
       <compileType>
         <linkerTool>
@@ -291,8 +291,7 @@
         <property key="no-startup-files" value="false"/>
         <property key="oXC32ld-extra-opts" value=""/>
         <property key="optimization-level" value=""/>
-        <property key="preprocessor-macros"
-                  value="ROM_ORIGIN=0x1800;ROM_LENGTH=0xe800;"/>
+        <property key="preprocessor-macros" value="ROM_ORIGIN=0x1800;ROM_LENGTH=0xe800"/>
         <property key="remove-unused-sections" value="true"/>
         <property key="report-memory-usage" value="false"/>
         <property key="serial-length" value=""/>

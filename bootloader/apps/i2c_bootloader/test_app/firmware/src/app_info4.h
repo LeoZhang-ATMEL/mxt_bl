@@ -64,6 +64,7 @@ typedef enum
     APP_INFO4_STATE_INIT=0,
     APP_INFO4_I2C_TRIGGER_WAIT,
     APP_INFO4_TRIGGER_BOOTLOADER,
+    APP_INFO4_IDLE,
     /* TODO: Define states used by the application state machine. */
 
 } APP_INFO4_STATES;

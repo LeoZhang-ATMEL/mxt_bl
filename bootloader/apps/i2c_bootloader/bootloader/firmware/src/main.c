@@ -109,6 +109,7 @@ int main ( void )
     LED_Clear();
 #endif
 
+    INT_MCU_Set();
     bootloader_Start();
 
     /* Execution should not come here during normal operation */

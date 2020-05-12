@@ -189,6 +189,7 @@ static void BL_I2C_EventsProcess(void)
 
         /* Reset the I2C read state machine */
         blProtocol.rdState = BL_I2C_READ_COMMAND;
+        SERCOM5_I2C_CommandSet(SERCOM_I2C_SLAVE_COMMAND_SEND_ACK);
 
     }
     else if (intFlags & SERCOM_I2C_SLAVE_INTFLAG_DRDY)
@@ -265,14 +266,14 @@ void APP_INFO4_Tasks ( void )
             if (appInitialized)
             {
 
-                app_info4Data.state = APP_INFO4_I2C_TRIGGER_WAIT;
+                app_info4Data.state = APP_INFO4_IDLE;
             }
             break;
         }
 
         case APP_INFO4_I2C_TRIGGER_WAIT:
         {
-
+            INT_MCU_Clear();
             break;
         }
 
@@ -283,14 +284,16 @@ void APP_INFO4_Tasks ( void )
             ramStart[2] = blProtocol.cmdProtocol.triggerCommand.triggerPattern;
             ramStart[3] = blProtocol.cmdProtocol.triggerCommand.triggerPattern;
 
-            INT_MCU_Clear();
             DCACHE_CLEAN_BY_ADDR(ramStart, 16);
 
             APP_SystemReset();
             break;
         }
 
-
+        case APP_INFO4_IDLE:
+        {
+            break;
+        }
         /* The default state should never be executed. */
         default:
         {
