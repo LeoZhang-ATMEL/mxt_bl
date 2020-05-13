@@ -63,7 +63,7 @@ int main ( void )
     /* Initialize all modules */
     SYS_Initialize ( NULL );
 
-    INT_MCU_Set();
+    INT_MCU_Clear();
     while ( true )
     {
         /* Maintain state machines of all polled MPLAB Harmony modules. */

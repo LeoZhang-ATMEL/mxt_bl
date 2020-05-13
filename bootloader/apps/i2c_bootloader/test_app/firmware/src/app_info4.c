@@ -123,6 +123,8 @@ static bool BL_I2CMasterWriteHandler(uint8_t rdByte)
             blProtocol.index = 3;
 
             blProtocol.nCmdArgWords = 0;
+            
+            app_info4Data.state = APP_INFO4_I2C_TRIGGER_WAIT;
 
             if ((blProtocol.command < BL_COMMAND_TRIGGER) || (blProtocol.command >= BL_COMMAND_MAX))
             {

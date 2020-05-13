@@ -196,6 +196,7 @@ static bool BL_I2CMasterWriteHandler(uint8_t rdByte)
             blProtocol.index = 3;
 
             blProtocol.nCmdArgWords = 0;
+            blProtocol.status = 0;
 
             if ((blProtocol.command < BL_COMMAND_UNLOCK) || (blProtocol.command >= BL_COMMAND_MAX))
             {
