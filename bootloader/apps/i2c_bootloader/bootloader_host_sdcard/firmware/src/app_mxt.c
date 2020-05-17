@@ -97,7 +97,8 @@ APP_MXT_FIRMWARE_UPDATE_INFO  mxtFirmwareUpdateInfo[APP_BL_NUM_I2C_SLAVES] =
          * the actual program page size to reduce the RAM used to hold the
          * program data.
          */
-        .programSize    = 64
+        .programSize    = 64,
+        .isCfg = false
     },
 
     /* Add firmware update information for the additional I2C slaves on the bus
@@ -106,12 +107,18 @@ APP_MXT_FIRMWARE_UPDATE_INFO  mxtFirmwareUpdateInfo[APP_BL_NUM_I2C_SLAVES] =
 
 static void CommandUpgradeMxt1(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 static void CommandUpgradeMxt2(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void CommandUpgradeMxtCfg1(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void CommandUpgradeMxtCfg2(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 static void CommandReadMxtInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void CommandReadMxtInfo2(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 static const SYS_CMD_DESCRIPTOR    appMxtCmdTbl[]=
 {
     {"mxt1",   CommandUpgradeMxt1,   ": Upgrade MaxTouch Firmware instance 1"},
     {"mxt2",   CommandUpgradeMxt2,   ": Upgrade MaxTouch Firmware instance 2"},
+    {"cfg1",   CommandUpgradeMxtCfg1,   ": Upgrade MaxTouch Config instance 1"},
+    {"cfg2",   CommandUpgradeMxtCfg2,   ": Upgrade MaxTouch Config instance 2"},
     {"readinfo", CommandReadMxtInfo,      ": Read MaxTouch firmware Info"},
+    {"readinfo2", CommandReadMxtInfo2,      ": Read MaxTouch firmware Info with config CRC"},
 };
 
 // *****************************************************************************
@@ -164,6 +171,15 @@ static void setAppMxtData(void)
     }
 }
 
+static uint32_t APP_ReadInfoCommandHeaderGen(void)
+{
+    uint32_t nTxBytes = 0;
+
+    app_mxtData.wrBuffer[nTxBytes++] = APP_MXT_BL_COMMAND_READ_INFO;
+
+    return nTxBytes;
+}
+
 static uint32_t APP_ReadStatusCommandHeaderGen(void)
 {
     uint32_t nTxBytes = 0;
@@ -194,7 +210,11 @@ static uint32_t APP_MXT_ProgramCommandHeaderGen(uint32_t nBytes)
 {
     uint32_t nTxBytes = 0;
 
-    app_mxtData.wrBuffer[nTxBytes++] = APP_MXT_BL_COMMAND_PROGRAM;
+    if (mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].isCfg == false) {
+        app_mxtData.wrBuffer[nTxBytes++] = APP_MXT_BL_COMMAND_PROGRAM;
+    } else {
+        app_mxtData.wrBuffer[nTxBytes++] = APP_MXT_BL_PROGRAM_CFG;
+    }
     app_mxtData.wrBuffer[nTxBytes++] = (nBytes >> 24);
     app_mxtData.wrBuffer[nTxBytes++] = (nBytes >> 16);
     app_mxtData.wrBuffer[nTxBytes++] = (nBytes >> 8);
@@ -267,22 +287,67 @@ static void printMxtInfo(void)
     SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: object_num\t 0x%02X\n", info->object_num);
     SYS_CMD_PRINT(LINE_TERM);
 }
+
+static void printMxtInfo2(void)
+{
+    struct mxt_id_info *info;
+    
+    info = (struct mxt_id_info *) (&app_mxtData.wrBuffer[0]);
+    SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: family_id\t 0x%02X", info->family_id);
+    SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: variant_id\t 0x%02X", info->variant_id);
+    SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: version\t 0x%02X", info->version);
+    SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: build\t\t 0x%02X", info->build);
+    SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: matrix_xsize\t 0x%02X", info->matrix_xsize);
+    SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: matrix_ysize\t 0x%02X", info->matrix_ysize);
+    SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: object_num\t 0x%02X", info->object_num);
+    SYS_CMD_PRINT(LINE_TERM "MAXTOUCH: config crc\t 0x%08X\n", *((uint32_t *)(app_mxtData.wrBuffer + sizeof(struct mxt_id_info))));
+    SYS_CMD_PRINT(LINE_TERM);
+}
+
 static void CommandUpgradeMxt1(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
-    SYS_CMD_PRINT(" *** Upgrade MCU firmware 1 ***\r\n" );
+    SYS_CMD_PRINT(" *** Upgrade MaxTouch firmware 1 ***\r\n" );
     SERCOM2_I2C_CallbackRegister( APP_MXT_I2CEventHandler, (uintptr_t)&app_mxtData.trasnferStatus );
     SYS_FS_FileClose(app_mxtData.fileHandle);
     mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].filename = APP_MXT_FIRMWARE_NAME_INSTANCE1;
+    mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].isCfg = false;
     appData.state = APP_IDLE;
     app_mxtData.state = APP_MXT_WAIT_SWITCH_PRESS;
 }
 
 static void CommandUpgradeMxt2(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
-    SYS_CMD_PRINT(" *** Upgrade MCU firmware 2 ***\r\n" );
+    SYS_CMD_PRINT(" *** Upgrade MaxTouch firmware 2 ***\r\n" );
     SERCOM2_I2C_CallbackRegister( APP_MXT_I2CEventHandler, (uintptr_t)&app_mxtData.trasnferStatus );
     SYS_FS_FileClose(app_mxtData.fileHandle);
     mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].filename = APP_MXT_FIRMWARE_NAME_INSTANCE2;
+    mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].isCfg = false;
+    appData.state = APP_IDLE;
+    app_mxtData.state = APP_MXT_WAIT_SWITCH_PRESS;
+}
+
+static void CommandUpgradeMxtCfg1(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+{
+    SYS_CMD_PRINT(" *** Upgrade MaxTouch Config 1 ***\r\n" );
+    SERCOM2_I2C_CallbackRegister( APP_MXT_I2CEventHandler, (uintptr_t)&app_mxtData.trasnferStatus );
+    if (app_mxtData.fileHandle) {
+        SYS_FS_FileClose(app_mxtData.fileHandle);
+    }
+    mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].filename = APP_MXT_CONFIG_NAME_INSTANCE1;
+    mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].isCfg = true;
+    appData.state = APP_IDLE;
+    app_mxtData.state = APP_MXT_WAIT_SWITCH_PRESS;
+}
+
+static void CommandUpgradeMxtCfg2(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+{
+    SYS_CMD_PRINT(" *** Upgrade MaxTouch Config 2 ***\r\n" );
+    SERCOM2_I2C_CallbackRegister( APP_MXT_I2CEventHandler, (uintptr_t)&app_mxtData.trasnferStatus );
+    if (app_mxtData.fileHandle) {
+        SYS_FS_FileClose(app_mxtData.fileHandle);
+    }
+    mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].filename = APP_MXT_CONFIG_NAME_INSTANCE2;
+    mxtFirmwareUpdateInfo[app_mxtData.i2cSlaveIndex].isCfg = true;
     appData.state = APP_IDLE;
     app_mxtData.state = APP_MXT_WAIT_SWITCH_PRESS;
 }
@@ -293,6 +358,14 @@ static void CommandReadMxtInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** arg
     SERCOM2_I2C_CallbackRegister( APP_MXT_I2CEventHandler, (uintptr_t)&app_mxtData.trasnferStatus );
     appData.state = APP_IDLE;
     app_mxtData.state = APP_MXT_INFO_SEND_READ_COMMAND;
+}
+
+static void CommandReadMxtInfo2(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+{
+    SYS_CMD_PRINT(" *** Read Max Touch Firmware Info with config CRC ***\r\n" );
+    SERCOM2_I2C_CallbackRegister( APP_MXT_I2CEventHandler, (uintptr_t)&app_mxtData.trasnferStatus );
+    appData.state = APP_IDLE;
+    app_mxtData.state = APP_MXT_INFO2_SEND_READ_COMMAND;
 }
 // *****************************************************************************
 // *****************************************************************************
@@ -388,6 +461,46 @@ void APP_MXT_Tasks ( void )
             {
                 app_mxtData.state = APP_MXT_IDLE;
                 printMxtInfo();
+            }
+            else if (app_mxtData.trasnferStatus == APP_MXT_TRANSFER_STATUS_ERROR)
+            {
+                app_mxtData.state = APP_MXT_ERROR;
+            }
+            break;
+
+        /* Below 4 steps used to read MaxTouch info with Config CRC */
+        case APP_MXT_INFO2_SEND_READ_COMMAND:
+            setAppMxtData();
+            nTxBytes = APP_ReadInfoCommandHeaderGen();
+            app_mxtData.trasnferStatus = APP_MXT_TRANSFER_STATUS_IN_PROGRESS;
+            SERCOM2_I2C_Write(app_mxtData.i2cSlaveAddr, &app_mxtData.wrBuffer[0], nTxBytes);
+            app_mxtData.state = APP_MXT_INFO2_WAIT_READ_COMMAND_TRANSFER_COMPLETE;
+            break;
+
+        case APP_MXT_INFO2_WAIT_READ_COMMAND_TRANSFER_COMPLETE:
+            if ((app_mxtData.trasnferStatus == APP_MXT_TRANSFER_STATUS_SUCCESS) && INT_MCU_Get())
+            {
+                app_mxtData.state = APP_MXT_INFO2_SEND_READ_BACK_COMMAND;
+            }
+            else if (app_mxtData.trasnferStatus == APP_MXT_TRANSFER_STATUS_ERROR)
+            {
+                app_mxtData.state = APP_MXT_ERROR;
+            }
+            break;
+
+        case APP_MXT_INFO2_SEND_READ_BACK_COMMAND:
+
+            APP_ReadStatusCommandHeaderGen();
+            SERCOM2_I2C_Read(app_mxtData.i2cSlaveAddr, &app_mxtData.wrBuffer[0], sizeof(struct mxt_id_info) + 5);
+            app_mxtData.trasnferStatus = APP_MXT_TRANSFER_STATUS_IN_PROGRESS;
+            app_mxtData.state = APP_MXT_INFO2_WAIT_READ_BACK_COMMAND_TRANSFER_COMPLETE;
+            break;
+
+        case APP_MXT_INFO2_WAIT_READ_BACK_COMMAND_TRANSFER_COMPLETE:
+            if (app_mxtData.trasnferStatus == APP_MXT_TRANSFER_STATUS_SUCCESS)
+            {
+                app_mxtData.state = APP_MXT_IDLE;
+                printMxtInfo2();
             }
             else if (app_mxtData.trasnferStatus == APP_MXT_TRANSFER_STATUS_ERROR)
             {

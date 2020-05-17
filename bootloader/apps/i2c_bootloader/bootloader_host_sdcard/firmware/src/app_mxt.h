@@ -71,6 +71,11 @@ typedef enum
     APP_MXT_INFO_WAIT_READ_COMMAND_TRANSFER_COMPLETE,
     APP_MXT_INFO_SEND_READ_BACK_COMMAND,
     APP_MXT_INFO_WAIT_READ_BACK_COMMAND_TRANSFER_COMPLETE,
+    /* Read MaxTouch Firmware */
+    APP_MXT_INFO2_SEND_READ_COMMAND,
+    APP_MXT_INFO2_WAIT_READ_COMMAND_TRANSFER_COMPLETE,
+    APP_MXT_INFO2_SEND_READ_BACK_COMMAND,
+    APP_MXT_INFO2_WAIT_READ_BACK_COMMAND_TRANSFER_COMPLETE,
     /* Unlock to program firmware */
     APP_MXT_UNLOCK_SEND_COMMAND,
     APP_MXT_UNLOCK_WAIT_COMMAND_TRANSFER_COMPLETE,
@@ -103,6 +108,7 @@ typedef enum
     APP_MXT_BL_COMMAND_READ_INFO =      0xC0,   /* NO ARG */
     APP_MXT_BL_COMMAND_UNLOCK =         0xC1,   /* Unlock MaxTouch for start program APP */
     APP_MXT_BL_COMMAND_PROGRAM =        0xC2,   /* NUM_BYTES3-0, DATA0-n*/
+    APP_MXT_BL_PROGRAM_CFG =            0xC3,     /* NUM_BYTES3-0, DATA0-n*/
     APP_MXT_BL_COMMAND_RESET_MCU =      0xC4,   /* NO ARG, Reset immediate */
     APP_MXT_BL_COMMAND_READ_STATUS =    0xC5,   /* NO ARG */
     APP_MXT_BL_COMMAND_MAX,
@@ -112,6 +118,7 @@ typedef struct
 {
     uint16_t                i2cSlaveAddr;
     uint32_t                programSize;
+    bool                    isCfg;
     char*                   filename;
 } APP_MXT_FIRMWARE_UPDATE_INFO;
 

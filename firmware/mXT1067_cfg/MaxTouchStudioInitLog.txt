@@ -1,0 +1,53 @@
+server pong
+	name: Object-Based Server
+	version: 1.1.68
+bridge command: Server Ping
+
+HSBB v1.10 build 0x0000 connected on HSBB1. - Latency = 1
+Serial Number: DM00U24L
+Description: maXTouch HSBB
+
+
+I2C communications initialized
+Device communications initialized
+bridge get connection info
+bridge read: 7 bytes from address 0
+bridge read: 207 bytes from address 7
+bridge message configure: 10 bytes from address 345 (including checksum)
+bridge write: 1 byte to address 359
+messages enabled
+bridge read: 7 bytes from address 356
+bridge read: 130 bytes from address 214
+bridge read: 1 byte from address 344
+bridge read: 11 bytes from address 345
+bridge read: 7 bytes from address 356
+bridge read: 64 bytes from address 363
+bridge read: 33 bytes from address 427
+bridge read: 200 bytes from address 460
+bridge read: 312 bytes from address 660
+bridge read: 7 bytes from address 972
+bridge read: 15 bytes from address 979
+bridge read: 11 bytes from address 994
+bridge read: 2 bytes from address 1005
+bridge read: 16 bytes from address 1007
+bridge read: 19 bytes from address 1023
+bridge read: 24 bytes from address 1042
+bridge read: 7 bytes from address 1066
+bridge read: 14 bytes from address 1073
+bridge read: 24 bytes from address 1087
+bridge read: 45 bytes from address 1111
+bridge read: 30 bytes from address 1156
+bridge read: 69 bytes from address 1186
+bridge read: 200 bytes from address 1255
+bridge read: 89 bytes from address 1455
+bridge read: 12 bytes from address 1544
+bridge read: 12 bytes from address 1556
+bridge read: 14 bytes from address 1568
+bridge read: 68 bytes from address 1582
+bridge read: 11 bytes from address 1650
+bridge read: 75 bytes from address 1661
+bridge read: 17 bytes from address 1736
+bridge read: 64 bytes from address 1753
+bridge read: 5 bytes from address 1817
+bridge read: 7 bytes from address 1822
+bridge read: 84 bytes from address 1829
